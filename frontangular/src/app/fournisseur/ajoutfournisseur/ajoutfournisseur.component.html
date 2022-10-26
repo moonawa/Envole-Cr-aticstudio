@@ -1,0 +1,154 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="col-md-4">
+      <a class="navbar-brand" href="#">Tableau de bord</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="col-md-8">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Candidat
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" routerLink="/candidat/liste">Liste</a></li>
+                  <li><a class="dropdown-item" href="#" routerLink="/candidat/ajout">Ajouter</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Personnel
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" routerLink="/personel/liste">Liste</a></li>
+                  <li><a class="dropdown-item" href="#" routerLink="/personel/ajout">Ajouter</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              fournisseur
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" routerLink="/fournisseur/liste">Liste</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/fournisseur/ajout">Ajouter</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Casting
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" routerLink="/casting/liste">Liste</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/casting/ajout">Ajouter</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Fournisseur
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" routerLink="/fournisseur/liste">Liste</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/fournisseur/ajout">Ajouter</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <div style="margin: 50px;"></div>
+
+  <!-- la page -->
+  <form class="container" *ngIf="!submitted"> 
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Nom de L'entreprise</label>
+        <input type="text" class="form-control"  id="name"
+        required
+        [(ngModel)]="fournisseur.name"
+        name="name">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputState">Téléphone</label>
+        <input type="text" class="form-control" id="telephone"
+        required
+        [(ngModel)]="fournisseur.telephone"
+        name="telephone">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="inputZip">Email</label>
+        <input type="email" class="form-control" id="email"
+        required
+        [(ngModel)]="fournisseur.email"
+        name="email">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputZip">Pays</label>
+        <input type="text" class="form-control" id="pays"
+        required
+        [(ngModel)]="fournisseur.pays"
+        name="pays">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="inputZip">Région</label>
+        <input type="text" class="form-control" id="region"
+        required
+        [(ngModel)]="fournisseur.region"
+        name="region">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputZip">Ville</label>
+        <input type="text" class="form-control" id="ville"
+        required
+        [(ngModel)]="fournisseur.ville"
+        name="ville">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="inputZip">Prestation</label>
+        <input type="text" class="form-control" id="prestation"
+        required
+        [(ngModel)]="fournisseur.prestation"
+        name="prestation">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputZip">Autre</label>
+        <input type="text" class="form-control" id="autre"
+        required
+        [(ngModel)]="fournisseur.autre"
+        name="autre">
+      </div>
+    </div>
+    <br>
+    <button (click)="savefournisseur()" type="submit" class="btn btn-primary">Enregister</button>
+    <div *ngIf="submitted">
+      <h4>fournisseur was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newFournisseur()">Add</button>
+    </div>
+  </form>

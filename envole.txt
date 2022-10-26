@@ -1,0 +1,30 @@
+1_ page d'acceuil = page login
+2_ Acteur=  Superadmin - Client 
+3_ Le candidat n'est pas un acteur parcequ'il se log pas
+4_ le superadmin fait CRUD et SEARCH des Candidats
+5_ le superadmin fait CRUD et SEARCH des Client
+6_ le superadmin fait CRUD et SEARCH des Castings 
+7_ le superadmin lie un casting à un Client 
+8_ le superadmin lie un casting à des candidats
+9_ le casting n'est pas forcément lié à un Client
+
+10_ si le client se connecte : il peut voir les candidats --- noter les candidats(ok, a revoir, a remplacer)
+11_ le superadmin peut voir la réaction du client
+
+superadmin(id, nom, telephone, email, role)
+client(id, nom, telephone, email, role, adresse, 
+12_ candidat(nom, telephone, email, sexe, date-de-naissance ou age, adresse, nationalite, taille, poids, situation-matrioniale, langues-parlées, experience-cinéma, combien-film, experience-theatre, combien-annee, role-reve, role-interdit, nudite ou tenue legere, figurant, embrasse, pourquoi-cinema: passion, argent, celibrite, couleur-cheveux,  longueur-cheveux, type-texture-cheveux, colore, couleur-yeux, lentille, teint, forme-visage, cicatrice, tatouage, percing, barbe, particularite, photos, vidéos, appreciation: debutant, expérimente, pas d'experience)
+
+13_ recherche: nom, taille, sexe, poids, barbue, teint, age, couleur-cheveux , 
+
+ 14_ dashboard: le nombre de femmes, le nombre d'hommes, le nombre de client, le nombre de casting, 
+ le tranche d'ages 
+
+15_ le superadmin peut désactiver le compte du client
+
+16_ annuaire fournisseur(lumiere, son, electricien , droniste, machiniste,grue, traveling)
+
+----------------------
+le backend avec du laravel le frontend avec du angular
+dans le dossier envole:: cd backlaravel : composer install ---- puis ---- php artisan serve
+dans le dossier envole:: cd frontangular: npm install ---- puis ----  ng  serve

@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="col-md-4">
+      <a class="navbar-brand" href="#">Tableau de bord</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="col-md-8">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Candidat
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" routerLink="/candidat/liste">Liste</a></li>
+                  <li><a class="dropdown-item" href="#" routerLink="/candidat/ajout">Ajouter</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Personnel
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" routerLink="/personel/liste">Liste</a></li>
+                  <li><a class="dropdown-item" href="#" routerLink="/personel/ajout">Ajouter</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Colaborateur
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" routerLink="/colaborateur/liste">Liste</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/colaborateur/ajout">Ajouter</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Casting
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" routerLink="/casting/liste">Liste</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/casting/ajout">Ajouter</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Fournisseur
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" routerLink="/fournisseur/liste">Liste</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/fournisseur/ajout">Ajouter</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <div style="margin: 50px;"></div>
+
+  <!-- la page -->
+  <section class="container">
+
+  <table class="table table-bordered border-primary">
+    <thead>
+    <tr>
+      <th  scope="col">ID</th>
+      <th  scope="col">Nom de l' Entreprise</th>
+      <th  scope="col">Email</th>
+      <th  scope="col">Téléphone</th>
+      <th  scope="col">Adresse</th>
+      <th  scope="col">Logo</th>
+      <th  scope="col">Description</th>
+     
+      <th width="220px">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let colaborateur of colaborateurs">
+      <th scope="row">{{ colaborateur.id }}</th>
+      <td>{{ colaborateur.user.name }}</td>
+      <td>{{ colaborateur.user.email }}</td>
+      <td>{{ colaborateur.user.telephone }}</td>
+      <td>{{ colaborateur.adresse }}</td>
+      <td>{{ colaborateur.user.avatar }} kg</td>
+      <td>{{ colaborateur.description }}</td>
+      <td>
+        <a href="#" [routerLink]="['/colaborateur/', colaborateur.id  ]" class="btn btn-primary">Modifier</a>
+        <!-- <button type="button" (click)="deletecolaborateur(colaborateur.id)" class="btn btn-danger">Supprimer</button> -->
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</section>

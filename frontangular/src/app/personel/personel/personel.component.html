@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="col-md-4">
+      <a class="navbar-brand" href="#">Tableau de bord</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="col-md-8">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Candidat
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" routerLink="/candidat/liste">Liste</a></li>
+                  <li><a class="dropdown-item" href="#" routerLink="/candidat/ajout">Ajouter</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Personnel
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" routerLink="/personel/liste">Liste</a></li>
+                  <li><a class="dropdown-item" href="#" routerLink="/personel/ajout">Ajouter</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Colaborateur
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" routerLink="/colaborateur/liste">Liste</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/colaborateur/ajout">Ajouter</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Casting
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" routerLink="/casting/liste">Liste</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="/casting/ajout">Ajouter</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+    </div>
+  </nav>
+
+  <div style="margin: 50px;"></div>
+
+  <!-- la page -->
+
+
+  <section class="container">
+
+    <div class="d-flex justify-content-between">
+      <h4>Liste du Personnel</h4>
+      <a routerLink="/personel/ajout" class="btn btn-success">Enregistrer un nouveau Personnel</a>
+    </div>
+
+    <br>
+    
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Métier</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let person of personels">
+        <td>{{ person.id }}</td>
+        <td>{{ person.user.name }}</td>
+        <td>{{ person.user.email }}</td>
+        <td>{{ person.user.telephone }}</td>
+        <td>{{ person.metier }}</td>
+        <td>
+          <!-- <a href="#" [routerLink]="['/person/', 'edit', person.id  ]" class="btn btn-primary">Modifier</a>
+          <button type="button" (click)="deletePerson(person.id)" class="btn btn-danger">Supprimer</button>
+        -->
+      </td> 
+      </tr>
+    </table>
+ </section>
