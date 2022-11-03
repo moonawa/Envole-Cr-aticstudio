@@ -11,9 +11,9 @@ class Candidat extends Model
     protected $fillable = [
         'prenom',
         'nom',
-        'email',
-        'telephone',
-        'adresse',
+        'email_candidat',
+        'telephone_candidat',
+        'adresse_candidat',
         'signe_particulier',
         'taille',
         'profession',
@@ -24,7 +24,8 @@ class Candidat extends Model
         'age',
         'birthday',
         'appreciation',
-
+        'campagne_publicitaire',
+        'nom_campagne_publicitaire',
         'situation_matrimoniale',
         'enfant',
         'langues_parlees',
@@ -71,5 +72,13 @@ class Candidat extends Model
     public function castings()
     {
         return $this->belongsToMany(Casting::class)->withPivot('note');
+    }
+
+    /**
+     * Get the selections for the blog candidat.
+     */
+    public function selections()
+    {
+    	return $this->hasMany(Selection::class);
     }
 }

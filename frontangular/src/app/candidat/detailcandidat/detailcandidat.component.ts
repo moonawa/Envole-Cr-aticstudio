@@ -10,18 +10,21 @@ import { CandidatService } from '../candidat.service';
 })
 export class DetailcandidatComponent implements OnInit {
   @Input() viewMode = false;
+  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
 
   @Input() currentCandidat: Candidat = {
     prenom: '',
     nom: '',
-     telephone: '',
-     email: '',
+     telephone_candidat: '',
+     email_candidat: '',
      taille: '',
      poids: 0,
      teint: '',
      sexe: '',
+     nom_campagne_publicitaire: '',
+     campagne_publicitaire: '',
      age: 0,
-     adresse: '',
+     adresse_candidat: '',
      profession: '',
      langues_parlees: '',
      signe_particulier: '',

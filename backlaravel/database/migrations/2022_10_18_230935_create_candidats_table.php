@@ -17,33 +17,41 @@ return new class extends Migration
             $table->increments('id');
             $table->string('prenom')->nullable();
             $table->string('nom')->nullable();
-            $table->string('email')->unique()->nullable();
-            $table->string('telephone')->unique()->nullable();
-            $table->string('selection_envole')->default(0); //si le candidat a une fois travaillé avec envol ------
+            $table->string('email_candidat')->unique()->nullable();
+            $table->string('telephone_candidat')->unique()->nullable();
+            $table->string('selection_envole')->nullable();//Oui ou Non -----si le candidat a une fois travaillé avec envol ------
             $table->string('quel_cinema')->nullable(); //le film ou il a participé a envol
-            $table->string('experience_cinema')->default(0); 
+            $table->string('campagne_publicitaire')->nullable();//Oui ou Non -----si le candidat a une fois participé à un pub------
+            $table->string('nom_campagne_publicitaire')->nullable(); 
+            $table->string('experience_cinema')->nullable();
             $table->integer('combien_de_film')->nullable(); 
-            $table->string('experience_theatre')->default(0); 
+            $table->integer('les_films')->nullable(); 
+            $table->string('experience_theatre')->nullable();
             $table->integer('combien_annee_theatre')->nullable(); 
-            $table->string('adresse')->nullable();
+            $table->integer('les_theatres')->nullable(); 
+
+            $table->string('adresse_candidat')->nullable();
             $table->string('appreciation')->nullable(); //debutant, pas d'expérience, expérimenté
             $table->string('taille')->nullable();
             $table->string('profession')->nullable();
             $table->string('poids')->nullable();
             $table->string('teint')->nullable();
-            $table->string('sexe')->default(0); //0= femme, 1= homme
+            $table->string('sexe')->nullable(); //0= femme, 1= homme
             $table->date('birthday')->nullable();
             $table->string('age')->nullable();
             $table->string('signe_particulier')->nullable(); //gros ventre
             $table->string('barbu')->nullable();
-            $table->string('situation_matrimoniale')->default(0); //0=célibataire , 1 = marié(e)//si la personne est marié(e)
+            $table->string('situation_matrimoniale')->nullable(); //marié(e)? : oui ou non 
             $table->integer('enfant')->nullable(); //nombre d'enfants
             $table->string('langues_parlees')->nullable(); 
-            $table->string('role_interdit')->nullable(); //oui ou non et lequel
-            $table->string('role_souhaite')->nullable(); //oui ou non lequel
-            $table->string('nudite')->default(0); //0=non, 1=oui, s'il peut jouer une scene de nudité
-            $table->string('figurant')->default(0); //0=non, 1=oui, s'il peut accepter d'etre figurant
-            $table->string('baiser')->default(0); //0=non, 1=oui, s'il va accepter d'etre embrasser
+            $table->string('role_interdit')->nullable(); //oui ou non 
+            $table->string('lequel_role_interdit')->nullable(); 
+            $table->string('role_souhaite')->nullable(); //oui ou non 
+            $table->string('lequel_role_souhaite')->nullable(); 
+
+            $table->string('nudite')->nullable();//non, oui, s'il peut jouer une scene de nudité
+            $table->string('figurant')->nullable(); //non, oui, s'il peut accepter d'etre figurant
+            $table->string('baiser')->nullable();//non, oui, s'il va accepter d'etre embrasser
             $table->string('pourquoi_cinema')->nullable(); //passion, argent, célébrité
 
             $table->string('couleur_cheveux')->nullable(); 
@@ -57,7 +65,7 @@ return new class extends Migration
             $table->string('cicatrice')->nullable(); //oui ou non a quel endroit
             $table->string('tatouage')->nullable(); //oui ou non a quel endroit
             $table->string('tache_naissance')->nullable(); //oui ou non a quel endroit
-            $table->string('photo1')->nullable();
+            $table->string('photo1')->default("degault.png")->nullable();
             $table->string('photo2')->nullable();
             $table->string('photo3')->nullable();
             $table->string('photo4')->nullable();

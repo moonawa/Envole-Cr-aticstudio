@@ -6,6 +6,7 @@ use App\Models\Casting;
 use App\Models\Colaborateur;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ColaborateurController extends Controller
 {
@@ -23,14 +24,15 @@ class ColaborateurController extends Controller
         $user->telephone = $request->telephone;
         $user->password = bcrypt($request->password);
         $user->role = 3;
-        $user->status = 1;
-        $user->avatar = $request->avatar;
-
+        $user->status = "Activé"; 
+        $imageName =  $request->file('avatar')->hashName();
+        Storage::disk('public')->put($imageName, file_get_contents($request->file('avatar')));
+        $user->avatar = $imageName;
         $user->save();
 
         $colaborateur = new Colaborateur();
-        $colaborateur->adresse = $request->adresse;
-        $colaborateur->description = $request->description;
+        $colaborateur->adresse_colaborateur = $request->adresse_colaborateur;
+        $colaborateur->description_colaborateur = $request->description_colaborateur;
         $colaborateur->user_id = $user->id;
         $colaborateur->save();
 

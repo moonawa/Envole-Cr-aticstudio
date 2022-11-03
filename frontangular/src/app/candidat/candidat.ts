@@ -4,15 +4,16 @@ export interface Candidat {
     id?: any;
     prenom?: string;
     nom?: string;
-    email?: string;
-    telephone?: string;
+    telephone_candidat?: string;
+    email_candidat?: string;
     taille: string;
     poids: number;
     teint: string;
     sexe: string;
-
+    campagne_publicitaire: string;
+    nom_campagne_publicitaire: string;
     age: number;
-    adresse: string;
+    adresse_candidat: string;
     profession: string;
     birthday: Date
 
@@ -20,7 +21,6 @@ export interface Candidat {
     signe_particulier: string;
     
     barbu: string;
-
 
     couleur_cheveux: string;
     longueur_cheveux: string;

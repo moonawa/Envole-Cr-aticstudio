@@ -4,10 +4,9 @@ export interface User {
      email: string;
     telephone: string;
      password: string;
- //role: number;
-    // status: string;
+   //role: number;
      avatar: string;
-    //metier:string;
+    status: string;
     
 
 }

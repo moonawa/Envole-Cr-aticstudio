@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CandidatController;
+use App\Http\Controllers\CastingController;
 use App\Http\Controllers\ColaborateurController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\PersonelController;
@@ -21,22 +22,26 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 //route pour personel
 Route::prefix('personel')->group(function () {
     Route::get('/',[ PersonelController::class, 'index']);
     Route::post('/super',[ PersonelController::class, 'createSuperdmin']);
-    Route::post('/admin',[ PersonelController::class, 'createAdmin']);
+    Route::post('/',[ PersonelController::class, 'createAdmin']);
     //Route::delete('/{id}',[ PersonelController::class, 'delete']);
     Route::get('/{id}',[ PersonelController::class, 'get']);
     Route::put('/{id}',[ PersonelController::class, 'update']);
 });
-//route pour candidat
+
+//route pour candidat casting_candidat
 Route::prefix('candidats')->group(function () {
     Route::get('/',[ CandidatController::class, 'index']);
     Route::post('/',[ CandidatController::class, 'createCandidat']);
     //Route::delete('/{id}',[ PersonelController::class, 'delete']);
     Route::get('/{id}',[ CandidatController::class, 'get']);
     Route::put('/{id}',[ CandidatController::class, 'update']);
+    Route::post('/casting_candidat',[ CandidatController::class, 'casting_candidat']);
+   
 });
 
 //route pour colaborateur
@@ -48,7 +53,6 @@ Route::prefix('colaborateur')->group(function () {
     Route::put('/{id}',[ ColaborateurController::class, 'update']);
 });
 
-
 //route pour fournisseur
 Route::prefix('fournisseur')->group(function () {
     Route::get('/',[ FournisseurController::class, 'index']);
@@ -56,4 +60,15 @@ Route::prefix('fournisseur')->group(function () {
     //Route::delete('/{id}',[ PersonelController::class, 'delete']);
     Route::get('/{id}',[ FournisseurController::class, 'get']);
     Route::put('/{id}',[ FournisseurController::class, 'update']);
+});
+
+//route pour casting
+Route::prefix('casting')->group(function () {
+    Route::get('/',[ CastingController::class, 'index']);
+    Route::post('/',[ CastingController::class, 'store']);//store avec colaborateur
+    Route::post('/createcasting',[ CastingController::class, 'createcasting']);
+    //Route::delete('/{id}',[ PersonelController::class, 'delete']);
+    Route::get('/{id}',[ CastingController::class, 'get']);
+    Route::put('/{id}',[ CastingController::class, 'update']);
+    Route::post('/alloue',[ CastingController::class, 'alloue']);  
 });

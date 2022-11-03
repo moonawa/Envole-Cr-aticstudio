@@ -2,7 +2,7 @@ import { User } from "../user/user";
 
 export interface Colaborateur {
     id: number;
-    adresse: string;
-    description: string;
+    adresse_colaborateur: string;
+    description_colaborateur: string;
     user: User;
 }

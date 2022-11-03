@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('castings', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date')->nullable();
-            $table->string('name')->nullable();
-            $table->text('description')->nullable();
+            $table->date('datecasting')->nullable();
+            $table->string('namecasting')->unique()->nullable();
+            $table->text('descriptioncasting')->nullable();
             $table->integer('colaborateur_id')->unsigned()->nullable();
             $table->foreign('colaborateur_id')->references('id')->on('colaborateurs')->onCascade('delete');
-            $table->string('status')->default(1); //1=encours, 0 terminé
+            $table->string('statuscasting')->nullable(); //encours,  terminé
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ import { User } from 'src/app/user/user';
 export class PersonelComponent implements OnInit {
 
   personels: Personel[] = [];
-  user: User[] = [];
+  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
 
  
   constructor(private personelService: PersonelService) { }

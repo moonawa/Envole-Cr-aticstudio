@@ -11,6 +11,23 @@ class Selection extends Model
     protected $fillable = [
         'candidat_id',
         'casting_id',
-       
+       'note'
     ];
+    
+    protected $with = ['candidat', 'casting'];
+
+    /**
+     * Get the candidat that owns the selection.
+     */
+    public function candidat()
+    {
+    	return $this->belongsTo(Candidat::class);
+    }
+    /**
+     * Get the casting that owns the selection.
+     */
+    public function casting()
+    {
+    	return $this->belongsTo(Casting::class);
+    }
 }

@@ -9,10 +9,12 @@ class Colaborateur extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'adresse',
-        'description',
+        'adresse_colaborateur',
+        'description_colaborateur',
         'user_id'
     ];
+    protected $with = ['user'];
+
     /**
      * Get the user that owns the phone.
      */

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Personel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PersonelController extends Controller
 {
@@ -23,7 +24,7 @@ class PersonelController extends Controller
         $user->telephone = $request->telephone;
         $user->password = bcrypt($request->password);
         $user->role = 1;
-        $user->status = 1;
+        $user->status = "Activé";
         $user->avatar = $request->avatar;
 
         $user->save();
@@ -50,17 +51,20 @@ class PersonelController extends Controller
         //User::create($data);
 
         $user = new User();
-        $user->name = $request('name');
-        $user->email = $request('email');
-        $user->telephone = $request('telephone');
-        $user->password = bcrypt($request('password'));
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->telephone = $request->telephone;
+        $user->password = bcrypt($request->password);
         $user->role = 2;
-        $user->status = 1;
+        $user->status = "Activé"; 
+        $imageName =  $request->file('avatar')->hashName();
+        Storage::disk('public')->put($imageName, file_get_contents($request->file('avatar')));
+        $user->avatar = $imageName;
         $user->save();
 
         $personnel = new Personel();
-        $user->metier = $request('metier');
-        $user->user_id = $user->id;
+        $personnel->metier = $request->metier;
+        $personnel->user_id = $user->id;
         $personnel->save();
 
         return response()->json([

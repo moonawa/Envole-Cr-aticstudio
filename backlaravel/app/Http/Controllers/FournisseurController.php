@@ -13,9 +13,9 @@ class FournisseurController extends Controller
     }
     public function store(Request $request){
         $fournisseur = new Fournisseur();
-        $fournisseur->name = $request->name;
-        $fournisseur->email = $request->email;
-        $fournisseur->telephone = $request->telephone;
+        $fournisseur->name_fournisseur = $request->name_fournisseur;
+        $fournisseur->email_fournisseur = $request->email_fournisseur;
+        $fournisseur->telephone_fournisseur = $request->telephone_fournisseur;
         $fournisseur->pays = $request->pays;
         $fournisseur->region = $request->region;
         $fournisseur->ville = $request->ville;

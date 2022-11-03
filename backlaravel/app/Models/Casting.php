@@ -9,11 +9,14 @@ class Casting extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'date',
+        'datecasting',
         'colaborateur_id',
-        //'personel_id',
-        'description'
+        'namecasting',
+        'descriptioncasting',
+        'statuscasting'
     ];
+    protected $with = ['colaborateur'];
+
     /**
      * Get the colaborateur that owns the casting.
      */
@@ -28,5 +31,13 @@ class Casting extends Model
     public function candidats()
     {
         return $this->belongsToMany(Candidat::class)->withPivot('note'); 
+    }
+
+    /**
+     * Get the selections for the blog casting.
+     */
+    public function selections()
+    {
+    	return $this->hasMany(Selection::class);
     }
 }

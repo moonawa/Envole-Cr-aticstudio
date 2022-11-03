@@ -1,8 +1,8 @@
 export interface Fournisseur {
     id: number;
-    name: string;
-    email: string;
-    telephone: string;
+    name_fournisseur: string;
+    email_fournisseur: string;
+    telephone_fournisseur: string;
     pays: string;
     region: string;
     ville: string;

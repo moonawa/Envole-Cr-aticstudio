@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('colaborateurs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('adresse')->nullable();
-            $table->text('description')->nullable();
+            $table->string('adresse_colaborateur')->nullable();
+            $table->text('description_colaborateur')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onCascade('delete');
             

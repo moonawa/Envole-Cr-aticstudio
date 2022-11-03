@@ -15,17 +15,36 @@ import { AjoutfournisseurComponent } from './fournisseur/ajoutfournisseur/ajoutf
 import { ModiffournisseurComponent } from './fournisseur/modiffournisseur/modiffournisseur.component';
 import { DetailfournisseurComponent } from './fournisseur/detailfournisseur/detailfournisseur.component';
 import { DetailcandidatComponent } from './candidat/detailcandidat/detailcandidat.component';
+import { SuperadminComponent } from './dashbord/superadmin/superadmin.component';
+import { TemplateComponent } from './dashbord/template/template.component';
+import { NavbarComponent } from './dashbord/navbar/navbar.component';
+import { ListecastingComponent } from './casting/listecasting/listecasting.component';
+import { AjoutcastingComponent } from './casting/ajoutcasting/ajoutcasting.component';
+import { ModifcastingComponent } from './casting/modifcasting/modifcasting.component';
+import { DetailcastingComponent } from './casting/detailcasting/detailcasting.component';
+import { AjoutcandidatcastingComponent } from './candidat/ajoutcandidatcasting/ajoutcandidatcasting.component';
+import { CandidatcastingComponent } from './casting/candidatcasting/candidatcasting.component';
+import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcastingseul.component';
 
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  //Candidat CRUD
+
+  //Candidat CRUD et liaison
   { path: 'candidat/liste', component: ListecandidatComponent },
   { path: 'candidat/ajout', component: AjoutcandidatComponent },
-  { path: 'candidat/edit/:idCandidat', component: ModifcandidatComponent }, 
+  { path: 'candidat/edit/:id', component: ModifcandidatComponent }, 
   { path: 'candidat/:id', component: DetailcandidatComponent },
+  { path: 'candidat/casting/:id', component: AjoutcandidatcastingComponent },
 
+  //Casting CRUD et liaison
+  { path: 'casting/liste', component: ListecastingComponent },
+  { path: 'casting/ajout', component: AjoutcastingComponent },
+  { path: 'casting/:id', component: DetailcastingComponent },
+  { path: 'casting/edit/:idCasting', component: ModifcastingComponent }, 
+  { path: 'casting/candidat', component: CandidatcastingComponent }, 
+  { path: 'ajout/casting', component: AjoutcastingseulComponent },
 
     //Personel CRUD
     { path: 'personel/liste', component: PersonelComponent },
@@ -42,6 +61,14 @@ const routes: Routes = [
      { path: 'fournisseur/ajout', component: AjoutfournisseurComponent },
      { path: 'fournisseur/edit/:idFournisseur', component: ModiffournisseurComponent } ,
  
+     //Dashbord Superadmin
+    { path: 'dashboard/super', component: SuperadminComponent },
+    
+    //Dashbord 
+    { path: 'dashboard/template', component: TemplateComponent },
+    { path: 'dashboard/navbar', component: NavbarComponent },
+
+    
 ];
 
 @NgModule({

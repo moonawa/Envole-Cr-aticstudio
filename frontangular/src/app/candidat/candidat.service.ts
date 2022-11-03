@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders , HttpEvent, HttpRequest} from '@angular/common/http';
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -20,6 +20,33 @@ export class CandidatService {
   get(id: any): Observable<Candidat> {
     return this.http.get<Candidat>(`${baseUrl}/${id}`);
   }
+  casting(data: any): Observable<any> {
+    return this.http.post(baseUrl +`/casting_candidat`, data);
+  }
+
+
+
+
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', `${baseUrl}/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
+
+    return this.http.request(req);
+  }
+
+  getFiles(): Observable<any> {
+    return this.http.get(`${baseUrl}/files`);
+  }
+
+
+
+
 
   create(data: any): Observable<any> {
     return this.http.post(baseUrl, data);

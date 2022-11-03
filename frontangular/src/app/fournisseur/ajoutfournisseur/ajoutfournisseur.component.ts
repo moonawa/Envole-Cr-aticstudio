@@ -12,9 +12,9 @@ export class AjoutfournisseurComponent implements OnInit {
 
   fournisseur: Fournisseur = {
     id: 1,
-    name: '',
-   email: '',
-    telephone: '',
+    name_fournisseur: '',
+   email_fournisseur: '',
+    telephone_fournisseur: '',
     pays: '',
     region: '',
     ville: '',
@@ -29,9 +29,9 @@ export class AjoutfournisseurComponent implements OnInit {
   }
   savefournisseur(): void {
     const data = {
-      name: this.fournisseur.name,
-      email: this.fournisseur.email,
-      telephone: this.fournisseur.telephone,
+      name_fournisseur: this.fournisseur.name_fournisseur,
+      email_fournisseur: this.fournisseur.email_fournisseur,
+      telephone_fournisseur: this.fournisseur.telephone_fournisseur,
       pays: this.fournisseur.pays,
       region: this.fournisseur.region,
       ville: this.fournisseur.ville,
@@ -55,9 +55,9 @@ export class AjoutfournisseurComponent implements OnInit {
     this.submitted = false;
     this.fournisseur = {
       id: 1,
-      name: '',
-     email: '',
-      telephone: '',
+      name_fournisseur: '',
+     email_fournisseur: '',
+      telephone_fournisseur: '',
       pays: '',
       region: '',
       ville: '',

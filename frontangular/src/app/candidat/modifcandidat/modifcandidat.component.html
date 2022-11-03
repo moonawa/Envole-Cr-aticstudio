@@ -66,3 +66,74 @@
   <div style="margin: 50px;"></div>
 
   <!-- la page -->
+
+
+  <div *ngIf="viewMode; else editable">
+    <div *ngIf="currentCandidat.id">
+      <h4>Modifier le Candidat</h4>
+      <div>
+        <label><strong>Prénom:</strong></label> {{ currentCandidat.prenom }}
+      </div>
+      <div>
+        <label><strong>Nom:</strong></label>
+        {{ currentCandidat.nom }}
+      </div>
+      <a
+        class="badge badge-warning"
+        routerLink="/candidats/{{ currentCandidat.id }}"
+      >
+        Edit
+      </a>
+    </div>
+    <div *ngIf="!currentCandidat">
+        <br />
+        <p>Please click on a Candidat...</p>
+      </div>
+    </div>
+    
+    <ng-template #editable>
+      <div *ngIf="currentCandidat.id" class="edit-form">
+        <h4>Modifier le  Candidat</h4>
+        <form>
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input
+              type="text"
+              class="form-control"
+              id="prenom"
+              [(ngModel)]="currentCandidat.prenom"
+              name="prenom"
+            />
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input
+          type="text"
+          class="form-control"
+          id="nom"
+          [(ngModel)]="currentCandidat.nom"
+          name="nom"
+        />
+      </div>
+
+     
+    </form>
+
+  
+
+
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateCandidat()"
+    >
+      Modifier
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  <div *ngIf="!currentCandidat.id">
+    <br />
+    <p>Ne peut pas acceder à ce Candidat...</p>
+  </div>
+</ng-template>

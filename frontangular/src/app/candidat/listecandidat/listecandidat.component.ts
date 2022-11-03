@@ -10,7 +10,7 @@ import { CandidatService } from '../candidat.service';
 export class ListecandidatComponent implements OnInit {
 
   candidats: Candidat[] = [];
-
+imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
   constructor(private candidatService: CandidatService) { }
 
   ngOnInit(): void {

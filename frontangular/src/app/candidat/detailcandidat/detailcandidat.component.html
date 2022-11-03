@@ -1,6 +1,9 @@
 <div *ngIf="viewMode; else editable">
     <div *ngIf="currentCandidat.id">
-      <h4>Candidat</h4>
+      <h4>Information Candidat</h4>
+      <div>
+     <img src="{{imageDirectoryPath}}{{currentCandidat.photo1 }}" width="200px">
+    </div>
       <div>
         <label><strong>Prénom:</strong></label> {{ currentCandidat.prenom }}
       </div>
@@ -26,7 +29,7 @@
     <ng-template #editable>
       <div *ngIf="currentCandidat.id" class="edit-form">
         <h4>Candidat</h4>
-        <form>
+      
           <div class="form-group">
             <label for="prenom">Prénom</label>
             <input
@@ -49,7 +52,7 @@
       </div>
 
      
-    </form>
+ 
 
   
 

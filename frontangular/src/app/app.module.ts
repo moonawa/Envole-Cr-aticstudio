@@ -24,6 +24,19 @@ import { DetailfournisseurComponent } from './fournisseur/detailfournisseur/deta
 import { DetailcandidatComponent } from './candidat/detailcandidat/detailcandidat.component';
 import { DetailcoloborateurComponent } from './coloborateur/detailcoloborateur/detailcoloborateur.component';
 import { DetailpersonelComponent } from './personel/detailpersonel/detailpersonel.component';
+import { SuperadminComponent } from './dashbord/superadmin/superadmin.component';
+import { TemplateComponent } from './dashbord/template/template.component';
+import { NavbarComponent } from './dashbord/navbar/navbar.component';
+import { ListecastingComponent } from './casting/listecasting/listecasting.component';
+import { AjoutcastingComponent } from './casting/ajoutcasting/ajoutcasting.component';
+import { ModifcastingComponent } from './casting/modifcasting/modifcasting.component';
+import { DetailcastingComponent } from './casting/detailcasting/detailcasting.component';
+import { AjoutcandidatcastingComponent } from './candidat/ajoutcandidatcasting/ajoutcandidatcasting.component';
+import { ListeselectionComponent } from './selection/listeselection/listeselection.component';
+import { AjoutselectionComponent } from './selection/ajoutselection/ajoutselection.component';
+import { ModifselectionComponent } from './selection/modifselection/modifselection.component';
+import { CandidatcastingComponent } from './casting/candidatcasting/candidatcasting.component';
+import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcastingseul.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +58,20 @@ import { DetailpersonelComponent } from './personel/detailpersonel/detailpersone
     DetailfournisseurComponent,
     DetailcandidatComponent,
     DetailcoloborateurComponent,
-    DetailpersonelComponent
+    DetailpersonelComponent,
+    SuperadminComponent,
+    TemplateComponent,
+    NavbarComponent,
+    ListecastingComponent,
+    AjoutcastingComponent,
+    ModifcastingComponent,
+    DetailcastingComponent,
+    AjoutcandidatcastingComponent,
+    ListeselectionComponent,
+    AjoutselectionComponent,
+    ModifselectionComponent,
+    CandidatcastingComponent,
+    AjoutcastingseulComponent
   ],
   imports: [
     CommonModule,
