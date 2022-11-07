@@ -13,69 +13,38 @@ import { CastingService } from '../casting.service';
 })
 export class AjoutcastingseulComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({
-    datecasting: new FormControl(''),
-    descriptioncasting: new FormControl(''),
-    namecasting: new FormControl(''),
-    statuscasting: new FormControl(''),
-    colaborateur: new FormControl(''),
-  });
-
-  submitted = false;
-  //castingservice: any;
-
-  constructor(private formBuilder: FormBuilder, 
-    private http: HttpClient, private router: Router,
-    private castingservice: CastingService,
-     ){}
+  form!: FormGroup;
+  constructor(
+    public castingservice: CastingService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group(
-      {
-        descriptioncasting: [''],
-        namecasting: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(20)
-          ]
-        ],
-        //statuscasting: ['', [Validators.required]],
-        colaborateur: [
-          '',
-        ],
-        datecasting: ['', Validators.required],
-      },
-      
-    );
-
-    
+    this.form = new FormGroup({
+      datecasting: new FormControl('', [Validators.required]),
+      descriptioncasting: new FormControl('', Validators.required),
+      namecasting: new FormControl(''),
+    //statuscasting: new FormControl(''),
+    });
   }
-  //get f(): { [key: string]: AbstractControl } {
-    get f() { 
+
+  get f(){
     return this.form.controls;
   }
-
-  onSubmit(): void {
-    // this.submitted = true;
-
-    // if (this.form.invalid) {
-    //   return;
-    // }
-
-    //console.log(JSON.stringify(this.form.value, null, 2));
+    
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  submit(){
     console.log(this.form.value);
-    this.castingservice.createcasting(this.form.value).subscribe(res => {
-         console.log('cas created successfully!');
-        // this.router.navigateByUrl('casting/liste');
+    this.castingservice.createcasting(this.form.value).subscribe((res:any) => {
+         console.log('Casting created successfully!');
+         this.router.navigateByUrl('casting/liste');
     })
   }
 
-  onReset(): void {
-    this.submitted = false;
-    this.form.reset();
-  }
   }
 
 

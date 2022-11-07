@@ -19,6 +19,7 @@ export class CandidatcastingComponent implements OnInit {
     statuscasting: '',
     datecasting: new Date(),
     namecasting: '',
+   // colaborateur_id: 1,
     descriptioncasting: '',
     colaborateur: {
       id: 1,

@@ -1,6 +1,7 @@
 import { DatePipe } from "@angular/common";
 
 export interface Candidat {
+    [x: string]: any;
     id?: any;
     prenom?: string;
     nom?: string;

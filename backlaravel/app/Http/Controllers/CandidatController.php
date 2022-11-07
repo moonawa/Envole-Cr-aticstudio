@@ -6,6 +6,7 @@ use App\Models\Candidat;
 use App\Models\Casting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class CandidatController extends Controller
@@ -14,6 +15,23 @@ class CandidatController extends Controller
         $candidat =  Candidat::get();
         return response()->json($candidat, 200);
     }
+    public function candidatFemme() {
+        //$count = DB::table('candidats')->count();
+        $femme = Candidat::where('sexe', 'Femme')->get();
+        return response()->json($femme, 200);
+     }
+     public function candidatHomme() {
+        $femme = Candidat::where('sexe', 'Homme')->get();
+        return response()->json($femme, 200);
+     }
+     public function mineur() {
+        $mineur = Candidat::where('age','<', 17)->get();
+        return response()->json($mineur, 200);
+     }
+     public function majeur() {
+        $majeur = Candidat::where('age', '>', 18)->get();
+        return response()->json($majeur, 200);
+     }
     //création d'un  candidat
     public function createCandidat(Request $request){
         $candidat = new Candidat();

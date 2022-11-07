@@ -5,7 +5,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center"  routerLink="/dashboard/super">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -17,7 +17,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link"  routerLink="/dashboard/super">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -352,29 +352,42 @@
                     </div>
                     <br>
 
-                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <form [formGroup]="form" (ngSubmit)="submit()">
 
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputZip">Date du Casting</label>
                             <input type="date" class="form-control" id="datecasting" required
-                                formControlName="datecasting" name="datecasting">
+                                formControlName="datecasting" 
+                                name="datecasting">
+                                <div *ngIf="f['datecasting'].touched && f['datecasting'].invalid" class="alert alert-danger">
+                                    <div *ngIf="f['datecasting'].errors && f['datecasting'].errors['required']">La date du casting est obligatoire.</div>
+                                </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputZip">Nom du Casting</label>
-                            <input type="text" class="form-control" id="namecasting" required
-                                formControlName="namecasting" name="namecasting">
+                            <input type="text" class="form-control" 
+                            id="namecasting" required
+                                formControlName="namecasting" 
+                                name="namecasting">
+                                <div *ngIf="f['namecasting'].touched && f['namecasting'].invalid" class="alert alert-danger">
+                                    <div *ngIf="f['namecasting'].errors && f['namecasting'].errors['required']">Le nom du casting est obligatoire.</div>
+                                </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="inputZip">Description du Casting</label>
-                            <input type="text" class="form-control" id="descriptioncasting" required
+                            <textarea  type="text" class="form-control" id="descriptioncasting" required
                                 formControlName="descriptioncasting" name="descriptioncasting">
+                            </textarea>
+                            <div *ngIf="f['descriptioncasting'].touched && f['descriptioncasting'].invalid" class="alert alert-danger">
+                                <div *ngIf="f['descriptioncasting'].errors && f['descriptioncasting'].errors['required']">La description du casting est obligatoire.</div>
+                            </div>
                         </div>
                         
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enregister</button>
+                    </div> 
+                    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Enregister</button>
 
 
 

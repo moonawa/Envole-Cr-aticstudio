@@ -24,6 +24,24 @@ export class CandidatService {
     return this.http.post(baseUrl +`/casting_candidat`, data);
   }
 
+  candidatFemme(): Observable<Candidat[]> {
+    return this.http.get<Candidat[]>(baseUrl+`/candidatFemme`);
+  }
+  candidatHomme(): Observable<Candidat[]> {
+    return this.http.get<Candidat[]>(baseUrl+`/candidatHomme`);
+  }
+
+  mineur(): Observable<Candidat[]> {
+    return this.http.get<Candidat[]>(baseUrl+`/mineur`);
+  }
+  majeur(): Observable<Candidat[]> {
+    return this.http.get<Candidat[]>(baseUrl+`/majeur`);
+  }
+
+  // candidatFemme() {
+  //   return this.http.get(`${baseUrl}/candidatFemme`);
+  // }
+
 
 
 

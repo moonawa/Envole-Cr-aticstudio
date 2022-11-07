@@ -1,4 +1,13 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Candidat } from 'src/app/candidat/candidat';
+import { CandidatService } from 'src/app/candidat/candidat.service';
+import { Casting } from 'src/app/casting/casting';
+import { CastingService } from 'src/app/casting/casting.service';
+import { Colaborateur } from 'src/app/coloborateur/colaborateur';
+import { ColaborateurService } from 'src/app/coloborateur/colaborateur.service';
+import { Fournisseur } from 'src/app/fournisseur/fournisseur';
+import { FournisseurService } from 'src/app/fournisseur/fournisseur.service';
 
 @Component({
   selector: 'app-superadmin',
@@ -7,9 +16,93 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuperadminComponent implements OnInit {
 
-  constructor() { }
+ candidats: Candidat[] = [];
+ colaborateurs: Colaborateur[] = [];
+ femmes : Candidat[] = [];
+ hommes : Candidat[] = [];
+ mineur : Candidat[] = [];
+ majeur : Candidat[] = [];
+ castings: Casting[] = [];
+ fournisseurs: Fournisseur[] = [];
+
+
+
+  constructor(private http: HttpClient,
+    private candidatService: CandidatService,
+    private colaborateurService: ColaborateurService,
+    private castingService: CastingService,
+    private fournisseurService: FournisseurService,
+
+    ){}
 
   ngOnInit(): void {
+    //tous les candidats
+    this.candidatService.getAll().subscribe((data: Candidat[])=>{
+      this.candidats = data;
+      console.log(this.candidats);
+    });
+//tous les candidats femmes
+this.candidatService.candidatFemme().subscribe((data: Candidat[])=>{
+  this.femmes = data;
+  console.log(this.femmes);
+});
+//tous les candidats hommes
+this.candidatService.candidatHomme().subscribe((data: Candidat[])=>{
+  this.hommes = data;
+  console.log(this.hommes);
+});
+//tous les candidats mineur
+this.candidatService.mineur().subscribe((data: Candidat[])=>{
+  this.mineur = data;
+  console.log(this.mineur);
+});
+//tous les candidats majeur
+this.candidatService.majeur().subscribe((data: Candidat[])=>{
+  this.majeur = data;
+  console.log(this.majeur);
+});
+
+    this.colaborateurService.getAll().subscribe((data: Colaborateur[])=>{
+      this.colaborateurs = data;
+      console.log(this.colaborateurs);
+    });
+
+    this.castingService.getAll().subscribe((data: Casting[])=>{
+      this.castings = data;
+      console.log(this.castings);
+    });
+
+    this.fournisseurService.getAll().subscribe((data: Fournisseur[])=>{
+      this.fournisseurs = data;
+      console.log(this.fournisseurs);
+    });
   }
 
+  get countAllCandiddat(): number {
+    return this.candidats['length'];
+  }
+  get countAllCandiddatFemme(): number {
+    return this.femmes['length'];
+  }
+  get countAllCandiddatHomme(): number {
+    return this.hommes['length'];
+  }
+  get countAllCandiddatmineur(): number {
+    return this.mineur['length'];
+  }
+  get countAllCandiddatmajeur(): number {
+    return this.majeur['length'];
+  }
+
+  get countAllColaborateur(): number {
+    return this.colaborateurs['length'];
+  }
+
+  get countAllCasting(): number {
+    return this.castings['length'];
+  }
+
+  get countAllFournisseur(): number {
+    return this.fournisseurs['length'];
+  }
 }

@@ -35,13 +35,13 @@ const routes: Routes = [
   { path: 'candidat/liste', component: ListecandidatComponent },
   { path: 'candidat/ajout', component: AjoutcandidatComponent },
   { path: 'candidat/edit/:id', component: ModifcandidatComponent }, 
-  { path: 'candidat/:id', component: DetailcandidatComponent },
+  //{ path: 'candidat/:id', component: DetailcandidatComponent },
   { path: 'candidat/casting/:id', component: AjoutcandidatcastingComponent },
 
   //Casting CRUD et liaison
   { path: 'casting/liste', component: ListecastingComponent },
   { path: 'casting/ajout', component: AjoutcastingComponent },
-  { path: 'casting/:id', component: DetailcastingComponent },
+  { path: 'casting/view/:idCasting', component: DetailcastingComponent },
   { path: 'casting/edit/:idCasting', component: ModifcastingComponent }, 
   { path: 'casting/candidat', component: CandidatcastingComponent }, 
   { path: 'ajout/casting', component: AjoutcastingseulComponent },

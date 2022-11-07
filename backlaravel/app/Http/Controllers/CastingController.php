@@ -131,7 +131,7 @@ class CastingController extends Controller
         $data['descriptioncasting'] = $request['descriptioncasting'];
         $data['colaborateur_id'] = $request['colaborateur_id'];
         
-        Candidat::find($id)->update($data);
+        Casting::find($id)->update($data);
         return response()->json([
             'message' => "Successfully updated",
             'success' => true
@@ -139,8 +139,7 @@ class CastingController extends Controller
     }
     public function updatestatus(Request $request, $id)
     {
-         $data['statuscasting'] = $request['statuscasting'];
-        
+        $data['statuscasting'] = $request['statuscasting'];
         Candidat::find($id)->update($data);
         return response()->json([
             'message' => "Successfully updated",
@@ -150,8 +149,6 @@ class CastingController extends Controller
     public function get($id, Request $request){
 
         $data = Casting::find($id);
-
-
         return response()->json($data, 200);
       }
 }

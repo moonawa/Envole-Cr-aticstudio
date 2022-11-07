@@ -8,7 +8,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center"  routerLink="/dashboard/super">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -20,7 +20,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link"  routerLink="/dashboard/super">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -375,8 +375,10 @@
           <th scope="col">Casting</th>
           <th scope="col">Date</th>
           <th scope="col">Description</th>
-          <th scope="col">Nom Client</th>
-          <th scope="col">Logo Client</th>
+          <th scope="col">Status</th>
+
+          <!-- <th scope="col">Nom Client</th>
+          <th scope="col">Logo Client</th> -->
           <th width="220px">Action</th>
         </tr>
       </thead>
@@ -386,11 +388,15 @@
             <td>{{ casting.namecasting  }}</td>
             <td>{{ casting.datecasting}}</td>
             <td>{{ casting.descriptioncasting}}</td>
-            <td>{{ casting.colaborateur.user.name}}</td>
-            <td><img src="{{imageDirectoryPath}}{{casting.colaborateur.user.avatar }}" width="100px"></td>
+            <td>{{ casting.statuscasting}}</td>
+
+<!--          
+            <td >{{ casting.colaborateur.user.email}}</td>
+            <td ><img src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}" width="100px"></td>    -->
 
             <td>
-                <a href="#" [routerLink]="['/casting/', casting.id  ]" class="btn btn-primary">Détails</a>
+                <a href="#" [routerLink]="['/casting/', 'edit', casting.id  ]" class="btn btn-primary">Modifier</a>
+                <a href="#" [routerLink]="['/casting/', 'view', casting.id  ]" class="btn btn-primary">Détail</a>
 
                 <!-- <button type="button" (click)="deletecolaborateur(colaborateur.id)" class="btn btn-danger">Supprimer</button> -->
               </td>

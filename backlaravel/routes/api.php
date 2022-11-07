@@ -36,6 +36,10 @@ Route::prefix('personel')->group(function () {
 //route pour candidat casting_candidat
 Route::prefix('candidats')->group(function () {
     Route::get('/',[ CandidatController::class, 'index']);
+    Route::get('/candidatFemme',[ CandidatController::class, 'candidatFemme']);
+    Route::get('/candidatHomme',[ CandidatController::class, 'candidatHomme']);
+    Route::get('/mineur',[ CandidatController::class, 'mineur']);
+    Route::get('/majeur',[ CandidatController::class, 'majeur']);
     Route::post('/',[ CandidatController::class, 'createCandidat']);
     //Route::delete('/{id}',[ PersonelController::class, 'delete']);
     Route::get('/{id}',[ CandidatController::class, 'get']);
@@ -67,7 +71,7 @@ Route::prefix('casting')->group(function () {
     Route::get('/',[ CastingController::class, 'index']);
     Route::post('/',[ CastingController::class, 'store']);//store avec colaborateur
     Route::post('/createcasting',[ CastingController::class, 'createcasting']);
-    //Route::delete('/{id}',[ PersonelController::class, 'delete']);
+    //Route::delete('/{id}',[ CastingController::class, 'delete']);
     Route::get('/{id}',[ CastingController::class, 'get']);
     Route::put('/{id}',[ CastingController::class, 'update']);
     Route::post('/alloue',[ CastingController::class, 'alloue']);  

@@ -79,6 +79,7 @@ export class AjoutcandidatcastingComponent implements OnInit {
     datecasting: new Date(),
     namecasting: '',
     descriptioncasting: '',
+    //colaborateur_id: 1,
     colaborateur: {
       id: 1,
     adresse_colaborateur: '',

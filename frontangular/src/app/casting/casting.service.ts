@@ -1,55 +1,108 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 import { Casting } from './casting';
 
-const baseUrl = 'http://localhost:8000/api/casting';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CastingService {
+  private apiURL = "http://localhost:8000/api/casting/";
 
-  constructor(private http: HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+  constructor(private httpClient: HttpClient) { }
 
-  getAll(): Observable<Casting[]> {
-   return this.http.get<Casting[]>(baseUrl);
- }
- 
- get(id: any): Observable<Casting> {
-   return this.http.get<Casting>(`${baseUrl}/${id}`);
- }
- 
- create(data: any): Observable<any> {
-   return this.http.post(baseUrl, data);
- }
- createcasting(data: any): Observable<any> {
-  return this.http.post(baseUrl +`/createcasting`, data);
-}
-alloue(data: any): Observable<any> {
-  return this.http.post(baseUrl +`/alloue`, data);
-}
- 
- update(id: any, data: any): Observable<any> {
-   return this.http.put(`${baseUrl}/${id}`, data);
- }
-
- castingcandidat(id: any, data: any): Observable<any> {
-  return this.http.put(`${baseUrl}/${id}`, data);
-}
-
- delete(id: any): Observable<any> {
-   return this.http.delete(`${baseUrl}/${id}`);
- }
- 
- deleteAll(): Observable<any> {
-   return this.http.delete(baseUrl);
- }
- 
- findByName(name: any): Observable<Casting[]> {
-   return this.http.get<Casting[]>(`${baseUrl}?name=${name}`);
- }
+  getAllb(): Observable<any> {
+    return this.httpClient.get(this.apiURL)
+    .pipe(
+      catchError(this.errorHandler)
+    )
     }
+    getAll(): Observable<Casting[]> {
+      return this.httpClient.get<Casting[]>(this.apiURL);
+  }
+    
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  create(casting:Casting): Observable<any> {
+    return this.httpClient.post(this.apiURL ,  JSON.stringify(casting), this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+      )
+    }  
+
+    createcasting(casting:Casting): Observable<any> {
+      return this.httpClient.post(this.apiURL + 'createcasting/',  JSON.stringify(casting), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+        )
+      }  
+      
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    get(id:number): Observable<any> {  
+      return this.httpClient.get(this.apiURL + id)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+    }
+      
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    update(id:number, casting:Casting): Observable<any> {
+      return this.httpClient.put(this.apiURL + id, JSON.stringify(casting), this.httpOptions)
+      .pipe( 
+        catchError(this.errorHandler)
+      )
+    }
+         
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    delete(id:number){
+      return this.httpClient.delete(this.apiURL + 'castings/' + id, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+    }
+
+    alloue(data: any): Observable<any> {
+      return this.httpClient.post(this.apiURL +`alloue`, data);
+    }
+     
+    /** 
+   * Write code on Method
+   *
+   * @return response()
+   */
+  errorHandler(error:any) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+ }
+}
  
  
  

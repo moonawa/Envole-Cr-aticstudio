@@ -5,7 +5,24 @@ export interface Casting {
     datecasting: Date;
     namecasting: string;
     descriptioncasting: string;
-    colaborateur: Colaborateur;
+    //colaborateur_id: number ;
+    //colaborateur: Colaborateur ;
     statuscasting: string;
+    colaborateur: {
+        id: number;
+    adresse_colaborateur: string;
+    description_colaborateur: string;
+    
+        user: {
+            id: number;
+    name: string;
+    email: string;
+    telephone: string;
+    password: string;
+    //role: number;
+    avatar: string;
+    status: string;
+        }
+     };
 }
 

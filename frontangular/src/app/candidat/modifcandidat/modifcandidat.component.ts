@@ -9,6 +9,7 @@ import { CandidatService } from '../candidat.service';
   styleUrls: ['./modifcandidat.component.css']
 })
 export class ModifcandidatComponent implements OnInit {
+  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
 
   @Input() viewMode = false;
 
@@ -97,6 +98,8 @@ export class ModifcandidatComponent implements OnInit {
     const data = {
       prenom: this.currentCandidat.prenom,
       nom: this.currentCandidat.nom,
+      photo1: this.currentCandidat.photo1,
+
       published: status
     };
 
