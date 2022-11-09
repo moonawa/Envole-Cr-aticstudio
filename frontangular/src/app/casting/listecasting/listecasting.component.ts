@@ -12,6 +12,7 @@ export class ListecastingComponent implements OnInit {
   castings: Casting[] = [];
   
   imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
+  data : any;
 
   constructor(private castingService: CastingService) { }
 
@@ -33,4 +34,16 @@ export class ListecastingComponent implements OnInit {
          console.log('casting deleted successfully!');
     })
   }
+
+  getCandidatSearch(name: any)
+  {
+    const keyword = name.target.value;
+    //console.log(keyword);
+     const search = this.castingService.
+     getSearchCasting(keyword).
+      then(response => {
+        this.data = response;   
+        console.log(this.data) 
+});
+ ;}
 }

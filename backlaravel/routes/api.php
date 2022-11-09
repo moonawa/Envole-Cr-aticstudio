@@ -36,23 +36,23 @@ Route::prefix('personel')->group(function () {
 //route pour candidat casting_candidat
 Route::prefix('candidats')->group(function () {
     Route::get('/',[ CandidatController::class, 'index']);
+    Route::post('/',[ CandidatController::class, 'createCandidat']);
     Route::get('/candidatFemme',[ CandidatController::class, 'candidatFemme']);
     Route::get('/candidatHomme',[ CandidatController::class, 'candidatHomme']);
     Route::get('/mineur',[ CandidatController::class, 'mineur']);
     Route::get('/majeur',[ CandidatController::class, 'majeur']);
-    Route::post('/',[ CandidatController::class, 'createCandidat']);
-    //Route::delete('/{id}',[ PersonelController::class, 'delete']);
+    Route::get('/search_candidat',[ CandidatController::class, 'searchCandidat']);
+    //Route::delete('/{id}',[ CandidatController::class, 'delete']);
     Route::get('/{id}',[ CandidatController::class, 'get']);
     Route::put('/{id}',[ CandidatController::class, 'update']);
     Route::post('/casting_candidat',[ CandidatController::class, 'casting_candidat']);
-   
 });
 
 //route pour colaborateur
 Route::prefix('colaborateur')->group(function () {
     Route::get('/',[ ColaborateurController::class, 'index']);
     Route::post('/',[ ColaborateurController::class, 'createColaborateur']);
-    //Route::delete('/{id}',[ PersonelController::class, 'delete']);
+    //Route::delete('/{id}',[ ColaborateurController::class, 'delete']);
     Route::get('/{id}',[ ColaborateurController::class, 'get']);
     Route::put('/{id}',[ ColaborateurController::class, 'update']);
 });
@@ -61,7 +61,7 @@ Route::prefix('colaborateur')->group(function () {
 Route::prefix('fournisseur')->group(function () {
     Route::get('/',[ FournisseurController::class, 'index']);
     Route::post('/',[ FournisseurController::class, 'store']);
-    //Route::delete('/{id}',[ PersonelController::class, 'delete']);
+    //Route::delete('/{id}',[ FournisseurController::class, 'delete']);
     Route::get('/{id}',[ FournisseurController::class, 'get']);
     Route::put('/{id}',[ FournisseurController::class, 'update']);
 });
@@ -72,6 +72,7 @@ Route::prefix('casting')->group(function () {
     Route::post('/',[ CastingController::class, 'store']);//store avec colaborateur
     Route::post('/createcasting',[ CastingController::class, 'createcasting']);
     //Route::delete('/{id}',[ CastingController::class, 'delete']);
+    Route::get('/search_casting', [ CastingController::class, 'searchCasting']);
     Route::get('/{id}',[ CastingController::class, 'get']);
     Route::put('/{id}',[ CastingController::class, 'update']);
     Route::post('/alloue',[ CastingController::class, 'alloue']);  

@@ -16,18 +16,9 @@ export class AjoutcandidatComponent implements OnInit {
 title = 'upload';
 submitted = false;
 
- 
-  //imageSrc: string = '';
-  /*------------------------------------------
-  --------------------------------------------
-            Declare form
-  --------------------------------------------
-  --------------------------------------------*/
-  // myForm = new FormGroup({
-  //   nom: new FormControl('', [Validators.required, Validators.minLength(3)]),
-  //   photo1: new FormControl('', [Validators.required]),
-  //   fileSource: new FormControl('', )
-  // });
+form!: FormGroup;
+
+
 
 myForm: FormGroup;
   constructor(public fb: FormBuilder,private http: HttpClient,
@@ -103,10 +94,16 @@ myForm: FormGroup;
    }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      prenom: new FormControl('', [Validators.required]),
+      nom: new FormControl('', Validators.required),
+      telephone: new FormControl(''),
+      teint: new FormControl(''),
+    });
   }
-   get f(): { [key: string]: AbstractControl } {
-    return this.myForm.controls;
- }
+   get f(){
+    return this.form.controls;
+  }
   onFileChange(event:Event) {
     const file = (event.target as HTMLInputElement)?.files?.[0];
     

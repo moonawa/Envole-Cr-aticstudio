@@ -102,10 +102,9 @@ class CandidatController extends Controller
         
         $imageName =  $request->file('photo1')->hashName();
         Storage::disk('public')->put($imageName, file_get_contents($request->file('photo1')));
-
         $candidat->photo1 = $imageName;
 
-        $candidat->save();        
+        $candidat->save();     
         return response()->json([
             'message' => "Successfully created",
             'success' => true
@@ -114,10 +113,25 @@ class CandidatController extends Controller
 
     public function chercher(Request $request)
     {
-        $q = $request->input('q');
-        $experience_cinema = Candidat::where('experience_cinema', 'like', '%$q%')->orwhere('ref','like','%$q%')->paginate(5);
+        $q = $request->input('name');
+        $experience_cinema = Candidat::where('teint', 'like', '%$name%')->orwhere('ref','like','%$name%')->paginate(5);
         return $experience_cinema;
-        //return view('posts.index',compact('experience_cinema',$experience_cinema));
+        //return view('posts.index',compact('experience_cinema',$teint));
+    }
+
+    public function searchCandidat(Request $request){
+       // $query = Candidat::query();
+        $data = $request->input('search_candidat');
+        if($data){
+          $query = Candidat::where('age', 'LIKE', '%'.$data.'%')->
+                            orWhere('teint', 'LIKE', '%'.$data.'%')->
+                            orWhere('appreciation', 'LIKE', '%'.$data.'%')->
+                            orWhere('prenom', 'LIKE', '%'.$data.'%')-> 
+                            orWhere('sexe', 'LIKE', '%'.$data.'%')->get();
+          //$query->where('age', 'LIKE', '%'.$data.'%')->get();
+                //dd($query);
+                return $query;
+        } 
     }
 
     public function get($id, Request $request){
@@ -125,8 +139,8 @@ class CandidatController extends Controller
 
         $data = Candidat::find($id);
 
-        $casting =  Casting::where('namecasting', $namecasting)->get();
-        $data->castings()->attach($casting);
+        // $casting =  Casting::where('namecasting', $namecasting)->get();
+        // $data->castings()->attach($casting);
 
         return response()->json($data, 200);
       }

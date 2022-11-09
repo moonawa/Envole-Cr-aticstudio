@@ -47,6 +47,19 @@ export class CastingService {
         catchError(this.errorHandler)
         )
       }  
+
+      getSearchCasting(name: string){
+         const response = new Promise(resolve => {
+          this.httpClient.get(this.apiURL +
+            `search_casting?search_casting=${name}`)
+            .subscribe(data =>{
+             resolve(data);
+           }, error =>{
+             console.log(error);
+           });
+        });
+        return response;
+      }
       
     /**
      * Write code on Method

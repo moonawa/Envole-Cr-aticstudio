@@ -28,3 +28,5 @@ client(id, nom, telephone, email, role, adresse,
 le backend avec du laravel le frontend avec du angular
 dans le dossier envole:: cd backlaravel : composer install ---- puis ---- php artisan serve
 dans le dossier envole:: cd frontangular: npm install ---- puis ----  ng  serve
+
+git push -u origin main

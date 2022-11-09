@@ -155,7 +155,8 @@
                 <form
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Rechercher par nom, date"
+                        (input)="getCandidatSearch($event)"
                             aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">
@@ -360,7 +361,37 @@
 
 
   <section class="container">
-
+    <table class="table table-bordered border-primary">
+        <thead *ngFor="let result of data ">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Casting</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+  
+            <!-- <th scope="col">Nom Client</th>
+            <th scope="col">Logo Client</th> -->
+            <th width="220px">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of data">
+              <th scope="row">{{ result.id }}</th>
+              <td>{{ result.namecasting  }}</td>
+              <td>{{ result.datecasting}}</td>
+              <td>{{ result.descriptioncasting}}</td>
+              <td>{{ result.statuscasting}}</td>
+  
+              <td>
+                  <a href="#" [routerLink]="['/casting/', 'edit', result.id  ]" class="btn btn-primary">Modifier</a>
+                  <a href="#" [routerLink]="['/casting/', 'view', result.id  ]" class="btn btn-primary">Détail</a>
+  
+                  <!-- <button type="button" (click)="deletecolaborateur(colaborateur.id)" class="btn btn-danger">Supprimer</button> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
     <div class="d-flex justify-content-between">
       <h4>Liste des Castings</h4>
       <a routerLink="/casting/ajout" class="btn btn-success">Enregistrer un nouveau Casting</a>

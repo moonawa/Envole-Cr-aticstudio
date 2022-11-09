@@ -14,7 +14,24 @@ export class CandidatService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Candidat[]> {
-    return this.http.get<Candidat[]>(baseUrl);
+    return this.http.get<Candidat[]>(baseUrl)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+  getSearchCandidatName(name: string){
+    // return this.http.get<Candidat[]>(baseUrl +
+    //   `/search_candidat?search_candidat=${name}`);
+     const response = new Promise(resolve => {
+      this.http.get(baseUrl +
+        `/search_candidat?search_candidat=${name}`)
+        .subscribe(data =>{
+         resolve(data);
+       }, error =>{
+         console.log(error);
+       });
+    });
+    return response;
   }
 
   get(id: any): Observable<Candidat> {
@@ -42,9 +59,6 @@ export class CandidatService {
   //   return this.http.get(`${baseUrl}/candidatFemme`);
   // }
 
-
-
-
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
 
@@ -62,10 +76,6 @@ export class CandidatService {
     return this.http.get(`${baseUrl}/files`);
   }
 
-
-
-
-
   create(data: any): Observable<any> {
     return this.http.post(baseUrl, data);
   }
@@ -81,4 +91,13 @@ export class CandidatService {
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
+  errorHandler(error:any) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+ }
 }

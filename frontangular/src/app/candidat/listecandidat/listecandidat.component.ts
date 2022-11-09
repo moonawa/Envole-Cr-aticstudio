@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Candidat } from '../candidat';
 import { CandidatService } from '../candidat.service';
+
 
 @Component({
   selector: 'app-listecandidat',
@@ -11,6 +12,7 @@ export class ListecandidatComponent implements OnInit {
 
   candidats: Candidat[] = [];
 imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
+data : any;
   constructor(private candidatService: CandidatService) { }
 
   ngOnInit(): void {
@@ -19,6 +21,17 @@ imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
       console.log(this.candidats);
     })
   }
-  
+
+  getCandidatSearch(name: any)
+  {
+    const keyword = name.target.value;
+    //console.log(keyword);
+     const search = this.candidatService.
+     getSearchCandidatName(keyword).
+      then(response => {
+        this.data = response;   
+        console.log(this.data) 
+});
+ ;}
 
 }

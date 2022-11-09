@@ -396,7 +396,7 @@
                             formControlName="colaborateur_id"
                                 name="colaborateur_id" 
                                 
-                                [(ngModel)]="casting.colaborateur">
+                                [(ngModel)]="casting.colaborateur.id">
                                 <option *ngFor="let colaborateur of colaborateurs" 
                                  value="{{ colaborateur.id }}">
                                  {{ colaborateur.user.name}}                                

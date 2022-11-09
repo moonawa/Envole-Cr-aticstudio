@@ -71,7 +71,8 @@ import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcasti
     AjoutselectionComponent,
     ModifselectionComponent,
     CandidatcastingComponent,
-    AjoutcastingseulComponent
+    AjoutcastingseulComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -79,7 +80,9 @@ import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcasti
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

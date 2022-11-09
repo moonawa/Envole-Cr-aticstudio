@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Storage;
 
 class CastingController extends Controller
 {
+    public function searchCasting(Request $request){
+              // $querys = Casting::query();
+        $datas = $request->input('search_casting');
+        if($datas){
+           $querys = Casting::query()->where('namecasting', 'LIKE', '%'.$datas.'%')->
+                             orWhere('datecasting', 'LIKE', '%'.$datas.'%')->get();
+            return $querys;
+        }        
+     }
+
     public function index()
     {
         $casting =  Casting::with('colaborateur')->get();
@@ -68,17 +78,17 @@ class CastingController extends Controller
         ], 200);
     }
 
-    public function casting_candidat(Request $request, Casting $casting, Candidat $candidat)
-    {
-        $note = '';
-        if ($request->note) {
-            $note = $request->note;
-        }
-        if ($casting->candidats()->save($candidat, array('note' => $note))) {
-            return response()->json(['message' => 'Casting Candidat Created', 'data' => $candidat], 200);
-        }
-        return response()->json(['message' => 'Error', 'data' => null], 400);
-    }
+    // public function casting_candidat(Request $request, Casting $casting, Candidat $candidat)
+    // {
+    //     $note = '';
+    //     if ($request->note) {
+    //         $note = $request->note;
+    //     }
+    //     if ($casting->candidats()->save($candidat, array('note' => $note))) {
+    //         return response()->json(['message' => 'Casting Candidat Created', 'data' => $candidat], 200);
+    //     }
+    //     return response()->json(['message' => 'Error', 'data' => null], 400);
+    // }
     
     public function show(Casting $casting)
     {
@@ -86,15 +96,15 @@ class CastingController extends Controller
         return response()->json($casting, 200);
     }
 
-    public function candidat($id)
-    {
-        $casting = Casting::with('colaborateur')->find($id);
-        $casting->candidats()->attach($casting->cats);
-        return response()->json([
-            'message' => "Successfully updated",
-            'success' => true
-        ], 200);
-    }
+    // public function candidat($id)
+    // {
+    //     $casting = Casting::with('colaborateur')->find($id);
+    //     $casting->candidats()->attach($casting->cats);
+    //     return response()->json([
+    //         'message' => "Successfully updated",
+    //         'success' => true
+    //     ], 200);
+    // }
 
     public function alloue(Request $request)
     {
@@ -111,6 +121,7 @@ class CastingController extends Controller
             'success' => true
         ], 200);
     }
+   
     public function detach(Request $request)
     {
         $namecasting = $request->namecasting;
@@ -146,9 +157,10 @@ class CastingController extends Controller
             'success' => true
         ], 200);
     }
-    public function get($id, Request $request){
-
+    public function get($id){
         $data = Casting::find($id);
         return response()->json($data, 200);
       }
+
+      
 }

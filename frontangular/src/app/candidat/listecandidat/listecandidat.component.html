@@ -155,8 +155,9 @@
                 <form
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                            aria-label="Search" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Rechercher par..."
+                        (input)="getCandidatSearch($event)"
+                            aria-label="Search" aria-describedby="basic-addon2" >
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">
                                 <i class="fas fa-search fa-sm"></i>
@@ -180,7 +181,7 @@
                             <form class="form-inline mr-auto w-100 navbar-search">
                                 <div class="input-group">
                                     <input type="text" class="form-control bg-light border-0 small"
-                                        placeholder="Search for..." aria-label="Search"
+                                        placeholder="search ..." aria-label="Search"
                                         aria-describedby="basic-addon2">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">
@@ -356,68 +357,97 @@
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                 </div> -->
+
+
   <!-- la page -->
-  <section class="">
+ <section class="">
+    <table class="table table-bordered border-primary" >
+        <thead *ngIf=" data ">
+        <tr>
+          <th  scope="col">ID</th>
+          <th  scope="col">Nom Complet</th>
+          <th  scope="col">Téléphone</th>
+          <th  scope="col">Teint</th>
+          <th  scope="col">Age</th>
+          <th  scope="col">Photo</th>
+          <th  scope="col">Vidéo</th> 
+    
+          <th width="220px">Action</th>
+    
+        </tr>
+      </thead>
+      <tbody>
+    
+        <!-- <tr *ngFor="let candidat of candidats | filter:searchText"> -->
+             <tr *ngFor="let result of data "> 
+    
+          <th scope="row">{{ result.id }}</th>
+          <td>{{ result.prenom }} {{ result.nom }}</td>
+          <!-- <td><a href="mailto:{{candidat.email}}">{{  candidat.email }}</a></td> -->
+          <td><a href="tel:{{result.telephone_candidat}}">{{  result.telephone_candidat }}</a></td>
+          <td>{{ result.teint }}</td>
+          <td>{{ result.age }} ans</td>
+          <td><img src="{{imageDirectoryPath}}{{result.photo1 }}" width="100px"></td>
+    
+          <td>{{ result.video1 }}</td>
+    
+          <td>
+        <a  [routerLink]="['/candidat/', 'edit', result.id  ]" class="btn btn-primary">Modifier</a> 
+            <!-- <a href="#"  [routerLink]="['/candidat/', candidat.id  ]" class="btn btn-info">Details</a> -->
+            <!-- <a href="#"  [routerLink]="['/candidat/','casting', candidat.id  ]" class="btn btn-success">Selectionner</a> -->
+    
+            <!-- <button type="button" (click)="deletecandidat(candidat.id)" class="btn btn-danger">Supprimer</button> -->
+          </td>
+        </tr>
+      </tbody>
+      </table>
 
     <div class="d-flex justify-content-between">
       <h4>Liste des Candidats</h4>
       <a routerLink="/candidat/ajout" class="btn btn-success">Enregistrer un nouveau Candidat</a>
     </div>
-
+ 
     <br>
+  <table class="table table-bordered border-primary">
+    <thead>
+    <tr>
+      <th  scope="col">ID</th>
+      <th  scope="col">Nom Complet</th>
+      <th  scope="col">Téléphone</th>
+      <th  scope="col">Teint</th>
+      <th  scope="col">Age</th>
+      <th  scope="col">Photo</th>
+      <th  scope="col">Vidéo</th> 
 
+      <th width="220px">Action</th>
 
-  <!-- Begin Page Content -->
-                <div class="container-fluid">
+    </tr>
+  </thead>
+  <tbody>
 
-                  
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Candidats</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Nom</th>
-                                            <th>Téléphone</th>
-                                            <th>Teint</th>
-                                            <th>Age</th>
-                                            <th>Photo</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Nom</th>
-                                            <th>Téléphone</th>
-                                            <th>Teint</th>
-                                            <th>Age</th>
-                                            <th>Photo</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr *ngFor="let candidat of candidats">
-                                            <td>{{ candidat.prenom }} {{ candidat.nom }}</td>
-                                            <td><a href="tel:{{candidat.telephone_candidat}}">{{  candidat.telephone_candidat }}</a> </td>
-                                            <td>{{ candidat.teint }}</td>
-                                            <td>{{ candidat.age }}</td>
-                                            <td><img src="{{imageDirectoryPath}}{{candidat.photo1 }}" width="100px"></td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                        
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+    <!-- <tr *ngFor="let candidat of candidats | filter:searchText"> -->
+         <tr *ngFor="let candidat of candidats "> 
 
-                </div>
-                <!-- /.container-fluid -->
+      <th scope="row">{{ candidat.id }}</th>
+      <td>{{ candidat.prenom }} {{ candidat.nom }}</td>
+      <!-- <td><a href="mailto:{{candidat.email}}">{{  candidat.email }}</a></td> -->
+      <td><a href="tel:{{candidat.telephone_candidat}}">{{  candidat.telephone_candidat }}</a></td>
+      <td>{{ candidat.teint }}</td>
+      <td>{{ candidat.age }} ans</td>
+      <td><img src="{{imageDirectoryPath}}{{candidat.photo1 }}" width="100px"></td>
 
-            </section>
+      <td>{{ candidat.video1 }}</td>
+
+      <td>
+    <a  [routerLink]="['/candidat/', 'edit', candidat.id  ]" class="btn btn-primary">Modifier</a> 
+        <!-- <a href="#"  [routerLink]="['/candidat/', candidat.id  ]" class="btn btn-info">Details</a> -->
+        <!-- <a href="#"  [routerLink]="['/candidat/','casting', candidat.id  ]" class="btn btn-success">Selectionner</a> -->
+
+        <!-- <button type="button" (click)="deletecandidat(candidat.id)" class="btn btn-danger">Supprimer</button> -->
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</section>
+</div>
 </div>
