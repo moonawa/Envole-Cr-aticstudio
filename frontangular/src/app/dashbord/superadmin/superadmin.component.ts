@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Candidat } from 'src/app/candidat/candidat';
+import { Candidat } from 'src/app/candidat/candidat.model';
 import { CandidatService } from 'src/app/candidat/candidat.service';
-import { Casting } from 'src/app/casting/casting';
+import { Casting } from 'src/app/casting/casting.model';
 import { CastingService } from 'src/app/casting/casting.service';
-import { Colaborateur } from 'src/app/coloborateur/colaborateur';
-import { ColaborateurService } from 'src/app/coloborateur/colaborateur.service';
+import {ColoborateurService } from 'src/app/coloborateur/colaborateur.service';
+import { Coloborateur } from 'src/app/coloborateur/coloborateur.model';
 import { Fournisseur } from 'src/app/fournisseur/fournisseur';
 import { FournisseurService } from 'src/app/fournisseur/fournisseur.service';
 
@@ -17,7 +17,7 @@ import { FournisseurService } from 'src/app/fournisseur/fournisseur.service';
 export class SuperadminComponent implements OnInit {
 
  candidats: Candidat[] = [];
- colaborateurs: Colaborateur[] = [];
+ colaborateurs: Coloborateur[] = [];
  femmes : Candidat[] = [];
  hommes : Candidat[] = [];
  mineur : Candidat[] = [];
@@ -29,7 +29,7 @@ export class SuperadminComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private candidatService: CandidatService,
-    private colaborateurService: ColaborateurService,
+    private colaborateurService: ColoborateurService,
     private castingService: CastingService,
     private fournisseurService: FournisseurService,
 
@@ -62,7 +62,7 @@ this.candidatService.majeur().subscribe((data: Candidat[])=>{
   console.log(this.majeur);
 });
 
-    this.colaborateurService.getAll().subscribe((data: Colaborateur[])=>{
+    this.colaborateurService.getAll().subscribe((data: Coloborateur[])=>{
       this.colaborateurs = data;
       console.log(this.colaborateurs);
     });

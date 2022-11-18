@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Fournisseur } from './fournisseur';
@@ -9,6 +9,11 @@ const baseUrl = 'http://localhost:8000/api/fournisseur';
   providedIn: 'root'
 })
 export class FournisseurService {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+ }
 
   constructor(private http: HttpClient) { }
 

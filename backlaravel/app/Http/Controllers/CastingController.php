@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Candidat;
 use App\Models\Casting;
 use App\Models\Colaborateur;
+use App\Models\Selection;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class CastingController extends Controller
@@ -16,7 +19,9 @@ class CastingController extends Controller
         $datas = $request->input('search_casting');
         if($datas){
            $querys = Casting::query()->where('namecasting', 'LIKE', '%'.$datas.'%')->
-                             orWhere('datecasting', 'LIKE', '%'.$datas.'%')->get();
+                             orWhere('datecasting', 'LIKE', '%'.$datas.'%')->
+                             orWhere('descriptioncasting', 'LIKE', '%'.$datas.'%')->get();
+
             return $querys;
         }        
      }
@@ -26,6 +31,7 @@ class CastingController extends Controller
         $casting =  Casting::with('colaborateur')->get();
         return response()->json($casting, 200);
     }
+     
 
     //création d'un  casting
     public function createcasting(Request $request)
@@ -36,7 +42,11 @@ class CastingController extends Controller
         $casting->descriptioncasting = $request->descriptioncasting;
         $casting->namecasting = $request->namecasting;
         $casting->statuscasting = "Encours";
+        $casting->colaborateur_id = 1;
+
         $casting->save();
+
+        
         return response()->json([
             'message' => "Successfully created",
             'success' => true
@@ -121,6 +131,16 @@ class CastingController extends Controller
             'success' => true
         ], 200);
     }
+ 
+
+    public function candidats($id ){ 
+        $candidat = Casting::with('candidats')->where('id', $id); 
+        $r = $candidat->with('colaborateur')->first();
+        //$r =Candidat::where('id', $id)->get()->castings;  
+        return response()->json($r, 200);
+
+        //return $r;
+    }
    
     public function detach(Request $request)
     {
@@ -158,9 +178,15 @@ class CastingController extends Controller
         ], 200);
     }
     public function get($id){
-        $data = Casting::find($id);
+        $data = Casting::with('colaborateur')->find($id);
+
+       // $candidat = $data->candidats;
         return response()->json($data, 200);
       }
+
+     
+
+      
 
       
 }

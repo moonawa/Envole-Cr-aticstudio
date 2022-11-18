@@ -15,7 +15,17 @@ class Casting extends Model
         'descriptioncasting',
         'statuscasting'
     ];
-    protected $with = ['colaborateur'];
+    //protected $with = ['colaborateur'];
+
+    /**
+     * The candidats that belong to the casting.
+     */
+    public function candidats()
+    {
+        return $this->belongsToMany(Candidat::class,
+         'candidat_casting')->withPivot('note');
+
+    }
 
     /**
      * Get the colaborateur that owns the casting.
@@ -25,13 +35,7 @@ class Casting extends Model
     	return $this->belongsTo(Colaborateur::class);
     }
     
-    /**
-     * The candidats that belong to the casting.
-     */
-    public function candidats()
-    {
-        return $this->belongsToMany(Candidat::class)->withPivot('note'); 
-    }
+   
 
     /**
      * Get the selections for the blog casting.

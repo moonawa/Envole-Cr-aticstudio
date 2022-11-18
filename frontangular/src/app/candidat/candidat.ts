@@ -35,13 +35,14 @@ export interface Candidat {
     tatouage: string;
     tache_naissance: string;
 
-    photo1: string;
+    photo1?: string;
     photo2: string;
     photo3: string;
     photo4: string;
     photo5: string;
     video1: string;
     video2: string;
+    myFiles?: string;
         
     situation_matrimoniale: string;
     enfant: number;
@@ -50,11 +51,15 @@ export interface Candidat {
     quel_cinema: string;
     experience_cinema: string;
     combien_de_film: number;
+    les_films: string;
     experience_theatre: string;
     combien_annee_theatre: number;
+    les_theatres: string;
     
     role_interdit: string;
+    lequel_role_interdit: string;
     role_souhaite: string;
+    lequel_role_souhaite: string;
     nudite: string;
     figurant: string;
     baiser: string;

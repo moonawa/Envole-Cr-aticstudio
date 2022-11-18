@@ -48,6 +48,7 @@ export class AjoutfournisseurComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+      alert("le fournisseur a été créé avec succes");
       this.router.navigateByUrl('fournisseur/liste');
 
   }

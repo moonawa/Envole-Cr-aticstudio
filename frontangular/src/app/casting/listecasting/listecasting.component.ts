@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/user/user';
-import { Casting } from '../casting';
+import { Casting } from '../casting.model';
 import { CastingService } from '../casting.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CastingService } from '../casting.service';
   styleUrls: ['./listecasting.component.css']
 })
 export class ListecastingComponent implements OnInit {
-  castings: Casting[] = [];
+  castings?: Casting[];
   
   imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
   data : any;
@@ -30,7 +30,7 @@ export class ListecastingComponent implements OnInit {
    */
   deletePost(id:number){
     this.castingService.delete(id).subscribe(res => {
-         this.castings = this.castings.filter(item => item.id !== id);
+         this.castings = this.castings?.filter(item => item.id !== id);
          console.log('casting deleted successfully!');
     })
   }

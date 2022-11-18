@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Colaborateur } from '../colaborateur';
-import { ColaborateurService } from '../colaborateur.service';
+import { Coloborateur } from '../coloborateur.model'; 
+import { ColoborateurService } from '../colaborateur.service';
 @Component({
   selector: 'app-liste',
   templateUrl: './liste.component.html',
@@ -8,13 +8,13 @@ import { ColaborateurService } from '../colaborateur.service';
 })
 export class ListeComponent  implements OnInit {
 
-  colaborateurs: Colaborateur[] = [];
+  colaborateurs: Coloborateur[] = [];
   imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
 
-  constructor(private colaborateurService: ColaborateurService) { }
+  constructor(private ColoborateurService: ColoborateurService) { }
 
   ngOnInit(): void {
-    this.colaborateurService.getAll().subscribe((data: Colaborateur[])=>{
+    this.ColoborateurService.getAll().subscribe((data: Coloborateur[])=>{
       this.colaborateurs = data;
       console.log(this.colaborateurs);
     })

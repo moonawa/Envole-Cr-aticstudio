@@ -49,13 +49,13 @@ class Candidat extends Model
         'tache_naissance',
 
 
-        'photo1',
-        'photo2',
-        'photo3',
-        'photo4',
-        'photo5',
-        'video1',
-        'video2',
+         'photo1',
+        // 'photo2',
+        // 'photo3',
+        // 'photo4',
+        // 'photo5',
+        // 'video1',
+        // 'video2',
 
         'experience_cinema',
         'combien_de_film',
@@ -80,5 +80,19 @@ class Candidat extends Model
     public function selections()
     {
     	return $this->hasMany(Selection::class);
+    }
+    /**
+     * Get the images for the blog candidat.
+     */
+    public function images()
+    {
+    	return $this->hasMany(Image::class);
+    }
+    /**
+     * Get the files for the blog candidat.
+     */
+    public function files()
+    {
+    	return $this->hasMany(File::class);
     }
 }

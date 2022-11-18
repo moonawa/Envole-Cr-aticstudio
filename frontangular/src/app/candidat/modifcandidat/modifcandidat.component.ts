@@ -1,6 +1,7 @@
 import { Component,Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Candidat } from '../candidat';
+import { Candidat } from '../candidat.model';
 import { CandidatService } from '../candidat.service';
 
 @Component({
@@ -11,15 +12,17 @@ import { CandidatService } from '../candidat.service';
 export class ModifcandidatComponent implements OnInit {
   imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
 
-  @Input() viewMode = false;
-
-  @Input() currentCandidat: Candidat = {
+   
+   id!: number;
+   form!: FormGroup;
+   currentCandidat: Candidat = {
+    id: 1,
     prenom: '',
     nom: '',
      telephone_candidat: '',
      email_candidat: '',
      taille: '',
-     poids: 0,
+     poids: '',
      teint: '',
      sexe: '',
      age: 0,
@@ -77,56 +80,36 @@ export class ModifcandidatComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.viewMode) {
-      this.message = '';
-      this.getCandidat(this.route.snapshot.params["id"]);
-    }
+    // if (!this.viewMode) {
+    //   this.message = '';
+    //   this.getCandidat(this.route.snapshot.params["id"]);
+    // }
+
+    this.id = this.route.snapshot.params['id'];
+    this.candidatService.get(this.id).subscribe((data: Candidat)=>{
+      this.currentCandidat = data;
+    }); 
+
+   this.form = new FormGroup({
+      nom: new FormControl('', [Validators.required]),
+      prenom: new FormControl('', Validators.required),
+      telephone_candidat: new FormControl(''),
+      email_candidat: new FormControl(''),
+    });
   
   }
-  getCandidat(id: string): void {
-    this.candidatService.get(id)
-      .subscribe({
-        next: (data) => {
-          this.currentCandidat = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
+  submit(){
+    console.log(this.form.value);
+    this.candidatService.update(this.id, this.form.value).subscribe((res:any) => {
+         console.log('candidat updated successfully!');
+         alert('Le candidat a été modifié avec succès');
+         this.router.navigateByUrl('candidat/liste');
+    })
   }
 
-  updatePublished(status: boolean): void {
-    const data = {
-      prenom: this.currentCandidat.prenom,
-      nom: this.currentCandidat.nom,
-      photo1: this.currentCandidat.photo1,
+ 
 
-      published: status
-    };
-
-    this.message = '';
-
-    this.candidatService.update(this.currentCandidat.id, data)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.message = res.message ? res.message : 'Les données du candidat ont été modifié!';
-        },
-        error: (e) => console.error(e)
-      });
-  }
-
-  updateCandidat(): void {
-    this.message = '';
-
-    this.candidatService.update(this.currentCandidat.id, this.currentCandidat)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.message = res.message ? res.message : 'Les données du candidat ont été modifié!';
-        },
-        error: (e) => console.error(e)
-      });
-  }
+ 
   deleteCandidat(): void {
     this.candidatService.delete(this.currentCandidat.id)
       .subscribe({

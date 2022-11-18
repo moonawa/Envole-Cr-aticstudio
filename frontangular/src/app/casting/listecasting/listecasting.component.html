@@ -44,7 +44,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item"  routerLink="/candidat/liste">liste</a>
-                    <a class="collapse-item"  routerLink="/candidat/ajout">Ajout</a>
+                    <a class="collapse-item"  routerLink="/candidat/formstep">Ajout</a>
                 </div>
             </div>
         </li>
@@ -62,9 +62,10 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
-                    <a class="collapse-item" >Casting - Client</a>
+
+                    <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
+                    <a class="collapse-item" >Casting - Client</a> -->
                 </div>
             </div>
         </li>
@@ -155,7 +156,7 @@
                 <form
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Rechercher par nom, date"
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Rechercher par nom, date, description"
                         (input)="getCandidatSearch($event)"
                             aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
@@ -362,7 +363,7 @@
 
   <section class="container">
     <table class="table table-bordered border-primary">
-        <thead *ngFor="let result of data ">
+        <thead *ngIf=" data ">
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Casting</th>
@@ -385,7 +386,7 @@
   
               <td>
                   <a href="#" [routerLink]="['/casting/', 'edit', result.id  ]" class="btn btn-primary">Modifier</a>
-                  <a href="#" [routerLink]="['/casting/', 'view', result.id  ]" class="btn btn-primary">Détail</a>
+                  <a href="#" [routerLink]="['/casting/', 'view', result.id  ]" class="btn btn-info">Détail</a>
   
                   <!-- <button type="button" (click)="deletecolaborateur(colaborateur.id)" class="btn btn-danger">Supprimer</button> -->
                 </td>
@@ -408,8 +409,8 @@
           <th scope="col">Description</th>
           <th scope="col">Status</th>
 
-          <!-- <th scope="col">Nom Client</th>
-          <th scope="col">Logo Client</th> -->
+       <!--   <th scope="col">Nom Client</th>
+           <th scope="col">Logo Client</th> -->
           <th width="220px">Action</th>
         </tr>
       </thead>
@@ -421,13 +422,14 @@
             <td>{{ casting.descriptioncasting}}</td>
             <td>{{ casting.statuscasting}}</td>
 
-<!--          
-            <td >{{ casting.colaborateur.user.email}}</td>
-            <td ><img src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}" width="100px"></td>    -->
+        
+                  <!--     <td >{{ casting.colaborateur.user.name}}</td>
+   <td ><img src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}" width="100px"></td>    -->
 
             <td>
                 <a href="#" [routerLink]="['/casting/', 'edit', casting.id  ]" class="btn btn-primary">Modifier</a>
-                <a href="#" [routerLink]="['/casting/', 'view', casting.id  ]" class="btn btn-primary">Détail</a>
+                <a href="#" [routerLink]="['/casting/', 'view', casting.id  ]" class="btn btn-info">Détail</a>
+                <a href="#" [routerLink]="['/casting/', 'candidat', casting.id  ]" class="btn btn-info">Candidats</a>
 
                 <!-- <button type="button" (click)="deletecolaborateur(colaborateur.id)" class="btn btn-danger">Supprimer</button> -->
               </td>

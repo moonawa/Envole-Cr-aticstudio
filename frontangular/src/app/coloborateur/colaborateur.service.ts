@@ -3,22 +3,28 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Colaborateur } from './colaborateur';
+import { Coloborateur } from './coloborateur.model'; 
+
 const baseUrl = 'http://localhost:8000/api/colaborateur';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ColaborateurService {
+export class ColoborateurService {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+ }
 
  constructor(private http: HttpClient) { }
 
- getAll(): Observable<Colaborateur[]> {
-  return this.http.get<Colaborateur[]>(baseUrl);
+ getAll(): Observable<Coloborateur[]> {
+  return this.http.get<Coloborateur[]>(baseUrl);
 }
 
-get(id: any): Observable<Colaborateur> {
-  return this.http.get<Colaborateur>(`${baseUrl}/${id}`);
+get(id: any): Observable<Coloborateur> {
+  return this.http.get<Coloborateur>(`${baseUrl}/${id}`);
 }
 
 create(data: any): Observable<any> {
@@ -37,8 +43,8 @@ deleteAll(): Observable<any> {
   return this.http.delete(baseUrl);
 }
 
-findByName(name: any): Observable<Colaborateur[]> {
-  return this.http.get<Colaborateur[]>(`${baseUrl}?name=${name}`);
+findByName(name: any): Observable<Coloborateur[]> {
+  return this.http.get<Coloborateur[]>(`${baseUrl}?name=${name}`);
 }
    }
 

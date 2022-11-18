@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Colaborateur } from 'src/app/coloborateur/colaborateur';
-import { ColaborateurService } from 'src/app/coloborateur/colaborateur.service';
+//import { Colaborateur } from 'src/app/coloborateur/colaborateur';
+import { ColoborateurService } from 'src/app/coloborateur/colaborateur.service';
+import { Coloborateur } from 'src/app/coloborateur/coloborateur.model';
 import { Casting } from '../casting';
 import { CastingService } from '../casting.service';
 
@@ -16,9 +17,9 @@ export class ModifcastingComponent implements OnInit {
   id!: number;
   casting!: Casting;
   form!: FormGroup;
-  colaborateurs: Colaborateur[] = [];
+  colaborateurs: Coloborateur[] = [];
   
-  colaborateur: Colaborateur ={
+  colaborateur: Coloborateur ={
     id: 1,
     adresse_colaborateur: '',
     description_colaborateur: '',
@@ -38,11 +39,11 @@ export class ModifcastingComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private castingservice: CastingService,
-    private colaborateurService: ColaborateurService) { }
+    private colaborateurService: ColoborateurService) { }
 
     
   ngOnInit(): void {
-    this.colaborateurService.getAll().subscribe((data: Colaborateur[])=>{
+    this.colaborateurService.getAll().subscribe((data: Coloborateur[])=>{
       this.colaborateurs = data;
       console.log(this.colaborateurs);
 
@@ -68,6 +69,7 @@ export class ModifcastingComponent implements OnInit {
     console.log(this.form.value);
     this.castingservice.update(this.id, this.form.value).subscribe((res:any) => {
          console.log('Casting updated successfully!');
+         alert('Le casting a été modifié avec succès');
          this.router.navigateByUrl('casting/liste');
     })
   }

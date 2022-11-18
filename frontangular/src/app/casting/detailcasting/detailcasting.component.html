@@ -44,7 +44,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item"  routerLink="/candidat/liste">liste</a>
-                    <a class="collapse-item"  routerLink="/candidat/ajout">Ajout</a>
+                    <a class="collapse-item"  routerLink="/candidat/formstep">Ajout</a>
                 </div>
             </div>
         </li>
@@ -62,9 +62,10 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
-                    <a class="collapse-item" >Casting - Client</a>
+
+                    <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
+                    <a class="collapse-item" >Casting - Client</a> -->
                 </div>
             </div>
         </li>
@@ -269,7 +270,7 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
+                                        would you like them sent to you</div>
                                     <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
@@ -292,7 +293,7 @@
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div>
-                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                    <div class="text-truncate">Am I a good boy The reason I ask is because someone
                                         told me that people say this to all dogs, even if they aren't good...</div>
                                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
@@ -379,11 +380,13 @@
     </div>
     <div>
         <strong>Nom du Client :</strong>
-        <p>{{ casting.colaborateur.user.name }}</p>
+        <p>{{ casting.colaborateur.user.name}}</p>
     </div>
+
+  
     <div>
         <strong>Logo du Client :</strong>
-        <td ><img src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}" width="100px"></td>  
+        <td><img src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}" width="100px"></td>  
 
     </div>
    

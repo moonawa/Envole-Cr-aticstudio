@@ -1,0 +1,734 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center"  routerLink="/dashboard/super">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+      </a>
+  
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+  
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link"  routerLink="/dashboard/super">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+  
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+  
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Interface
+      </div>
+  
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Candidat</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Components:</h6>
+            <a class="collapse-item" routerLink="/candidat/liste">liste</a>
+            <a class="collapse-item" routerLink="/candidat/formstep">Ajout</a>
+          </div>
+        </div>
+      </li>
+  
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Casting</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Casting :</h6>
+            <a class="collapse-item" routerLink="/casting/liste">Liste</a>
+            <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
+            <a class="collapse-item" routerLink="/casting/candidat">Casting- Candidat</a>
+
+            <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
+            <a class="collapse-item">Casting - Client</a> -->
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+          aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Client</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Client Screens:</h6>
+            <a class="collapse-item" routerLink="/colaborateur/liste">Liste</a>
+            <a class="collapse-item" routerLink="/colaborateur/ajout">Ajout</a>
+  
+          </div>
+        </div>
+      </li>
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+  
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Addons
+      </div>
+  
+      <!-- Nav Item - Pages Collapse Menu -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseperso" aria-expanded="true"
+          aria-controls="collapseperso">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Personnel</span>
+        </a>
+        <div id="collapseperso" class="collapse" aria-labelledby="headingperso" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Personnel Screens:</h6>
+            <a class="collapse-item" routerLink="/personel/liste">liste</a>
+            <a class="collapse-item" routerLink="/personel/ajout">Ajout</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefournisseur"
+          aria-expanded="true" aria-controls="collapsefournisseur">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Fournisseur</span>
+        </a>
+        <div id="collapsefournisseur" class="collapse" aria-labelledby="headingfournisseur"
+          data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Fournisseur Screens:</h6>
+            <a class="collapse-item" routerLink="/fournisseur/liste">liste</a>
+            <a class="collapse-item" routerLink="/fournisseur/ajout">Ajout</a>
+          </div>
+        </div>
+      </li>
+      <!-- Nav Item - Charts -->
+  
+  
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+  
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+  
+  
+  
+    </ul>
+    <!-- End of Sidebar -->
+  
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+  
+      <!-- Main Content -->
+      <div id="content">
+  
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+  
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+  
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            
+          </form>
+  
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+  
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                      aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+  
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">3+</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+              </div>
+            </li>
+  
+            <!-- Nav Item - Messages -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter">7</span>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                  Message Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                    <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                      problem I've been having.</div>
+                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
+                    <div class="status-indicator"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">I have the photos that you ordered last month, how
+                      would you like them sent to you?</div>
+                    <div class="small text-gray-500">Jae Chun · 1d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
+                    <div class="status-indicator bg-warning"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Last month's report looks great, I am very happy with
+                      the progress so far, keep up the good work!</div>
+                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                      told me that people say this to all dogs, even if they aren't good...</div>
+                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+              </div>
+            </li>
+  
+            <div class="topbar-divider d-none d-sm-block"></div>
+  
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+  
+          </ul>
+  
+        </nav>
+        <!-- End of Topbar -->
+  
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+  
+          <!-- Page Heading -->
+          <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                      <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                              class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                  </div> -->
+          <!-- la page -->
+          <section>
+<div class="row"> 
+    <div class="col-md-12 col-md-offset-3">
+        <form [formGroup]="personalDetails" id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+               <li [ngClass]="step>=1 ? 'active ' : 'inactive'">Personal Details</li>
+                <li [ngClass]="step>=2 ? 'active' : 'inactive'">Social Profiles</li>
+                <li [ngClass]="step==3 ? 'active' : 'inactive'">Account Setup</li> 
+                
+            </ul>
+            <!-- fieldsets -->
+            <fieldset  *ngIf="step == 1" >
+                <h2 class="fs-title">Information Personelle </h2>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Nom<span>*</span> </label>
+
+                      <input type="text" class="form-control" placeholder="sene" id="nom" required
+                      formControlName="nom" name="nom"
+                      [ngClass]="{ 'is-invalid': personal_step && personal}">
+                      <div *ngIf="personal['nom'].touched && personal['nom'].invalid" class="alert alert-danger">
+                        <div *ngIf="personal['nom'].errors && personal['nom'].errors['required']" class="alertmoonawa">Le nom est obligatoire.</div>
+                    </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Prénom<span>*</span></label>
+                      <input type="text" class="form-control" placeholder="awa ndiaye" id="prenom" required
+                        formControlName="prenom" name="prenom"
+                        >
+                     
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Téléphone<span>*</span></label>
+                      <input type="text" class="form-control" placeholder="77111565" id="telephone_candidat"
+                        formControlName="telephone_candidat" name="telephone_candidat"
+                        required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" placeholder="awa@awa.com" id="email_candidat"
+                      formControlName="email_candidat" name="email_candidat"
+                      >
+                </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Sexe<span>*</span></label>
+                        <select id="sexe" required class="form-control" formControlName="sexe" name="sexe">
+                            <option value="Femme">Femme</option>
+                            <option value="Homme">Homme</option>
+                          </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Date de Naissance<span>*</span></label>
+                    <input type="date" class="form-control"  id="birthday"
+                      formControlName="birthday" name="birthday"
+                      required >
+                </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Marié(e)<span>*</span></label>
+                      <select id="situation_matrimoniale" required class="form-control" formControlName="situation_matrimoniale"
+            name="situation_matrimoniale">
+            <option value="Marié(e)">Marié(e)</option>
+            <option value="Célibataire">Célibataire</option>
+          </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Nombre d'Enfants</label>
+                    <input type="number" class="form-control"  id="enfant"
+                      formControlName="enfant" name="enfant"
+                      >
+                </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                      <label for="inputEmail4">Adressse<span>*</span></label>
+                      <input type="text" class="form-control" placeholder="Grand Yoff" 
+                      id="adresse_candidat" required
+                        formControlName="adresse_candidat" name="adresse_candidat"
+                        >
+                  </div>
+                
+                </div>
+               <!-- <input type="text" formControlName="name"  [ngClass]="{ 'is-invalid': personal_step && personal }" placeholder="Full Name"/> 
+               
+                <input type="text" formControlName="email" name="email" placeholder="Email"/>
+              
+                <input type="text" formControlName="phone" name="phone" placeholder="Phone"/>
+                -->
+
+                <input (click)="next()" type="button" name="next" class="next action-button" value="Suivant"/>
+            </fieldset>
+        </form>
+         <form [formGroup]="addressDetails" id="msform">
+            <fieldset *ngIf="step == 2" >
+                <h2 class="fs-title">Information sur le physique</h2>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                      <label for="inputEmail4">Taille</label>
+                      <input type="text" class="form-control" placeholder="1m60" id="taille"
+           formControlName="taille" name="taille" required
+           >
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputPassword4">Poids</label>
+                      <input type="number" class="form-control" 
+                      placeholder="40" id="poids" 
+          formControlName="poids" name="poids" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputEmail4">Teint</label>
+                        <input type="text" class="form-control" 
+                        placeholder="noir, ou marron ou clair" 
+                        id="teint" required
+            formControlName="teint" name="teint">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputPassword4">Barbu</label>
+                        <select id="barbu"  class="form-control" formControlName="barbu" name="barbu">
+                            <option value="Barbu">Barbu</option>
+                            <option value="Pas de barbe">Pas de barbe</option>
+                          </select>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                      <label for="inputEmail4">Profession</label>
+                      <input type="text" class="form-control"
+                       id="profession" formControlName="profession" 
+                       name="profession">
+
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputPassword4">Signes Particuliers</label>
+                      <input type="text" class="form-control" 
+                       placeholder="Gros ventres, apotchou, taille fine"
+            id="signe_particulier" 
+            formControlName="signe_particulier"
+             name="signe_particulier">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">Langues Parlées</label>
+                        <input type="text" class="form-control" 
+                        placeholder="francais, anglais, wolof" 
+                        id="langues_parlees"
+            formControlName="langues_parlees"
+             name="langues_parlees">
+                      </div>
+                      
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-4">
+                    <label for="inputEmail4">Forme Visage</label>
+                    <input type="text" class="form-control"
+                     id="forme_visage" formControlName="forme_visage" 
+                     name="forme_visage" placeholder="rond, plate">
+
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputPassword4">Cicatrices/ Marques</label>
+                    <input type="text" class="form-control" 
+                     
+          id="cicatrice" 
+          formControlName="cicatrice"
+           name="cicatrice">
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputEmail4">Percing ou Tatouages</label>
+                      <input type="text" class="form-control" 
+                      
+                      id="percing"
+          formControlName="percing"
+           name="percing">
+                    </div>
+                    
+              </div>
+                <!-- <input type="text" formControlName="city"  placeholder="City"/>
+                
+                <textarea rows="5" cols="5" formControlName="address"  placeholder="address"></textarea>
+               
+                <input type="text" formControlName="pincode"  placeholder="Pincode"/> -->
+                <!-- <div *ngIf="address_step && addressDetails.controls.pincode.errors">
+                    <div *ngIf="address.pincode.errors?.required">Pincode is required</div>
+                </div> -->
+                <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
+                <input  (click)="next()" type="button" name="next" class="next action-button" value="Suivant"/>
+            </fieldset>
+        </form>
+         <form [formGroup]="educationalDetails" id="msform" (ngSubmit)="submit()">
+            <fieldset *ngIf="step == 3">
+                <h2 class="fs-title">Informations Professionnelles</h2>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                      <label for="inputEmail4">Déja travaillé avec Envole?</label>
+                      <select id="selection_envole"  class="form-control"
+                       formControlName="selection_envole"
+            name="selection_envole">
+            <option value="Déja travaillé avec Envole">Oui</option>
+            <option value="Pas travaillé avec Envole">Non</option>
+          </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputPassword4">Dans quel spot?</label>
+                      <input type="text" class="form-control" 
+                      id="quel_cinema" formControlName="quel_cinema" 
+                      name="quel_cinema">
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputEmail4">Déja participé à une  publicité?</label>
+                        <select id="campagne_publicitaire" 
+                         class="form-control" 
+                         formControlName="campagne_publicitaire"
+            name="campagne_publicitaire">
+            <option value="Déja participé à une campagne publicitaire">Oui</option>
+            <option value="Jamais participé à une campagne publicitaire">Non</option>
+          </select>
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputPassword4">Nom campagne publicitaire</label>
+                        <input type="text" class="form-control" id="nom_campagne_publicitaire" formControlName="nom_campagne_publicitaire" name="nom_campagne_publicitaire">
+
+                      </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-4">
+                    <label for="inputEmail4">Expérience dans le théatre?</label>
+                    <select id="experience_theatre"  class="form-control" formControlName="experience_theatre"
+          name="experience_theatre">
+          <option value="As de l'expérience dans le théatre">Oui</option>
+          <option value="N'as pas d'expérience dans le théatre">Non</option>
+        </select>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputPassword4">Combien d'année dans le théatre?</label>
+                    <input type="number" class="form-control"
+                     id="combien_annee_theatre"
+                      formControlName="combien_annee_theatre" 
+                      name="combien_annee_theatre">
+
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="inputEmail4">Les Théatres</label>
+                      
+                        <input type="text" class="form-control"
+                     id="les_theatres"
+                      formControlName="les_theatres" name="les_theatres">
+
+                    </div>
+                 
+              </div>
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Expérience dans le Cinéma?</label>
+                  <select id="experience_cinema"  class="form-control" formControlName="experience_cinema"
+        name="experience_cinema">
+        <option value="As de l'expérience dans le cinéma">Oui</option>
+        <option value="N'as pas d'expérience dans le cinéma">Non</option>
+      </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputPassword4">Combien de Cinéma?</label>
+                  <input type="number" class="form-control"
+                   id="combien_de_film"
+                    formControlName="combien_de_film" name="combien_de_film">
+
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputEmail4">Les films</label>
+                    <input type="text" class="form-control"
+                    id="les_films"
+                     formControlName="les_films" name="les_films">
+
+                  </div>
+               
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="inputEmail4">Accepte d'etre Figurant?</label>
+               
+                 <select id="figurant"  class="form-control"
+                  formControlName="figurant"
+                  name="figurant">
+        <option value="Accepte d'etre figurant">Oui</option>
+        <option value="N'accepte pas d'etre figurant">Non</option>
+      </select>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputPassword4">Accepte d'etre Embrassé?</label>
+                <select id="baiser"  class="form-control"
+                  formControlName="baiser"
+                  name="baiser">
+        <option value="Accepte d'etre embrassé">Oui</option>
+        <option value="N'accepte pas etre embrassé">Non</option>
+      </select>
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="inputEmail4">Accepte d'etre Nu?</label>
+                  <select id="nudite"  class="form-control"
+                  formControlName="nudite"
+                  name="nudite">
+        <option value="Accepte d'etre nu">Oui</option>
+        <option value="N'accepte pas d'etre nu">Non</option>
+      </select>
+                </div>
+             
+          </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                      <label for="inputEmail4">As un role souhaite?</label>
+                      <select id="role_souhaite"  class="form-control" formControlName="role_souhaite"
+            name="role_souhaite">
+            <option value="As un role Souhaité ">Oui</option>
+            <option value="N'as pas de role souhaité">Non</option>
+          </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="inputPassword4">Lequel ?</label>
+                      <input type="text" class="form-control" id="lequel_role_souhaite" formControlName="lequel_role_souhaite" name="lequel_role_souhaite">
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputEmail4">As un role interdit?</label>
+                        <select id="role_interdit"  class="form-control" formControlName="role_interdit"
+            name="role_interdit">
+            <option value="a un role interdit">Oui</option>
+            <option value="N'as pas de role interdit">Non</option>
+          </select>
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputPassword4">Lequel? </label>
+                        <input type="text" class="form-control" id="lequel_role_interdit" formControlName="lequel_role_interdit" name="lequel_role_interdit">
+
+                      </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-4">
+                    <label for="inputEmail4">Pourquoi Cinéma?</label>
+                   
+                     <select id="pourquoi_cinema"  class="form-control"
+                      formControlName="pourquoi_cinema"
+                      name="pourquoi_cinema">
+            <option value="Passion">Passion</option>
+            <option value="Argent">Argent</option>
+            <option value="Célébrité">Célébrité</option>
+          </select>
+    
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputPassword4">Appreciation</label>
+                    <select id="appreciation"  class="form-control"
+                      formControlName="appreciation"
+                      name="appreciation">
+            <option value="Pas d'expérience">Pas d'expérience</option>
+            <option value="Débutant(e)">Débutant(e)</option>
+            <option value="Expérimenté(e)">Expérimenté(e)</option>
+
+          </select>
+                  </div>
+                <div class="form-group col-md-4">
+                      <input type="file" (change)="onFileChange($event)" required>
+                    </div>
+                 
+              </div>
+                <!-- <input type="text" formControlName="highest_qualification" placeholder="Highest Qualification"/> -->
+                <!-- <div *ngIf="education_step && educationalDetails.controls.highest_qualification.errors">
+                    <div *ngIf="education.highest_qualification.errors?.required">Highest qualification is required</div> 
+                </div>-->
+                <!-- <input type="text" formControlName="university"  placeholder="University"/> -->
+                <!--<div *ngIf="education_step && educationalDetails.controls.university.errors">
+                     <div *ngIf="education.university.errors?.required">University is required</div> 
+                </div>-->
+                <!-- <input type="text" formControlName="total_marks" placeholder="Total Marks"/> -->
+                <!-- <div *ngIf="education_step && educationalDetails.controls.total_marks.errors">
+                    <div *ngIf="education.total_marks.errors?.required">Total marks is required</div>
+                </div> -->
+                <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Précédent"/>
+                <button class="submit action-button" type="submit" >Enregistrer</button>
+
+                <!-- <input (click)="submit()"type="submit" name="submit" class="submit action-button" value="Ajouter"/> -->
+            </fieldset>
+        </form>
+    </div>
+</div>
+</section>
+</div>

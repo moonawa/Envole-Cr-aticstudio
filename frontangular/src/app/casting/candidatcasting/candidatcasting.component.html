@@ -45,7 +45,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item"  routerLink="/candidat/liste">liste</a>
-                    <a class="collapse-item"  routerLink="/candidat/ajout">Ajout</a>
+                    <a class="collapse-item"  routerLink="/candidat/formstep">Ajout</a>
                 </div>
             </div>
         </li>
@@ -63,9 +63,10 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
-                    <a class="collapse-item" >Casting - Client</a>
+
+                    <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
+                    <a class="collapse-item" >Casting - Client</a> -->
                 </div>
             </div>
         </li>
@@ -355,7 +356,7 @@
     <form class="container" *ngIf="!submitted">
         <div class="row">
             <div class="form-group col-md-4">
-                <label for="inputZip">Casting  </label>
+                <label for="inputZip">Nom du Casting  </label>
                 <select id="namecasting" required class="form-control" 
                 name="namecasting" [(ngModel)]="currentCasting.namecasting">
                     <option *ngFor="let casting of currentCastings" 
@@ -367,14 +368,13 @@
             </div>
 
             <div class="form-group col-md-4">
-                <label for="inputZip">Candidat</label>
+                <label for="inputZip">N° du Candidat</label>
                 <select id="telephone_candidat" required class="form-control" 
                     name="telephone_candidat" [(ngModel)]="candidat.telephone_candidat">
                     <option *ngFor="let candidat of candidats" 
                      value="{{ candidat.telephone_candidat }}">
-                     {{ candidat.nom }}
-                     | |
-                     {{ candidat.telephone_candidat }} 
+                     {{ candidat.id }}
+                     
 
                     </option>
               

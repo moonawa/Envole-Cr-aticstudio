@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Candidat } from '../candidat';
+import { Candidat } from '../candidat.model';
 import { CandidatService } from '../candidat.service';
 
 

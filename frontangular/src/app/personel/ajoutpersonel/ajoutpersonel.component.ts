@@ -80,6 +80,7 @@ export class AjoutpersonelComponent implements OnInit {
       complete: ()  => console.log('complete'),
       
     });
+    alert("le personnel a été créé avec succes ");
     this.router.navigateByUrl('personel/liste');
   }
 

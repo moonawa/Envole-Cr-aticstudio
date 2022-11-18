@@ -58,9 +58,10 @@
           <h6 class="collapse-header">Casting :</h6>
           <a class="collapse-item" routerLink="/casting/liste">Liste</a>
           <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-          <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
           <a class="collapse-item" routerLink="/casting/candidat">Casting- Candidat</a>
-          <a class="collapse-item">Casting - Client</a>
+
+          <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
+          <a class="collapse-item">Casting - Client</a> -->
         </div>
       </div>
     </li>
@@ -344,76 +345,99 @@
             <a routerLink="/candidat/liste" class="btn btn-success">Liste des Candidats </a>
           </div>
           <br>
-          <form [formGroup]="myForm" (ngSubmit)="submit()" class="container">
+          <form [formGroup]="form" (ngSubmit)="submit()" >
             <div class="row">
               <div class="form-group col-md-4">
                 <label for="inputEmail4">Nom</label>
                 <input type="text" class="form-control" placeholder="nom" id="nom" 
-                formControlName="nom"
-                  [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }" />
-                <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
-                  <div *ngIf="f['nom'].errors['required']"> le nom est obligatoire</div>
-                  <div *ngIf="f['nom'].errors['minlength']">
-                    Username must be at least 6 characters
-                  </div>
-                  <div *ngIf="f['nom'].errors['maxlength']">
-                    Username must not exceed 20 characters
-                  </div>
-                </div>
+                formControlName="nom" name="nom">
+                <div *ngIf="f['nom'].touched && f['nom'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['nom'].errors && f['nom'].errors['']">Le nom  est obligatoire.</div>
+              </div>
+               
               </div>
               <div class="form-group col-md-4">
                 <label for="inputPassword4">Prénom</label>
-                <input type="text" class="form-control" placeholder="prénom" id="prenom" required
-                  formControlName="prenom" name="prenom">
+                <input type="text" class="form-control" placeholder="prénom" id="prenom" 
+                  formControlName="prenom" name="prenom"
+                  >
+                <div *ngIf="f['prenom'].touched && f['prenom'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['prenom'].errors && f['prenom'].errors['']">Le prenom  est obligatoire.</div>
+              </div>
               </div>
               <div class="form-group col-md-4">
                 <label for="inputEmail4">Téléphone</label>
-                <input type="text" class="form-control" placeholder="telephone" id="telephone"
-                  formControlName="telephone" name="telephone">
+                <input type="text" class="form-control" placeholder="telephone" id="telephone_candidat"
+                  formControlName="telephone_candidat" name="telephone_candidat"
+                  >
+                  <div *ngIf="f['telephone_candidat'].touched && f['telephone_candidat'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['telephone_candidat'].errors && f['telephone_candidat'].errors['']">Le telephone  est obligatoire.</div>
+                </div>
               </div>
+            
             </div>
-      
       <br>
       <div class="row">
         <div class="form-group col-md-6">
           <label for="inputEmail4">Email</label>
-          <input type="email" class="form-control" placeholder="Email" id="email" formControlName="email" name="email">
+          <input type="email_candidat" class="form-control" placeholder="Email" id="email_candidat" formControlName="email_candidat" name="email_candidat">
         </div>
         <div class="form-group col-md-6">
           <label for="inputPassword4">Adresse</label>
-          <input type="text" class="form-control" placeholder="grand yoff" id="adresse" required
-            formControlName="adresse" name="adresse">
+          <input type="text" class="form-control" placeholder="grand yoff" id="adresse_candidat" 
+            formControlName="adresse_candidat" name="adresse_candidat" >
+            <div *ngIf="f['adresse_candidat'].touched && f['adresse_candidat'].invalid" class="alert alert-danger">
+              <div *ngIf="f['adresse_candidat'].errors && f['adresse_candidat'].errors['']">L' adresse  est obligatoire.</div>
+          </div>
         </div>
       </div>
       <br>
       <div class="row">
         <div class="form-group col-md-3">
           <label for="inputCity">Taille</label>
-          <input type="text" class="form-control" placeholder="1m60" id="taille" formControlName="taille" name="taille">
+          <input type="text" class="form-control" placeholder="1m60" id="taille"
+           formControlName="taille" name="taille"
+           >
+            <div *ngIf="f['taille'].touched && f['taille'].invalid" class="alert alert-danger">
+              <div *ngIf="f['taille'].errors && f['taille'].errors['']">La taille  est obligatoire.</div>
+          </div>
         </div>
         <div class="form-group col-md-3">
           <label for="inputState">Poids</label>
-          <input type="text" class="form-control" placeholder="40" id="poids" formControlName="poids" name="poids">
+          <input type="text" class="form-control" placeholder="40" id="poids" 
+          formControlName="poids" name="poids">
+          <div *ngIf="f['poids'].touched && f['poids'].invalid" class="alert alert-danger">
+            <div *ngIf="f['poids'].errors && f['poids'].errors['']">Le poids  est obligatoire.</div>
+        </div>
         </div>
         <div class="form-group col-md-3">
           <label for="inputZip">Teint</label>
-          <input type="text" class="form-control" placeholder="noir, ou marron ou clair" id="teint" required
+          <input type="text" class="form-control" placeholder="noir, ou marron ou clair" id="teint" 
             formControlName="teint" name="teint">
+            <div *ngIf="f['teint'].touched && f['teint'].invalid" class="alert alert-danger">
+              <div *ngIf="f['teint'].errors && f['teint'].errors['']">Le teint  est obligatoire.</div>
+          </div>
         </div>
         <div class="form-group col-md-3">
           <label for="inputZip">Sexe</label>
 
-          <select id="sexe" required class="form-control" formControlName="sexe" name="sexe">
+          <select id="sexe"  class="form-control" formControlName="sexe" name="sexe">
             <option value="Femme">Femme</option>
             <option value="Homme">Homme</option>
           </select>
+          <div *ngIf="f['sexe'].touched && f['sexe'].invalid" class="alert alert-danger">
+            <div *ngIf="f['sexe'].errors && f['sexe'].errors['']">Le sexe  est obligatoire.</div>
+        </div>
         </div>
       </div>
       <br>
       <div class="row">
         <div class="form-group col-md-3">
           <label for="inputCity">Date de Naissance</label>
-          <input type="date" class="form-control" id="birthday" formControlName="birthday" name="birthday">
+          <input type="date"  class="form-control" id="birthday" formControlName="birthday" name="birthday">
+          <div *ngIf="f['birthday'].touched && f['birthday'].invalid" class="alert alert-danger">
+            <div *ngIf="f['birthday'].errors && f['birthday'].errors['']">La date de naissance est obligatoire.</div>
+        </div>
         </div>
         <div class="form-group col-md-3">
           <label for="inputState">Profession</label>
@@ -421,11 +445,10 @@
         </div>
         <div class="form-group col-md-3">
           <label for="inputZip">Marié(e)?</label>
-
-          <select id="situation_matrimoniale" required class="form-control" formControlName="situation_matrimoniale"
+          <select id="situation_matrimoniale"  class="form-control" formControlName="situation_matrimoniale"
             name="situation_matrimoniale">
-            <option value="Marié(e)">Oui</option>
-            <option value="Célibataire">Non</option>
+            <option value="Marié(e)">Marié(e)</option>
+            <option value="Célibataire">Célibataire</option>
           </select>
 
         </div>
@@ -444,14 +467,15 @@
         <div class="form-group col-md-3">
           <label for="inputState">Barbu</label>
 
-          <select id="barbu" required class="form-control" formControlName="barbu" name="barbu">
-            <option value="Oui">Oui</option>
-            <option value="Non">Non</option>
+          <select id="barbu"  class="form-control" formControlName="barbu" name="barbu">
+            <option value="Barbu">Barbu</option>
+            <option value="Pas de barbe">Pas de barbe</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="inputZip">Percing/ Tatouage</label>
-          <input type="text" class="form-control" id="percing" formControlName="percing" name="percing">
+          <input type="text" class="form-control" id="percing"
+           formControlName="percing" name="percing">
         </div>
         <div class="form-group col-md-3">
           <label for="inputCity">Cicatrice/ Marques/ Tache</label>
@@ -463,24 +487,24 @@
         <div class="form-group col-md-3">
           <label for="inputState">Expérience dans le Cinéma</label>
 
-          <select id="experience_cinema" required class="form-control" formControlName="experience_cinema"
+          <select id="experience_cinema"  class="form-control" formControlName="experience_cinema"
             name="experience_cinema">
-            <option value="Oui">Oui</option>
-            <option value="Non">Non</option>
+            <option value="Expérience dans le cinéma">Oui</option>
+            <option value="pas d'expérience dans le cinéma">Non</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="inputZip">Combien de film</label>
-          <input type="text" class="form-control" id="combien_de_film" formControlName="combien_de_film"
+          <input type="number" class="form-control" id="combien_de_film" formControlName="combien_de_film"
             name="combien_de_film">
         </div>
         <div class="form-group col-md-3">
           <label for="inputState">Expérience dans le théatre</label>
 
-          <select id="experience_theatre" required class="form-control" formControlName="experience_theatre"
+          <select id="experience_theatre"  class="form-control" formControlName="experience_theatre"
             name="experience_theatre">
-            <option value="Oui">Oui</option>
-            <option value="Non">Non</option>
+            <option value="Expérience dans le théatre">Oui</option>
+            <option value="Pas d'expérience dans le théatre">Non</option>
           </select>
         </div>
         <div class="form-group col-md-3">
@@ -504,18 +528,18 @@
         <div class="form-group col-md-3">
           <label for="inputState">Nudité</label>
 
-          <select id="nudite" required class="form-control" formControlName="nudite" name="nudite">
-            <option value="Oui">Oui</option>
-            <option value="Non">Non</option>
+          <select id="nudite"  class="form-control" formControlName="nudite" name="nudite">
+            <option value="accepte d'etre nu">Oui</option>
+            <option value="n'accepte pas d'etre nu">Non</option>
           </select>
 
         </div>
         <div class="form-group col-md-3">
           <label for="inputZip">Figurant</label>
 
-          <select id="figurant" required class="form-control" formControlName="figurant" name="figurant">
-            <option value="Oui">Oui</option>
-            <option value="Non">Non</option>
+          <select id="figurant"  class="form-control" formControlName="figurant" name="figurant">
+            <option value="accepte d'etre figurant">Oui</option>
+            <option value="n'accepte pas d'etre  figurant">Non</option>
           </select>
         </div>
       </div>
@@ -524,18 +548,18 @@
         <div class="form-group col-md-3">
           <label for="inputState">Accepte d'etre embrassé?</label>
 
-          <select id="baiser" required class="form-control" formControlName="baiser" name="baiser">
-            <option value="Oui">Oui</option>
-            <option value="Non">Non</option>
+          <select id="baiser"  class="form-control" formControlName="baiser" name="baiser">
+            <option value="accepte d'etre embrasser">Oui</option>
+            <option value="n'accepte pas d'etre embrasser">Non</option>
           </select>
         </div>
         <div class="form-group col-md-3">
           <label for="inputZip">Déja travaillé avec Envole?</label>
 
-          <select id="selection_envole" required class="form-control" formControlName="selection_envole"
+          <select id="selection_envole"  class="form-control" formControlName="selection_envole"
             name="selection_envole">
-            <option value="Oui">Oui</option>
-            <option value="Non">Non</option>
+            <option value="Déja travaillé avec Envole">Oui</option>
+            <option value="Pas travaillé avec Envole">Non</option>
           </select>
         </div>
         <div class="form-group col-md-3">
@@ -545,7 +569,7 @@
         <div class="form-group col-md-3">
           <label for="inputZip">Appréciation</label>
 
-          <select id="appreciation" required class="form-control" formControlName="appreciation" name="appreciation">
+          <select id="appreciation"  class="form-control" formControlName="appreciation" name="appreciation">
             <option value="Pas d'Expérience">Pas d'Expérience</option>
             <option value="Débutant(e)">Débutant(e)</option>
             <option value="Expérienté(e)">Expérienté(e)</option>
@@ -557,20 +581,38 @@
         <div class="form-group col-md-4">
           <label for="inputEmail4">Langues Parlées</label>
           <input type="text" class="form-control" placeholder="francais, anglais, wolof" id="langues_parlees"
-            formControlName="langues_parlees" name="langues_parlees">
+            formControlName="langues_parlees"
+             name="langues_parlees">
         </div>
         <div class="form-group col-md-4">
           <label for="inputPassword4">Signes Particuliers</label>
-          <input type="text" class="form-control" id="inputPassword4" placeholder="Gros ventres, apotchou, taille fine"
-            id="signe_particulier" formControlName="signe_particulier" name="signe_particulier">
+          <input type="text" class="form-control"  placeholder="Gros ventres, apotchou, taille fine"
+            id="signe_particulier" 
+            formControlName="signe_particulier"
+             name="signe_particulier">
         </div>
         <div class="form-group col-md-4">
           <label for="inputPassword4">Photo1</label>
 
-          <input type="file" (change)="onFileChange($event)">
-
+          <!-- <input type="file" (change)="onFileChange($event)" > 
+          <div *ngIf="f['photo1'].touched && f['photo1'].invalid" class="alert alert-danger">
+            <div *ngIf="f['photo1'].errors && f['photo1'].errors['']">Le photo1  est obligatoire.</div>
+        </div>-->
+          
         </div>
       </div>
+       <div class="form-group">
+        <label for="file">File</label>
+        <input 
+        formControlName="filename"
+            id="filename" 
+            type="file"
+            name="filename"
+            multiple
+            class="form-control"
+            (change)="onFileChange($event)">
+        
+    </div> 
       <br>
       <!-- <div class="row">
       
@@ -636,7 +678,7 @@
       </div>
     </div>
     <br>-->
-      <button class="btn btn-primary" type="submit">Submit</button>
+      <button class="btn btn-primary" type="submit" >Enregistrer</button>
       </form>
       </section>
     </div>

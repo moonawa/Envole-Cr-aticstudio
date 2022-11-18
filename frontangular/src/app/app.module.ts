@@ -37,6 +37,10 @@ import { AjoutselectionComponent } from './selection/ajoutselection/ajoutselecti
 import { ModifselectionComponent } from './selection/modifselection/modifselection.component';
 import { CandidatcastingComponent } from './casting/candidatcasting/candidatcasting.component';
 import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcastingseul.component';
+import { DetailselectionComponent } from './selection/detailselection/detailselection.component';
+import { CandidatcastinglisteComponent } from './casting/candidatcastingliste/candidatcastingliste.component';
+import { FormstepComponent } from './candidat/formstep/formstep.component';
+
 
 @NgModule({
   declarations: [
@@ -72,6 +76,10 @@ import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcasti
     ModifselectionComponent,
     CandidatcastingComponent,
     AjoutcastingseulComponent,
+    DetailselectionComponent,
+    CandidatcastinglisteComponent,
+    FormstepComponent,
+
     
   ],
   imports: [

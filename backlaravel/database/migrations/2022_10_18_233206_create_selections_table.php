@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('selections', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('candidat_id')->unsigned();
+            $table->integer('candidat_id')->unsigned()->nullable();
             $table->foreign('candidat_id')->references('id')->on('candidats')->onCascade('delete');
-            $table->integer('casting_id')->unsigned();
+            $table->integer('casting_id')->unsigned()->nullable();
             $table->foreign('casting_id')->references('id')->on('castings')->onCascade('delete');
             $table->string('note')->nullable();
+            $table->string('nameselection')->nullable();
+            //$table->string('statusselection')->nullable(); 
+
             $table->timestamps();
         });
     }

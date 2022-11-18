@@ -24,11 +24,11 @@ return new class extends Migration
             $table->string('campagne_publicitaire')->nullable();//Oui ou Non -----si le candidat a une fois participé à un pub------
             $table->string('nom_campagne_publicitaire')->nullable(); 
             $table->string('experience_cinema')->nullable();
-            $table->integer('combien_de_film')->nullable(); 
-            $table->integer('les_films')->nullable(); 
+            $table->string('combien_de_film')->nullable(); 
+            $table->string('les_films')->nullable(); 
             $table->string('experience_theatre')->nullable();
-            $table->integer('combien_annee_theatre')->nullable(); 
-            $table->integer('les_theatres')->nullable(); 
+            $table->string('combien_annee_theatre')->nullable(); 
+            $table->string('les_theatres')->nullable(); 
 
             $table->string('adresse_candidat')->nullable();
             $table->string('appreciation')->nullable(); //debutant, pas d'expérience, expérimenté
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('profession')->nullable();
             $table->string('poids')->nullable();
             $table->string('teint')->nullable();
-            $table->string('sexe')->nullable(); //0= femme, 1= homme
+            $table->string('sexe')->nullable(); 
             $table->date('birthday')->nullable();
             $table->string('age')->nullable();
             $table->string('signe_particulier')->nullable(); //gros ventre
@@ -66,12 +66,13 @@ return new class extends Migration
             $table->string('tatouage')->nullable(); //oui ou non a quel endroit
             $table->string('tache_naissance')->nullable(); //oui ou non a quel endroit
             $table->string('photo1')->default("degault.png")->nullable();
-            $table->string('photo2')->nullable();
-            $table->string('photo3')->nullable();
-            $table->string('photo4')->nullable();
-            $table->string('photo5')->nullable();
-            $table->string('video1')->nullable();
-            $table->string('video2')->nullable();
+            // $table->string('photo2')->nullable();
+            // $table->string('photo3')->nullable();
+            // $table->string('photo4')->nullable();
+            // $table->string('photo5')->nullable();
+            // $table->string('video1')->nullable();
+            // $table->string('video2')->nullable();
+
             $table->timestamps();
         });
     }

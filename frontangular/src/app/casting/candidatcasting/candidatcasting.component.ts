@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Candidat } from 'src/app/candidat/candidat';
+import { Candidat } from 'src/app/candidat/candidat.model';
 import { CandidatService } from 'src/app/candidat/candidat.service';
-import { Casting } from '../casting';
+import { Casting } from '../casting.model';
 import { CastingService } from '../casting.service';
 
 @Component({
@@ -48,7 +48,7 @@ export class CandidatcastingComponent implements OnInit {
      telephone_candidat: '',
      email_candidat: '',
      taille: '',
-     poids: 0,
+     poids: '',
      nom_campagne_publicitaire: '',
      campagne_publicitaire: '',
      teint: '',
@@ -169,7 +169,8 @@ this.castingService.getAll().subscribe((data: Casting[])=>{
         },
         error: (e) => console.error(e)
       });
-      //this.router.navigateByUrl('casting/liste');
+      alert('Le candidat a été ajouté au casting avec succes');
+      this.router.navigateByUrl('casting/candidat');
 
   }
 }

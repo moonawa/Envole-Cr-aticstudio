@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/user/user';
 import { Casting } from '../casting';
 import { CastingService } from '../casting.service';
 
@@ -11,7 +12,12 @@ import { CastingService } from '../casting.service';
 export class DetailcastingComponent implements OnInit {
 
   id!: number;
-  casting!: Casting;
+   casting!: Casting;
+  //user!: User;
+   user = undefined;
+
+ 
+
   
   /*------------------------------------------
   --------------------------------------------
@@ -34,7 +40,10 @@ export class DetailcastingComponent implements OnInit {
         
     this.castingService.get(this.id).subscribe((data: Casting)=>{
       this.casting = data;
+      console.log(this.casting);
+
     });
+
   }
 
 }

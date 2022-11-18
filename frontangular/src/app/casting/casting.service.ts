@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Casting } from './casting';
+import { Casting } from './casting.model';
 
 
 @Injectable({
@@ -72,6 +72,22 @@ export class CastingService {
         catchError(this.errorHandler)
       )
     }
+    getb(id: any): Observable<Casting> {
+      return this.httpClient.get<Casting>(this.apiURL+id);
+    }
+    candidat(id:number): Observable<any> {  
+      return this.httpClient.get(this.apiURL + 'candidats/' + id)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+    }
+    candidatb(id: number) {
+      return this.httpClient.get<Casting>(this.apiURL + 'candidats/'+ id);
+    }
+    candidatbb(id: any): Observable<Casting> {
+      //return this.httpClient.get<Casting>(`${baseUrl}/${id}`);
+      return this.httpClient.get<Casting>(this.apiURL + 'candidats/' + id);
+    }
       
     /**
      * Write code on Method
@@ -100,6 +116,12 @@ export class CastingService {
     alloue(data: any): Observable<any> {
       return this.httpClient.post(this.apiURL +`alloue`, data);
     }
+    listAlloue(): Observable<any> {
+      return this.httpClient.get(this.apiURL + `affiche_alloue`)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+      }
      
     /** 
    * Write code on Method

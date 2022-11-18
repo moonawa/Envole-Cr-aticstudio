@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Colaborateur } from 'src/app/coloborateur/colaborateur';
-import { ColaborateurService } from 'src/app/coloborateur/colaborateur.service';
+import { ColoborateurService } from 'src/app/coloborateur/colaborateur.service';
 import { CastingService } from '../casting.service';
 
 @Component({
@@ -41,6 +41,7 @@ export class AjoutcastingseulComponent implements OnInit {
     console.log(this.form.value);
     this.castingservice.createcasting(this.form.value).subscribe((res:any) => {
          console.log('Casting created successfully!');
+         alert('Le Casting est créé avec succès!');
          this.router.navigateByUrl('casting/liste');
     })
   }

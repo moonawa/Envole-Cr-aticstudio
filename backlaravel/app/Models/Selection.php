@@ -11,7 +11,8 @@ class Selection extends Model
     protected $fillable = [
         'candidat_id',
         'casting_id',
-       'note'
+        'note',
+        'nameselection'
     ];
     
     protected $with = ['candidat', 'casting'];

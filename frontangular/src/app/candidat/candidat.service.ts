@@ -3,13 +3,18 @@ import { HttpClient, HttpHeaders , HttpEvent, HttpRequest} from '@angular/common
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Candidat } from './candidat';
+import { Candidat } from './candidat.model';
 const baseUrl = 'http://localhost:8000/api/candidats';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidatService {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+ }
 
   constructor(private http: HttpClient) { }
 

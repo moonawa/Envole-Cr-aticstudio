@@ -15,11 +15,11 @@ const baseUrl = 'http://localhost:8000/api/personel';
 export class PersonelService {
 //   private apiURL = "http://localhost:8000/api/personnel/";
 
-//   httpOptions = {
-//     headers: new HttpHeaders({
-//       'Content-Type': 'application/json'
-//     })
-//  }
+   httpOptions = {
+     headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+   })
+ }
 constructor(private http: HttpClient) { }
 
 getAll(): Observable<Personel[]> {

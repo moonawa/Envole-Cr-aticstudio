@@ -25,6 +25,12 @@ import { DetailcastingComponent } from './casting/detailcasting/detailcasting.co
 import { AjoutcandidatcastingComponent } from './candidat/ajoutcandidatcasting/ajoutcandidatcasting.component';
 import { CandidatcastingComponent } from './casting/candidatcasting/candidatcasting.component';
 import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcastingseul.component';
+import { ListeselectionComponent } from './selection/listeselection/listeselection.component';
+import { AjoutselectionComponent } from './selection/ajoutselection/ajoutselection.component';
+import { ModifselectionComponent } from './selection/modifselection/modifselection.component';
+import { DetailselectionComponent } from './selection/detailselection/detailselection.component';
+import { CandidatcastinglisteComponent } from './casting/candidatcastingliste/candidatcastingliste.component';
+import { FormstepComponent } from './candidat/formstep/formstep.component';
 
 
 
@@ -34,9 +40,10 @@ const routes: Routes = [
   //Candidat CRUD et liaison
   { path: 'candidat/liste', component: ListecandidatComponent },
   { path: 'candidat/ajout', component: AjoutcandidatComponent },
-  { path: 'candidat/edit/:id', component: ModifcandidatComponent }, 
-  //{ path: 'candidat/:id', component: DetailcandidatComponent },
+  { path: 'candidat/edit/:id', component: ModifcandidatComponent },
+  { path: 'candidat/formstep', component: FormstepComponent},
   { path: 'candidat/casting/:id', component: AjoutcandidatcastingComponent },
+  { path: 'candidat/:id', component: DetailcandidatComponent },
 
   //Casting CRUD et liaison
   { path: 'casting/liste', component: ListecastingComponent },
@@ -44,7 +51,15 @@ const routes: Routes = [
   { path: 'casting/view/:idCasting', component: DetailcastingComponent },
   { path: 'casting/edit/:idCasting', component: ModifcastingComponent }, 
   { path: 'casting/candidat', component: CandidatcastingComponent }, 
+  { path: 'casting/candidat/:idCasting', component: CandidatcastinglisteComponent }, 
   { path: 'ajout/casting', component: AjoutcastingseulComponent },
+
+  //Selection CRUD et liaison
+  { path: 'selection/liste', component: ListeselectionComponent },
+  { path: 'selection/ajout', component: AjoutselectionComponent },
+  { path: 'selection/view/:id', component: DetailselectionComponent },
+  { path: 'selection/edit/:id', component: ModifselectionComponent }, 
+  //{ path: 'selection/candidat', component: CandidatcastingComponent }, 
 
     //Personel CRUD
     { path: 'personel/liste', component: PersonelComponent },

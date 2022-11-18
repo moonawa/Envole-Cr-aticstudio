@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ColaborateurService } from '../colaborateur.service';
+import { ColoborateurService } from '../colaborateur.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Colaborateur } from '../colaborateur';
@@ -35,7 +35,7 @@ export class AjoutComponent implements OnInit {
  
   submitted = false;
   constructor(public fb: FormBuilder,private http: HttpClient,
-    public colaborateurService: ColaborateurService,
+    public ColoborateurService: ColoborateurService,
     private router: Router
   ) { 
     this.myForm = this.fb.group({
@@ -85,6 +85,7 @@ export class AjoutComponent implements OnInit {
       complete: ()  => console.log('complete'),
       
     });
+    alert('Le Client a été ajouté avec success')
     this.router.navigateByUrl('colaborateur/liste');
   }
   // saveColaborateur(): void {
@@ -98,7 +99,7 @@ export class AjoutComponent implements OnInit {
   //     avatar: this.colaborateur.user.avatar,
   //   };
  
-  // this.colaborateurService.create(data)
+  // this.ColoborateurService.create(data)
   //     .subscribe({
   //       next: (res) => {
   //         console.log(res);
