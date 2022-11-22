@@ -25,11 +25,9 @@ export class AjoutpersonelComponent implements OnInit {
   //     password: '',
   //     status: '',
   //     avatar: ''
-
   //  }
    
   // };
- 
   // submitted = false;
   constructor(public fb: FormBuilder,private http: HttpClient,
     public personelService: PersonelService,
@@ -40,8 +38,8 @@ export class AjoutpersonelComponent implements OnInit {
      name: '',
      email: null,
      telephone: '',
-     password : '',
-     status: '',
+    // password : '',
+     //status: '',
      metier: '',
     })
    }
@@ -64,8 +62,8 @@ export class AjoutpersonelComponent implements OnInit {
     formData.append("name", this.myForm.controls['name'].value);
     formData.append("email", this.myForm.controls['email'].value);
     formData.append("telephone", this.myForm.controls['telephone'].value);
-    formData.append("password", this.myForm.controls['password'].value);
-    formData.append("status", this.myForm.controls['status'].value);
+    //formData.append("password", this.myForm.controls['password'].value);
+    //formData.append("status", this.myForm.controls['status'].value);
     formData.append("metier", this.myForm.controls['metier'].value);
 
     const httpOptions = {

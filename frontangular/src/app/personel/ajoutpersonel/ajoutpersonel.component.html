@@ -384,16 +384,6 @@
         name="email">
       </div>
       <div class="form-group col-md-6">
-        <label for="inputZip">Mot de passe</label>
-        <input type="password" class="form-control" id="password"
-        required
-        formControlName="password"
-        name="password">
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="form-group col-md-6">
         <label for="inputZip">Metier</label>
       
         <select id="metier" required class="form-control" formControlName="metier" name="metier">
@@ -404,6 +394,10 @@
 
           </select>
       </div>
+    </div>
+    <br>
+    <div class="row">
+     
       <div class="form-group col-md-6">
         <label for="inputZip">Avatar</label>
         <input type="file" (change)="onFileChange($event)" class="form-control" id="avatar"

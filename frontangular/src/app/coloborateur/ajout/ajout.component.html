@@ -388,39 +388,32 @@
           name="email">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputZip">Mot de passe</label>
-          <input type="password" class="form-control" id="password"
-          required
-          formControlName="password"
-          name="password">
-        </div>
+            <label for="inputZip">Adresse</label>
+            <input type="text" class="form-control" id="adresse_colaborateur"
+            required
+            formControlName="adresse_colaborateur"
+            name="adresse_colaborateur">
+          </div>
       </div>
       <br>
       <div class="row">
-        <div class="form-group col-md-6">
-          <label for="inputZip">Adresse</label>
-          <input type="text" class="form-control" id="adresse_colaborateur"
-          required
-          formControlName="adresse_colaborateur"
-          name="adresse_colaborateur">
-        </div>
+        
         <div class="form-group col-md-6">
           <label for="inputZip">Logo</label>
           <input type="file" (change)="onFileChange($event)" class="form-control" 
           
           >
         </div>
+        <div class="form-group col-md-6">
+            <label for="inputZip">Une petite description</label>
+            <input type="text" class="form-control" id="description_colaborateur"
+            
+            formControlName="description_colaborateur"
+            name="description_colaborateur">
+          </div>
       </div>
       <br>
-      <div class="row">
-        <div class="form-group col-md-12">
-          <label for="inputZip">Une petite description</label>
-          <input type="text" class="form-control" id="description_colaborateur"
-          
-          formControlName="description_colaborateur"
-          name="description_colaborateur">
-        </div>
-      </div>
+     
       <br>
       <button type="submit" class="btn btn-primary">Enregister</button>
       <!-- <div *ngIf="submitted">

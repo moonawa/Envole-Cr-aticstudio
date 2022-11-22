@@ -395,7 +395,7 @@
           </table>
     <div class="d-flex justify-content-between">
       <h4>Liste des Castings</h4>
-      <a routerLink="/casting/ajout" class="btn btn-success">Enregistrer un nouveau Casting</a>
+      <a routerLink="/ajout/casting" class="btn btn-success">Enregistrer un nouveau Casting</a>
   
     </div>
   
@@ -428,7 +428,7 @@
 
             <td>
                 <a href="#" [routerLink]="['/casting/', 'edit', casting.id  ]" class="btn btn-primary">Modifier</a>
-                <a href="#" [routerLink]="['/casting/', 'view', casting.id  ]" class="btn btn-info">Détail</a>
+                <!-- <a href="#" [routerLink]="['/casting/', 'view', casting.id  ]" class="btn btn-info">Détail</a> -->
                 <a href="#" [routerLink]="['/casting/', 'candidat', casting.id  ]" class="btn btn-info">Candidats</a>
 
                 <!-- <button type="button" (click)="deletecolaborateur(colaborateur.id)" class="btn btn-danger">Supprimer</button> -->

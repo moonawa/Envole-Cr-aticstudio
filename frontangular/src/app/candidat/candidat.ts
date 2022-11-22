@@ -65,5 +65,5 @@ export interface Candidat {
     baiser: string;
     pourquoi_cinema: string;
     
-    appreciation: string; ///à modifier   
+    appreciation: string; ///à modifier  
 }

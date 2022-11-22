@@ -358,9 +358,14 @@
     <h2>Détail du Candidat</h2><br>
     <h4> Le Candidat a été ajouté le : {{candidat.created_at}}
     </h4>
-    <div>
-      <div ><a  href="http://127.0.0.1:8000/storage/{{candidat.photo1 }}"><img src="http://127.0.0.1:8000/storage/{{candidat.photo1 }}" width="200px"></a></div>  
-  </div>
+    <div> 
+        
+        <!-- <div ><a  href="http://127.0.0.1:8000/storage/uploads/{{candidat.images?.filename}}"><img src="http://127.0.0.1:8000/storage/uploads/{{candidat.images.filename }}" width="200px"></a></div>   -->
+      <div *ngFor="let image of candidat.images" class="row">
+      <div class="col-md-4"> <a  href="http://127.0.0.1:8000/storage/uploads/{{image.filename}}"><img src="http://127.0.0.1:8000/storage/uploads/{{image.filename}}" width="200px"></a></div> 
+      </div>
+
+</div>
   <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -402,7 +407,7 @@
 </div>
 <!-- debut 2eme col -->
 <div class="col-md-4">
-    <h4>Informations Personnelles</h4>
+    <h4>Informations liées au Physique</h4>
 
     <div>
       <strong>Taille :</strong>
@@ -450,13 +455,13 @@
 
 <!-- debut 3eme col -->
 <div class="col-md-4">
-    <h4>Informations Personnelles</h4>
+    <h4>Expériences Professionnelles</h4>
 
     <div>
       <strong> Envole? :</strong>
       <p>{{ candidat.selection_envole }}</p>
   </div>
- 
+
   <div>
       <strong>Dans quel spot?</strong>
       <p>{{ candidat.quel_cinema }}</p>

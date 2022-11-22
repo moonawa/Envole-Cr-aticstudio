@@ -706,7 +706,16 @@
           </select>
                   </div>
                 <div class="form-group col-md-4">
-                      <input type="file" (change)="onFileChange($event)" required>
+                      <!-- <input type="file" (change)="onFileChange($event)" required> -->
+                      <input 
+                      formControlName="filename"
+                          id="filename" 
+                          type="file"
+                          name="filename"
+                          multiple
+                          class="form-control"
+                          (change)="onFileChange($event)"
+                          required>
                     </div>
                  
               </div>

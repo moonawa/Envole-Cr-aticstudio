@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class FormstepComponent implements OnInit {
 
   title = 'upload';
+  myFiles: any = [];
 
   personalDetails!: FormGroup;
   addressDetails!: FormGroup;
@@ -81,9 +82,10 @@ export class FormstepComponent implements OnInit {
             
             pourquoi_cinema:'',
             appreciation:'',
+            filename: ['', Validators.required],
 
-            photo1: ['',Validators.required],
-            fileSource: ['',Validators.required],
+            // photo1: ['',Validators.required],
+            // fileSource: ['',Validators.required],
             // photo2:'',
             // photo3:'',
             // photo4:'',
@@ -125,7 +127,7 @@ export class FormstepComponent implements OnInit {
         });
         
       }
-      onFileChange(event:Event) {
+      onFileChangebb(event:Event) {
   
         //if (event.target.files.length > 0) {
           //const photo1 = event.target.files[0];
@@ -136,12 +138,18 @@ export class FormstepComponent implements OnInit {
           //});
         })
       }
+      onFileChange(event:any) {
+        for (var i = 0; i < event.target.files.length; i++) { 
+          this.myFiles.push(event.target.files[i]);
+      }
+      }
       submit(){
         // if(this.step==3){
         //   this.education_step = true;
         //   if (this.educationalDetails.invalid) { return }
         
         const formData = new FormData();
+        
          formData.append("nom", this.personalDetails.controls['nom'].value);
          formData.append("prenom", this.personalDetails.controls['prenom'].value);
          formData.append("email_candidat", this.personalDetails.controls['email_candidat'].value);
@@ -171,7 +179,7 @@ export class FormstepComponent implements OnInit {
          formData.append("profession", this.addressDetails.controls['profession'].value);
          formData.append("langues_parlees", this.addressDetails.controls['langues_parlees'].value);
          
-         formData.append("photo1", this.educationalDetails.controls['fileSource'].value);
+         //formData.append("photo1", this.educationalDetails.controls['fileSource'].value);
         //  formData.append("photo2", this.educationalDetails.controls['photo2'].value);
         //  formData.append("photo3", this.educationalDetails.controls['photo3'].value);
         //  formData.append("photo4", this.educationalDetails.controls['photo4'].value);
@@ -198,7 +206,9 @@ export class FormstepComponent implements OnInit {
          formData.append("campagne_publicitaire", this.educationalDetails.controls['campagne_publicitaire'].value);
          formData.append("nom_campagne_publicitaire", this.educationalDetails.controls['nom_campagne_publicitaire'].value);
          formData.append("nudite", this.educationalDetails.controls['nudite'].value);
-     
+         for (var i = 0; i < this.myFiles.length; i++) { 
+          formData.append("filename[]", this.myFiles[i]);
+        }
      
          const httpOptions = {
            headers: new HttpHeaders({

@@ -131,29 +131,50 @@ class CastingController extends Controller
             'success' => true
         ], 200);
     }
- 
+    public function alloueParID(Request $request)
+    {
+        $id =  $request->id;
+        $telephone_candidat =  $request->telephone_candidat;
 
-    public function candidats($id ){ 
-        $candidat = Casting::with('candidats')->where('id', $id); 
-        $r = $candidat->with('colaborateur')->first();
-        //$r =Candidat::where('id', $id)->get()->castings;  
-        return response()->json($r, 200);
+        $casting =  Casting::where('id', $id)->first();
+        $candidat = Candidat::where('telephone_candidat', $telephone_candidat)->get();
 
-        //return $r;
+        $casting->candidats()->attach($candidat);
+        return response()->json([
+            'message' => "Successfully créé",
+            'success' => true
+        ], 200);
     }
-   
     public function detach(Request $request)
     {
-        $namecasting = $request->namecasting;
-        $telephone = $request->telephone;
-        $casting = Casting::where('namecasting', $namecasting)->first();
-        $candidat = Candidat::where('telephone', $telephone)->get();
-        $casting->candidats()->detach($candidat->cats);
+        $id = $request->id;
+        $telephone_candidat = $request->telephone_candidat;
+        $casting = Casting::where('id', $id)->first();
+        $candidat = Candidat::where('telephone_candidat', $telephone_candidat)->get();
+        $casting->candidats()->detach($candidat);
+       // $casting->candidats()->detach($candidat->cats);
         return response()->json([
             'message' => "Successfully enlevé",
             'success' => true
         ], 200);
     }
+    public function getCandidat($id){
+        $casting = Casting::with('colaborateur')->where('id', $id); 
+        $candidats = $casting->with('candidats')->get();
+        return response()->json($candidats, 200);
+    }
+    public function candidats($id ){ 
+        // $candidat = Casting::with('candidats')->where('id', $id); 
+        // $r = $candidat->with('colaborateur')->first();
+        // return response()->json($r, 200);
+
+        $casting = Casting::with('colaborateur')->where('id', $id); 
+        $candidats = $casting->with('candidats')->first();
+        return response()->json($candidats, 200);
+
+    }
+   
+    
 
     public function update(Request $request, $id)
     {
@@ -180,7 +201,7 @@ class CastingController extends Controller
     public function get($id){
         $data = Casting::with('colaborateur')->find($id);
 
-       // $candidat = $data->candidats;
+      
         return response()->json($data, 200);
       }
 

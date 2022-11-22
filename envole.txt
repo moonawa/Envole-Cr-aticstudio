@@ -30,3 +30,14 @@ dans le dossier envole:: cd backlaravel : composer install ---- puis ---- php ar
 dans le dossier envole:: cd frontangular: npm install ---- puis ----  ng  serve
 
 git push -u origin main
+
+Client ID: 1
+Client secret: Ns2my7MzRF7pKIOCCj68Opt1b1z2V3lECklBDyfB
+Password grant client created successfully.
+Client ID: 2
+Client secret: BEd9symWLMG7Kr708K8S4vOO26Osfw9WTfglMoBC
+
+
+modif :
+changer le recherche candidat
+ajouter directement les candidat au niveau du detail du casting

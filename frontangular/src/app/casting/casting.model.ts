@@ -7,5 +7,5 @@ export class Casting {
     descriptioncasting?: string;
     colaborateur?: Coloborateur ;
     statuscasting?: string;
-   candidats?: Candidat[];
+    candidats?: Candidat[];
 }

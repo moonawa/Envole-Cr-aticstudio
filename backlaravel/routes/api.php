@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CandidatController;
 use App\Http\Controllers\CastingController;
 use App\Http\Controllers\ColaborateurController;
@@ -23,8 +24,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('login', [AuthController::class, 'login']);
 
 //route pour personel
+
 Route::prefix('personel')->group(function () {
     Route::get('/',[ PersonelController::class, 'index']);
     Route::post('/super',[ PersonelController::class, 'createSuperdmin']);
@@ -35,6 +38,7 @@ Route::prefix('personel')->group(function () {
 });
 
 //route pour candidat casting_candidat
+//Route::middleware('auth:api')->group(function () {
 Route::prefix('candidats')->group(function () {
     Route::get('/',[ CandidatController::class, 'index']);
     Route::post('/',[ CandidatController::class, 'createCandidat']);
@@ -44,12 +48,13 @@ Route::prefix('candidats')->group(function () {
     Route::get('/mineur',[ CandidatController::class, 'mineur']);
     Route::get('/majeur',[ CandidatController::class, 'majeur']);
     Route::get('/search_candidat',[ CandidatController::class, 'searchCandidat']);
+    Route::get('/age_candidat',[ CandidatController::class, 'ageCandidat']);
     //Route::delete('/{id}',[ CandidatController::class, 'delete']);
     Route::get('/{id}',[ CandidatController::class, 'get']);
     Route::put('/{id}',[ CandidatController::class, 'update']);
     Route::post('/casting_candidat',[ CandidatController::class, 'casting_candidat']);
+//});
 });
-
 //route pour colaborateur
 Route::prefix('colaborateur')->group(function () {
     Route::get('/',[ ColaborateurController::class, 'index']);
@@ -87,7 +92,11 @@ Route::prefix('casting')->group(function () {
     Route::get('/search_casting', [ CastingController::class, 'searchCasting']);
     Route::get('/affiche_alloue', [ CastingController::class, 'afficheAlloue']);
     Route::get('/candidats/{id}', [ CastingController::class, 'candidats']);
-    
+    Route::get('/getCandidat/{id}', [ CastingController::class, 'getCandidat']);
+    Route::post('/test', [ CastingController::class, 'alloueParID']);
+    Route::post('/detach', [ CastingController::class, 'detach']);
+
+
     Route::get('/{id}',[ CastingController::class, 'get']);
     Route::put('/{id}',[ CastingController::class, 'update']);
     Route::post('/alloue',[ CastingController::class, 'alloue']);  

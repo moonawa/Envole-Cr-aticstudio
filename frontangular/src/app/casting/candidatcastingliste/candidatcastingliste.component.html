@@ -355,11 +355,10 @@
   <section class="container">
 
     
-    <h2>Détail du Casting</h2>
-  
-   
-   
-   
+  <div *ngIf="casting" class="row">
+    <div class="col-md-6">
+        <h3>Détail du Casting</h3>
+
     <div>
         <strong>Nom du casting:</strong>
         <p>{{ casting.namecasting }}</p>
@@ -383,17 +382,76 @@
         <p>{{ casting.colaborateur.user.name}}</p>
     </div>
     <div>
-        <strong>Nom du candidat :</strong>
-        <p>{{ casting.candidats.prenom}}</p>
-    </div>
-
-  
-    <div>
         <strong>Logo du Client :</strong>
         <td><img src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}" width="100px"></td>  
 
     </div>
-   
+    <br>
+</div>
+    <div class="col-md-6">
+        <h3>Information sur les Candidats  :</h3>
+    
+   <table class="table table-bordered border-primary"> 
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let candidat of casting.candidats">
+            <th scope="row">{{ candidat.id }}</th>
+            <td>{{ candidat.nom  }}</td>
+            <td>{{ candidat.prenom}}</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+   </table>
+
+   <h3>Ajouter des candidats au Casting</h3>
+
+   <form class="container" [formGroup]="form" (ngSubmit)="saveAlloues()">
+       <div class="row">
+        <div class="form-group col-md-8">
+            <label for="inputZip">N° du Candidat</label>
+ 
+            <select id="telephone_candidat"  class="form-control"
+             formControlName="telephone_candidat" name="telephone_candidat">
+                <option *ngFor="let candidat of candidatss" 
+                 value="{{ candidat.telephone_candidat }}">
+                 {{ candidat.id }}
+                </option>
+              </select>
+        </div>
+           <div class="form-group col-md-4">
+               <!-- <input type="text" class="form-control" id="id" formControlName="id" name="id"> -->
+               <input type="text"  [(ngModel)]="casting.id"
+               hidden
+               id="id" class="form-control " 
+                           formControlName="id"
+                               name="id" >
+              
+           </div>
+
+          
+
+
+       </div>
+       <div class="row">
+           <div class="col-md-4">
+               <button  type="submit" class="btn btn-primary">Enregister</button>
+           </div>
+
+       </div>
+       
+   </form>
+</div>
+    
+</div>
 </section>
   
 </div>

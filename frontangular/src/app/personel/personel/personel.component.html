@@ -372,15 +372,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let person of personels">
-        <th scope="row">{{ person.id }}</th>
-        <td>{{ person.user.name }}</td>
-        <td>{{ person.user.email }}</td>
-        <td>{{ person.user.telephone }}</td>
-        <td>{{ person.metier }}</td>
-        <td><img src="{{imageDirectoryPath}}{{person.user.avatar }}" width="100px"></td>
+      <tr *ngFor="let personel of personels">
+        <th scope="row">{{ personel.id }}</th>
+        <td>{{ personel.user.name }}</td>
+        <td>{{ personel.user.email }}</td>
+        <td>{{ personel.user.telephone }}</td>
+        <td>{{ personel.metier }}</td>
+        <td><img src="{{imageDirectoryPath}}{{personel.user.avatar }}" width="100px"></td>
         <td>
-        <a href="#" [routerLink]="['/person/', 'edit', person.id  ]" class="btn btn-primary">Modifier</a>
+        <a href="#" [routerLink]="['/personel/', 'edit', personel.id  ]" class="btn btn-primary">Modifier</a>
            <!--  <button type="button" (click)="deletePerson(person.id)" class="btn btn-danger">Supprimer</button>-->
         
       </td> 

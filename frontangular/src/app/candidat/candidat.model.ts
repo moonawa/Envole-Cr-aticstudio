@@ -1,3 +1,5 @@
+import { Image } from "../image/image.model";
+
 export class Candidat {
     id?: any;
     prenom?: string;
@@ -65,5 +67,6 @@ export class Candidat {
     
     appreciation?: string;
 
-    created_at?: string
+    created_at?: string;
+    images?: Image[];
 }

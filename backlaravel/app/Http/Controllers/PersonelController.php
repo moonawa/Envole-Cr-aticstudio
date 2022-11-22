@@ -22,7 +22,7 @@ class PersonelController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->telephone = $request->telephone;
-        $user->password = bcrypt($request->password);
+        $user->password = bcrypt("pAEG#HK12RJ");
         $user->role = 1;
         $user->status = "Activé";
         $user->avatar = $request->avatar;
@@ -76,5 +76,17 @@ class PersonelController extends Controller
         $data = Personel::with('user')->find($id);
         return response()->json($data, 200);
       }
-  
+  public function update(Request $request, $id)
+    {
+        $data['datecasting'] = $request['datecasting'];
+        $data['namecasting'] = $request['namecasting'];
+        $data['descriptioncasting'] = $request['descriptioncasting'];
+        $data['colaborateur_id'] = $request['colaborateur_id'];
+        
+        Personel::find($id)->update($data);
+        return response()->json([
+            'message' => "Successfully updated",
+            'success' => true
+        ], 200);
+    }
 }

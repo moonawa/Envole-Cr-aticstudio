@@ -40,6 +40,9 @@ import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcasti
 import { DetailselectionComponent } from './selection/detailselection/detailselection.component';
 import { CandidatcastinglisteComponent } from './casting/candidatcastingliste/candidatcastingliste.component';
 import { FormstepComponent } from './candidat/formstep/formstep.component';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
+import { LogoutComponent } from './login/logout/logout.component';
 
 
 @NgModule({
@@ -79,6 +82,9 @@ import { FormstepComponent } from './candidat/formstep/formstep.component';
     DetailselectionComponent,
     CandidatcastinglisteComponent,
     FormstepComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    LogoutComponent,
 
     
   ],

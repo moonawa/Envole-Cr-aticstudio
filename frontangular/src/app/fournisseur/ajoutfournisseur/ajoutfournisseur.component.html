@@ -358,20 +358,27 @@
       <a routerLink="/fournisseur/liste" class="btn btn-success">Annuaire des Fournisseurs </a>
     </div>
     <br>
-  <form class="container" *ngIf="!submitted"> 
+  <form [formGroup]="form" (ngSubmit)="savefournisseur()"> 
     <div class="row">
       <div class="form-group col-md-6">
         <label for="inputCity">Nom de L'entreprise</label>
-        <input type="text" class="form-control"  id="name_fournisseur"
+        <!-- <input type="text" class="form-control"  id="name_fournisseur"
         required
         [(ngModel)]="fournisseur.name_fournisseur"
-        name="name_fournisseur">
+        name="name_fournisseur"> -->
+        <input type="text" class="form-control" id="name_fournisseur" required
+                                formControlName="name_fournisseur" 
+                                name="name_fournisseur">
+                                <div *ngIf="f['name_fournisseur'].touched && f['name_fournisseur'].invalid" class="alert alert-danger">
+                                    <div *ngIf="f['name_fournisseur'].errors && f['name_fournisseur'].errors['required']">Le nom est obligatoire.</div>
+                                </div>
       </div>
       <div class="form-group col-md-6">
         <label for="inputState">Email </label>
-        <input type="email" class="form-control" id="email_fournisseur"
+        <input type="email" class="form-control"
+        formControlName="email_fournisseur"
+        id="email_fournisseur"
         required
-        [(ngModel)]="fournisseur.email_fournisseur"
         name="email_fournisseur">
       </div>
     </div>
@@ -381,14 +388,14 @@
         <label for="inputZip">Téléphone</label>
         <input type="text" class="form-control" id="telephone_fournisseur"
         required
-        [(ngModel)]="fournisseur.telephone_fournisseur"
+        formControlName="telephone_fournisseur"
         name="telephone_fournisseur">
       </div>
       <div class="form-group col-md-6">
         <label for="inputZip">Pays</label>
         <input type="text" class="form-control" id="pays"
         required
-        [(ngModel)]="fournisseur.pays"
+        formControlName="pays"
         name="pays">
       </div>
     </div>
@@ -398,14 +405,14 @@
         <label for="inputZip">Région</label>
         <input type="text" class="form-control" id="region"
         required
-        [(ngModel)]="fournisseur.region"
+        formControlName="region"
         name="region">
       </div>
       <div class="form-group col-md-6">
         <label for="inputZip">Ville</label>
         <input type="text" class="form-control" id="ville"
         required
-        [(ngModel)]="fournisseur.ville"
+formControlName="ville"
         name="ville">
       </div>
     </div>
@@ -415,7 +422,7 @@
         <label for="inputZip">Prestation</label>
         <input type="text" class="form-control" id="prestation"
         required
-        [(ngModel)]="fournisseur.prestation"
+formControlName="prestation"
         name="prestation">
        
       </div>
@@ -423,14 +430,11 @@
         <label for="inputZip">Autre</label>
         <input type="text" class="form-control" id="autre"
         
-        [(ngModel)]="fournisseur.autre"
+        formControlName="autre"
         name="autre">
       </div>
     </div>
     <br>
-    <button (click)="savefournisseur()" type="submit" class="btn btn-primary">Enregister</button>
-    <div *ngIf="submitted">
-      <h4>fournisseur was submitted successfully!</h4>
-      <button class="btn btn-success" (click)="newFournisseur()">Add</button>
-    </div>
+    <button  type="submit" class="btn btn-primary">Enregister</button>
+  
   </form>

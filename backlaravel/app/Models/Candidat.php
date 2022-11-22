@@ -88,6 +88,7 @@ class Candidat extends Model
     {
     	return $this->hasMany(Image::class);
     }
+    
     /**
      * Get the files for the blog candidat.
      */

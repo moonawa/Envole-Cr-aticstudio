@@ -80,7 +80,7 @@ form!: FormGroup;
       pourquoi_cinema: new FormControl(''),
       appreciation: new FormControl(''),
 
-      // photo1: new FormControl(null),
+       photo1: new FormControl(null),
       // photo2: new FormControl('', ),
       // photo3: new FormControl('', ),
       // photo4: new FormControl(''),
@@ -88,6 +88,7 @@ form!: FormGroup;
       // video1: new FormControl('', ),
       // video2: new FormControl('',),
       // fileSource: new FormControl(''),
+      //documents: new FormControl('', [Validators.required]),
 
       filename: new FormControl('', [Validators.required])
 
@@ -177,7 +178,7 @@ form!: FormGroup;
     };
   
 
-    this.http.post('http://localhost:8000/api/candidats/multipleCandidat', formData)
+    this.http.post('http://localhost:8000/api/candidats', formData)
       .subscribe(res => {
         console.log(res);
       });;

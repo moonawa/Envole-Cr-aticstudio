@@ -116,6 +116,7 @@ export class CastingService {
     alloue(data: any): Observable<any> {
       return this.httpClient.post(this.apiURL +`alloue`, data);
     }
+   
     listAlloue(): Observable<any> {
       return this.httpClient.get(this.apiURL + `affiche_alloue`)
       .pipe(

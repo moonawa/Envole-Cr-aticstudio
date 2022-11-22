@@ -355,11 +355,13 @@
   <section class="container">
 
     
-    <h2>Détail du Casting</h2>
   
    
    
-   
+   <div class="row">
+    <div class="col-md-6">
+        <h2>Détail du Casting</h2>
+
     <div>
         <strong>Nom du casting:</strong>
         <p>{{ casting.namecasting }}</p>
@@ -389,7 +391,47 @@
         <td><img src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}" width="100px"></td>  
 
     </div>
-   
+</div>
+<div class="col-md-6">
+    <h2>Ajouter des candidats au Casting</h2>
+
+    <form class="container" [formGroup]="form" (ngSubmit)="saveAlloues()">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <!-- <input type="text" class="form-control" id="id" formControlName="id" name="id"> -->
+                <input type="text"  [(ngModel)]="casting.id"
+                hidden
+                id="id" class="form-control " 
+                            formControlName="id"
+                                name="id" >
+               
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="inputZip">N° du Candidat</label>
+     
+                <select id="telephone_candidat"  class="form-control"
+                 formControlName="telephone_candidat" name="telephone_candidat">
+                    <option *ngFor="let candidat of candidats" 
+                     value="{{ candidat.telephone_candidat }}">
+                     {{ candidat.id }}
+                    </option>
+                  </select>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button  type="submit" class="btn btn-primary">Enregister</button>
+            </div>
+
+        </div>
+        
+    </form>
+</div>
+</div>
 </section>
   
 </div>

@@ -12,6 +12,7 @@ class File extends Model
         'filename',
         'candidat_id'
     ];
+    protected $with = ['candidat'];
     /**
      * Get the candidat that owns the image.
     */

@@ -373,13 +373,12 @@
   <table class="table table-bordered border-primary">
     <thead>
     <tr>
-      <th  scope="col">ID</th>
+      <th  scope="col">No</th>
       <th  scope="col">Nom Complet</th>
       <th  scope="col">Téléphone</th>
       <th  scope="col">Teint</th>
       <th  scope="col">Age</th>
       <th  scope="col">Photo</th>
-      <th  scope="col">Vidéo</th> 
 
       <th width="220px">Action</th>
 
@@ -396,9 +395,10 @@
       <td><a href="tel:{{candidat.telephone_candidat}}">{{  candidat.telephone_candidat }}</a></td>
       <td>{{ candidat.teint }}</td>
       <td>{{ candidat.age }} ans</td>
-      <td><img src="{{imageDirectoryPath}}{{candidat.photo1 }}" width="100px"></td>
+     <td *ngFor="let image of candidat.images" >
+        <img src="{{imageDirectoryPath}}{{image.filename}}" width="100px">
+    </td> 
 
-      <td>{{ candidat.video1 }}</td>
 
       <td>
     <a  [routerLink]="['/candidat/', 'edit', candidat.id  ]" class="btn btn-primary">Modifier</a> 

@@ -9,7 +9,7 @@ export interface Casting {
     //colaborateur_id: number ;
     colaborateur: Colaborateur ;
     statuscasting: string;
-    candidats: Candidat;
+    candidats: Candidat[];
 
     // colaborateur: {
     //     id: number;

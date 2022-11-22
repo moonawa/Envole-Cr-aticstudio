@@ -31,11 +31,26 @@ import { ModifselectionComponent } from './selection/modifselection/modifselecti
 import { DetailselectionComponent } from './selection/detailselection/detailselection.component';
 import { CandidatcastinglisteComponent } from './casting/candidatcastingliste/candidatcastingliste.component';
 import { FormstepComponent } from './candidat/formstep/formstep.component';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
+import { LogoutComponent } from './login/logout/logout.component';
 
 
 
 const routes: Routes = [
+  //connexion
   { path: '', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
+
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
+
+  //Dashbord Superadmin
+  { path: 'dashboard/super', component: SuperadminComponent },
+    
+  //Dashbord 
+  { path: 'dashboard/template', component: TemplateComponent },
+  { path: 'dashboard/navbar', component: NavbarComponent },
 
   //Candidat CRUD et liaison
   { path: 'candidat/liste', component: ListecandidatComponent },
@@ -76,12 +91,7 @@ const routes: Routes = [
      { path: 'fournisseur/ajout', component: AjoutfournisseurComponent },
      { path: 'fournisseur/edit/:idFournisseur', component: ModiffournisseurComponent } ,
  
-     //Dashbord Superadmin
-    { path: 'dashboard/super', component: SuperadminComponent },
-    
-    //Dashbord 
-    { path: 'dashboard/template', component: TemplateComponent },
-    { path: 'dashboard/navbar', component: NavbarComponent },
+
 
     
 ];

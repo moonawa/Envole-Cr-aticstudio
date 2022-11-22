@@ -22,7 +22,7 @@ class ColaborateurController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->telephone = $request->telephone;
-        $user->password = bcrypt($request->password);
+        $user->password = bcrypt("GA#VSTpo12cuy");
         $user->role = 3;
         $user->status = "Activé"; 
         $imageName =  $request->file('avatar')->hashName();

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class CandidatController extends Controller
 {
     public function index(){
-        $candidat =  Candidat::get();
+        $candidat =  Candidat::with('images')->get();
         return response()->json($candidat, 200);
     }
     public function candidatFemme() {
@@ -36,11 +36,10 @@ class CandidatController extends Controller
      }
     //création d'un  candidat
     public function createCandidat(Request $request){
-        
-    //     $this->validate($request, [
-    // 'name' => 'required',
-    //     'photos'=>'required',
-    //     ]);
+        $request->validate([
+            'filename' => 'required',
+            'filename.*' => 'required|mimes:doc,docx,xlsx,xls,pdf,zip,png,bmp,jpg|max:2048',
+        ]);
         $candidat = new Candidat();
         $candidat->prenom = $request->prenom;
         $candidat->nom = $request->nom;
@@ -98,7 +97,7 @@ class CandidatController extends Controller
 
         $candidat->pourquoi_cinema = $request->pourquoi_cinema;
         $candidat->appreciation = $request->appreciation;
-        //$candidat->photo1 = $request->photo1;
+        $candidat->photo1 = $request->photo1;
         // $candidat->photo2 = $request->photo2;
         // $candidat->photo3 = $request->photo3;
         // $candidat->photo4 = $request->photo4;
@@ -116,54 +115,29 @@ class CandidatController extends Controller
         // $image->move($destinationPath, $profileImage);
         // $candidat->photo1 = "$profileImage";
         
-         $imageName =  $request->file('photo1')->hashName();
-         Storage::disk('public')->put($imageName, file_get_contents($request->file('photo1')));
-        $candidat->photo1 = $imageName;
+        //le bon
+        //  $imageName =  $request->file('photo1')->hashName();
+        //  Storage::disk('public')->put($imageName, file_get_contents($request->file('photo1')));
+        //  $candidat->photo1 = $imageName;
+        $candidat->save();
 
-        // $images = [];
-        // if ($request->images){
-        //     foreach($request->images as $key => $image)
-        //     {
-        //         $imageName = time().rand(1,99).'.'.$image->extension();  
-        //         $image->move(public_path('images'), $imageName);
-        //         $images[]['photo1'] = $imageName;
-        //     }
-        // }
-        // foreach ($images as $key => $image) {
-        //     Image::create($image);
-        // }
-       
-        // $files = [];
-        // if ($request->file('files')){
-        //     foreach($request->file('files') as $key => $file)
-        //     {
-        //         $fileName = time().rand(1,99).'.'.$file->extension();  
-        //         $file->move(public_path('files'), $fileName);
-        //         $files[]['filename'] = $fileName;
-        //     }
-        // }
-        // foreach ($files as $key => $file) {
-        //     File::create($file);
-           
-        //     //$candidat->name = $file;
-        // }
-
-    //  $folderPath = 'files/';
-    //  $file_names = $_FILES["file"]["name"];
-     
-    //  for ($i = 0; $i < count($file_names); $i++) {
-    //      $file_name=$file_names[$i];
-    //      $extension = end(explode(".", $file_name));
-    //      $original_file_name = pathinfo($file_name, PATHINFO_FILENAME);
-    //      $file_url = $original_file_name . "-" . date("YmdHis") . "." . $extension;
-    //      move_uploaded_file($_FILES["file"]["tmp_name"][$i], $folderPath . $file_url);
-    //  }
-    // $candidat->file = $file_url;
-     $candidat->save();
-    //  $file= new File();
-    //  $file->myFiles=json_encode($data);
-    //  $file->candidat_id= $candidat->id;
-     //$file->save();
+         if ($request->filename){
+            foreach($request->filename as $file) {
+ 
+                $fileNames = $file->getClientOriginalName();
+                $filePath = 'uploads/' . $fileNames;
+ 
+                $path = Storage::disk('public')->put($filePath, file_get_contents($file));
+                $path = Storage::disk('public')->url($path);
+ 
+                // // Create files
+                Image::create([
+                    'filename' => $fileNames,
+                    'candidat_id' => $candidat->id,
+                ]);
+            }
+        }
+ 
         return response()->json([
             'message' => "Successfully created",
             'success' => true
@@ -250,12 +224,22 @@ public function multipleCandidat(Request $request){
                 //dd($query);
                 return $query;
         } 
+        
     }
 
-    public function get($id, Request $request){
-        $namecasting =  $request->namecasting;
+    public function ageCandidat(Request $request){
+        // $query = Candidat::query();
+         $data = $request->input('search_candidat');
+         if($data){
+           $query = Candidat::where('age', 'LIKE', '%'.$data.'%')->get();
+                 return $query;
+         } 
+     }
 
-        $data = Candidat::find($id);
+    public function get($id, Request $request){
+       // $namecasting =  $request->namecasting;
+
+        $data = Candidat::with('images')->find($id);
 
         // $casting =  Casting::where('namecasting', $namecasting)->get();
         // $data->castings()->attach($casting);
