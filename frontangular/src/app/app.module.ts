@@ -43,6 +43,10 @@ import { FormstepComponent } from './candidat/formstep/formstep.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 import { LogoutComponent } from './login/logout/logout.component';
+import { FemmeComponent } from './candidat/femme/femme.component';
+import { HommeComponent } from './candidat/homme/homme.component';
+import { MineurComponent } from './candidat/mineur/mineur.component';
+import { MajeurComponent } from './candidat/majeur/majeur.component';
 
 
 @NgModule({
@@ -85,6 +89,10 @@ import { LogoutComponent } from './login/logout/logout.component';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     LogoutComponent,
+    FemmeComponent,
+    HommeComponent,
+    MineurComponent,
+    MajeurComponent,
 
     
   ],

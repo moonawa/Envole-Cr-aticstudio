@@ -12,7 +12,7 @@ export class PersonelComponent implements OnInit {
 
   personels: Personel[] = [];
   imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
-
+data: any;
  
   constructor(private personelService: PersonelService) { }
 
@@ -30,5 +30,26 @@ export class PersonelComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
-
+  getPersonelSearch(name: any)
+  {
+    const keyword = name.target.value;
+    //console.log(keyword);
+     const search = this.personelService.
+     getSearchPersonel(keyword).
+      then(response => {
+        this.data = response;   
+        console.log(this.data) 
+});
+ ;}
+ getMetierSearch(name: any)
+  {
+    const keyword = name.target.value;
+    //console.log(keyword);
+     const search = this.personelService.
+     getSearchMetier(keyword).
+      then(response => {
+        this.data = response;   
+        console.log(this.data) 
+});
+ ;}
 }

@@ -23,7 +23,7 @@ class Casting extends Model
     public function candidats()
     {
         return $this->belongsToMany(Candidat::class,
-         'candidat_casting')->withPivot('note');
+         'candidat_casting')->withPivot('note')->withTimestamps();
 
     }
 
@@ -37,11 +37,5 @@ class Casting extends Model
     
    
 
-    /**
-     * Get the selections for the blog casting.
-     */
-    public function selections()
-    {
-    	return $this->hasMany(Selection::class);
-    }
+   
 }

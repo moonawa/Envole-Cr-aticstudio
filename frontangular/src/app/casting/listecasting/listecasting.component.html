@@ -362,17 +362,17 @@
 
 
   <section class="container">
-    <table class="table table-bordered border-primary">
-        <thead *ngIf=" data ">
+    <table class="table align-middle mb-0 bg-white" id="msformt">
+        <thead *ngIf=" data">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Casting</th>
-            <th scope="col">Date</th>
-            <th scope="col">Description</th>
-            <th scope="col">Status</th>
+            <th>ID</th>
+            <th>Casting</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Status</th>
   
-            <!-- <th scope="col">Nom Client</th>
-            <th scope="col">Logo Client</th> -->
+            <!-- <th>Nom Client</th>
+            <th>Logo Client</th> -->
             <th width="220px">Action</th>
           </tr>
         </thead>
@@ -382,7 +382,10 @@
               <td>{{ result.namecasting  }}</td>
               <td>{{ result.datecasting}}</td>
               <td>{{ result.descriptioncasting}}</td>
-              <td>{{ result.statuscasting}}</td>
+              <td>      
+                 <span class="badge badge-success rounded-pill d-inline">{{ result.statuscasting}} </span>
+              </td>
+
   
               <td>
                   <a href="#" [routerLink]="['/casting/', 'edit', result.id  ]" class="btn btn-primary">Modifier</a>
@@ -395,28 +398,28 @@
           </table>
     <div class="d-flex justify-content-between">
       <h4>Liste des Castings</h4>
-      <a routerLink="/ajout/casting" class="btn btn-success">Enregistrer un nouveau Casting</a>
+       <a routerLink="/ajout/casting" class="btn btn-success">Enregistrer un nouveau Casting</a> 
   
     </div>
   
     <br>
-    <table class="table table-bordered border-primary">
-      <thead>
+    <table class="table align-middle mb-0 bg-white" id="msformtt">
+      <thead class="bg-light">
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Casting</th>
-          <th scope="col">Date</th>
-          <th scope="col">Description</th>
-          <th scope="col">Status</th>
+          <th>ID</th>
+          <th>Casting</th>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Status</th>
 
-       <!--   <th scope="col">Nom Client</th>
-           <th scope="col">Logo Client</th> -->
+       <!--   <th>Nom Client</th>
+           <th>Logo Client</th> -->
           <th width="220px">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let casting of castings">
-            <th scope="row">{{ casting.id }}</th>
+            <th>{{ casting.id }}</th>
             <td>{{ casting.namecasting  }}</td>
             <td>{{ casting.datecasting}}</td>
             <td>{{ casting.descriptioncasting}}</td>

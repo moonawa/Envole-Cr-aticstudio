@@ -34,6 +34,10 @@ import { FormstepComponent } from './candidat/formstep/formstep.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 import { LogoutComponent } from './login/logout/logout.component';
+import { FemmeComponent } from './candidat/femme/femme.component';
+import { HommeComponent } from './candidat/homme/homme.component';
+import { MajeurComponent } from './candidat/majeur/majeur.component';
+import { MineurComponent } from './candidat/mineur/mineur.component';
 
 
 
@@ -55,6 +59,10 @@ const routes: Routes = [
   //Candidat CRUD et liaison
   { path: 'candidat/liste', component: ListecandidatComponent },
   { path: 'candidat/ajout', component: AjoutcandidatComponent },
+  { path: 'candidat/femme', component: FemmeComponent },
+  { path: 'candidat/homme', component: HommeComponent },
+  { path: 'candidat/majeur', component: MajeurComponent },
+  { path: 'candidat/mineur', component: MineurComponent },
   { path: 'candidat/edit/:id', component: ModifcandidatComponent },
   { path: 'candidat/formstep', component: FormstepComponent},
   { path: 'candidat/casting/:id', component: AjoutcandidatcastingComponent },

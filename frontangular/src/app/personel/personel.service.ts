@@ -29,7 +29,34 @@ getAll(): Observable<Personel[]> {
 get(id: any): Observable<Personel> {
  return this.http.get<Personel>(`${baseUrl}/${id}`);
 }
-
+getSearchPersonel(name: string){
+  // return this.http.get<Candidat[]>(baseUrl +
+  //   `/search_candidat?search_candidat=${name}`);
+   const response = new Promise(resolve => {
+    this.http.get(baseUrl +
+      `/search_personel?search_personel=${name}`)
+      .subscribe(data =>{
+       resolve(data);
+     }, error =>{
+       console.log(error);
+     });
+  });
+  return response;
+}
+getSearchMetier(name: string){
+  // return this.http.get<Candidat[]>(baseUrl +
+  //   `/search_candidat?search_candidat=${name}`);
+   const response = new Promise(resolve => {
+    this.http.get(baseUrl +
+      `/search_metier?search_metier=${name}`)
+      .subscribe(data =>{
+       resolve(data);
+     }, error =>{
+       console.log(error);
+     });
+  });
+  return response;
+}
 create(data: any): Observable<any> {
  return this.http.post(baseUrl, data);
 }

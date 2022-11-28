@@ -71,16 +71,10 @@ class Candidat extends Model
      */
     public function castings()
     {
-        return $this->belongsToMany(Casting::class)->withPivot('note');
+        return $this->belongsToMany(Casting::class, 'candidat_casting')
+        ->withPivot('note')->withTimestamps();
     }
 
-    /**
-     * Get the selections for the blog candidat.
-     */
-    public function selections()
-    {
-    	return $this->hasMany(Selection::class);
-    }
     /**
      * Get the images for the blog candidat.
      */
@@ -89,11 +83,4 @@ class Candidat extends Model
     	return $this->hasMany(Image::class);
     }
     
-    /**
-     * Get the files for the blog candidat.
-     */
-    public function files()
-    {
-    	return $this->hasMany(File::class);
-    }
 }

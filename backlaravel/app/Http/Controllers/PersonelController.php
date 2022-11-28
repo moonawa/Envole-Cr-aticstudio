@@ -89,4 +89,25 @@ class PersonelController extends Controller
             'success' => true
         ], 200);
     }
+
+    public function searchNomPersonel(Request $request){
+        // $querys = Casting::query();
+    $datas = $request->input('search_personel');
+    if($datas){
+      $querys = User::with('personel')->where('name', 'LIKE', '%'.$datas.'%')->
+                        get();
+  
+        return $querys;
+    } }
+
+    public function searchMetierPersonel(Request $request){
+        // $querys = Casting::query();
+    $datas = $request->input('search_metier');
+    if($datas){
+      $querys = Personel::with('user')->where('metier', 'LIKE', '%'.$datas.'%')->
+                        get();
+  
+        return $querys;
+    }        
+  }
 }

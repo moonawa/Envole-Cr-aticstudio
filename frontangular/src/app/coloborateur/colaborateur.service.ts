@@ -26,7 +26,20 @@ export class ColoborateurService {
 get(id: any): Observable<Coloborateur> {
   return this.http.get<Coloborateur>(`${baseUrl}/${id}`);
 }
-
+getSearchColaborateur(name: string){
+  // return this.http.get<Candidat[]>(baseUrl +
+  //   `/search_candidat?search_candidat=${name}`);
+   const response = new Promise(resolve => {
+    this.http.get(baseUrl +
+      `/search_colaborateur?search_colaborateur=${name}`)
+      .subscribe(data =>{
+       resolve(data);
+     }, error =>{
+       console.log(error);
+     });
+  });
+  return response;
+}
 create(data: any): Observable<any> {
   return this.http.post(baseUrl, data);
 }

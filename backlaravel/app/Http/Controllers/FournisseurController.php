@@ -11,6 +11,44 @@ class FournisseurController extends Controller
         $fournisseur =  Fournisseur::get();
         return response()->json($fournisseur, 200);
     }
+    public function searchfourname(Request $request)
+    {
+        $datas = $request->input('search_fourname');
+        if($datas){
+           $querys = Fournisseur::where('name_fournisseur', 'LIKE', '%'.$datas.'%')->get();
+
+            return $querys;
+        }   
+    }
+    public function searchpays(Request $request)
+    {
+        $datas = $request->input('search_pays');
+        if($datas){
+           $querys = Fournisseur::where('pays', 'LIKE', '%'.$datas.'%')->
+                             get();
+
+            return $querys;
+        }   
+    }
+    public function searchregion(Request $request)
+    {
+        $datas = $request->input('search_region');
+        if($datas){
+            $querys = Fournisseur::where('region', 'LIKE', '%'.$datas.'%')->get();
+
+            return $querys;
+        }   
+    }
+    public function searchprestation(Request $request)
+    {
+        $datas = $request->input('search_prestation');
+        if($datas){
+           $querys = Fournisseur::where('prestation', 'LIKE', '%'.$datas.'%')->get();
+
+            return $querys;
+        }   
+    }
+   
     public function store(Request $request){
         $fournisseur = new Fournisseur();
         $fournisseur->name_fournisseur = $request->name_fournisseur;

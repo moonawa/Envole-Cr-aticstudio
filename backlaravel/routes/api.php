@@ -32,6 +32,8 @@ Route::prefix('personel')->group(function () {
     Route::get('/',[ PersonelController::class, 'index']);
     Route::post('/super',[ PersonelController::class, 'createSuperdmin']);
     Route::post('/',[ PersonelController::class, 'createAdmin']);
+    Route::get('/search_personel',[ PersonelController::class, 'searchNomPersonel']);
+    Route::get('/search_metier',[ PersonelController::class, 'searchMetierPersonel']);
     //Route::delete('/{id}',[ PersonelController::class, 'delete']);
     Route::get('/{id}',[ PersonelController::class, 'get']);
     Route::put('/{id}',[ PersonelController::class, 'update']);
@@ -48,18 +50,24 @@ Route::prefix('candidats')->group(function () {
     Route::get('/mineur',[ CandidatController::class, 'mineur']);
     Route::get('/majeur',[ CandidatController::class, 'majeur']);
     Route::get('/search_candidat',[ CandidatController::class, 'searchCandidat']);
-    Route::get('/age_candidat',[ CandidatController::class, 'ageCandidat']);
+    Route::get('/search_many',[ CandidatController::class, 'searchMany']);
+    Route::get('/search_name',[ CandidatController::class, 'searchName']);
+    Route::get('/search_age',[ CandidatController::class, 'searchAge']);
+    Route::get('/search_teint',[ CandidatController::class, 'searchTeint']);
+    Route::get('/search_sexe',[ CandidatController::class, 'searchSexe']);
     //Route::delete('/{id}',[ CandidatController::class, 'delete']);
+    Route::post('/ajoutcancas', [ CandidatController::class, 'alloueParcandidatID']);
     Route::get('/{id}',[ CandidatController::class, 'get']);
     Route::put('/{id}',[ CandidatController::class, 'update']);
     Route::post('/casting_candidat',[ CandidatController::class, 'casting_candidat']);
-//});
 });
+//});
 //route pour colaborateur
 Route::prefix('colaborateur')->group(function () {
     Route::get('/',[ ColaborateurController::class, 'index']);
     Route::post('/',[ ColaborateurController::class, 'createColaborateur']);
     //Route::delete('/{id}',[ ColaborateurController::class, 'delete']);
+    Route::get('/search_colaborateur',[ ColaborateurController::class, 'searchColaborateur']);
     Route::get('/{id}',[ ColaborateurController::class, 'get']);
     Route::put('/{id}',[ ColaborateurController::class, 'update']);
 });
@@ -68,6 +76,10 @@ Route::prefix('colaborateur')->group(function () {
 Route::prefix('fournisseur')->group(function () {
     Route::get('/',[ FournisseurController::class, 'index']);
     Route::post('/',[ FournisseurController::class, 'store']);
+    Route::get('/search_fourname',[ FournisseurController::class, 'searchfourname']);
+    Route::get('/search_pays',[ FournisseurController::class, 'searchpays']);
+    Route::get('/search_region',[ FournisseurController::class, 'searchregion']);
+    Route::get('/search_prestation',[ FournisseurController::class, 'searchprestation']);
     //Route::delete('/{id}',[ FournisseurController::class, 'delete']);
     Route::get('/{id}',[ FournisseurController::class, 'get']);
     Route::put('/{id}',[ FournisseurController::class, 'update']);
@@ -87,7 +99,7 @@ Route::prefix('casting')->group(function () {
     Route::get('/',[ CastingController::class, 'index']);
     Route::post('/',[ CastingController::class, 'store']);//store avec colaborateur
     Route::post('/createcasting',[ CastingController::class, 'createcasting']);
-
+    Route::post('/note/{id}',[ CastingController::class, 'note']);
     //Route::delete('/{id}',[ CastingController::class, 'delete']);
     Route::get('/search_casting', [ CastingController::class, 'searchCasting']);
     Route::get('/affiche_alloue', [ CastingController::class, 'afficheAlloue']);
@@ -95,8 +107,6 @@ Route::prefix('casting')->group(function () {
     Route::get('/getCandidat/{id}', [ CastingController::class, 'getCandidat']);
     Route::post('/test', [ CastingController::class, 'alloueParID']);
     Route::post('/detach', [ CastingController::class, 'detach']);
-
-
     Route::get('/{id}',[ CastingController::class, 'get']);
     Route::put('/{id}',[ CastingController::class, 'update']);
     Route::post('/alloue',[ CastingController::class, 'alloue']);  

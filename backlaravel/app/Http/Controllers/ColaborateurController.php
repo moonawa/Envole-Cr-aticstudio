@@ -15,6 +15,16 @@ class ColaborateurController extends Controller
         $colaborateur =  Colaborateur::with('user')->get();
         return response()->json($colaborateur, 200);
     }
+    public function searchColaborateur(Request $request){
+      // $querys = Casting::query();
+  $datas = $request->input('search_colaborateur');
+  if($datas){
+    $querys = User::with('colaborateur')->where('name', 'LIKE', '%'.$datas.'%')->
+                      get();
+
+      return $querys;
+  }        
+}
     //création d'un  Colaborateur
     public function createColaborateur(Request $request){
 

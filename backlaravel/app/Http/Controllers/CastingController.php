@@ -21,7 +21,6 @@ class CastingController extends Controller
            $querys = Casting::query()->where('namecasting', 'LIKE', '%'.$datas.'%')->
                              orWhere('datecasting', 'LIKE', '%'.$datas.'%')->
                              orWhere('descriptioncasting', 'LIKE', '%'.$datas.'%')->get();
-
             return $querys;
         }        
      }
@@ -32,7 +31,6 @@ class CastingController extends Controller
         return response()->json($casting, 200);
     }
      
-
     //création d'un  casting
     public function createcasting(Request $request)
     {
@@ -43,10 +41,7 @@ class CastingController extends Controller
         $casting->namecasting = $request->namecasting;
         $casting->statuscasting = "Encours";
         $casting->colaborateur_id = 1;
-
         $casting->save();
-
-        
         return response()->json([
             'message' => "Successfully created",
             'success' => true
@@ -88,17 +83,33 @@ class CastingController extends Controller
         ], 200);
     }
 
-    // public function casting_candidat(Request $request, Casting $casting, Candidat $candidat)
-    // {
-    //     $note = '';
-    //     if ($request->note) {
-    //         $note = $request->note;
-    //     }
-    //     if ($casting->candidats()->save($candidat, array('note' => $note))) {
-    //         return response()->json(['message' => 'Casting Candidat Created', 'data' => $candidat], 200);
-    //     }
-    //     return response()->json(['message' => 'Error', 'data' => null], 400);
-    // }
+     public function casting_candidat(Request $request, Casting $casting, Candidat $candidat)
+    {
+         $note = '';
+         if ($request->note) {
+             $note = $request->note;
+         }
+      if ($casting->candidats()->save($candidat, array('note' => $note))) {
+             return response()->json(['message' => 'Casting Candidat Created', 'data' => $candidat], 200);
+         }
+         return response()->json(['message' => 'Error', 'data' => null], 400);
+     }
+     public function note(Request $request, $id)
+     {
+        $colaborateur_id= 1;
+        $casting= Casting::with('colaborateur')->where('colaborateur_id', $colaborateur_id)->first();
+        $candidat = Candidat::find($id);
+
+          $note = '';
+          if ($request->note) {
+              $note = $request->note;
+          }
+
+       $casting->candidats()->attach($candidat, ['note' => $note]);
+              return response()->json(['message' => 'Casting Candidat Created', 'data' => $note], 200);
+          
+         // return response()->json(['message' => 'Error', 'data' => null], 400);
+      }
     
     public function show(Casting $casting)
     {
@@ -131,6 +142,7 @@ class CastingController extends Controller
             'success' => true
         ], 200);
     }
+    //ajouter a partir d'un casting selectionné
     public function alloueParID(Request $request)
     {
         $id =  $request->id;
@@ -145,6 +157,7 @@ class CastingController extends Controller
             'success' => true
         ], 200);
     }
+    
     public function detach(Request $request)
     {
         $id = $request->id;

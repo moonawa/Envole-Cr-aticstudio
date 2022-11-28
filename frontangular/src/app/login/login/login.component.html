@@ -6,7 +6,7 @@
             class="img-fluid" alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form >
+          <form  (ngSubmit)="onSubmit()" [formGroup]="personalDetails">
             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
               <p class="lead fw-normal mb-0 me-3">Se connecter avec</p>
               <button type="button" class="btn btn-primary btn-floating mx-1">
@@ -29,27 +29,36 @@
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input type="email" id="form3Example3" class="form-control form-control-lg"
-                placeholder="Entrer un email valide" name="email"  />
+                placeholder="Entrer un email valide" name="email"
+                formControlName="email"
+                ngModel  />
               <label class="form-label" for="email">Email </label>
             </div>
   
             <!-- Password input -->
             <div class="form-outline mb-3">
               <input type="password" id="password" class="form-control form-control-lg"
-                placeholder="Entrer mot de passe" name="password" />
+              ngModel
+                placeholder="Entrer mot de passe" name="password" 
+                formControlName="password"/>
               <label class="form-label" for="password">Mot de passe</label>
             </div>
   
             <div class="d-flex justify-content-between align-items-center">
-              <!-- Checkbox -->
-              <a routerLink="reset-password" class="text-body">Réinitialiser le mot de passe ?</a>
-
+              <div class="form-check mb-0">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <label class="form-check-label" for="form2Example3">
+                  Remember me
+                </label>
+              </div>
               <a routerLink="forgot-password" class="text-body">Mot de pass oublié ?</a>
             </div>
   
             <div class="text-center text-lg-start mt-4 pt-2">
               <button type="submit" class="btn btn-primary btn-lg"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;" routerLink="/dashboard/super" >Se Connecter</button>
+                style="padding-left: 2.5rem; padding-right: 2.5rem;"  >
+                Se Connecter
+              </button>
               <p class="small fw-bold mt-2 pt-1 mb-0">Vous n'avez pas de copmte? <a href="#!"
                   class="link-danger">Demander à l'administrateur de vous en créer</a></p>
             </div>

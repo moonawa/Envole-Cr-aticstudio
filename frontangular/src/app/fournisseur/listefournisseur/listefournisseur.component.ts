@@ -10,7 +10,7 @@ import { FournisseurService } from '../fournisseur.service';
 export class ListefournisseurComponent implements OnInit {
 
   fournisseurs: Fournisseur[] = [];
-
+data: any;
   constructor(private fournisseurService: FournisseurService) { }
 
   ngOnInit(): void {
@@ -19,4 +19,49 @@ export class ListefournisseurComponent implements OnInit {
       console.log(this.fournisseurs);
     })
   }
+
+  getFournisseurSearchName(name: any)
+  {
+    const keyword = name.target.value;
+    //console.log(keyword);
+     const search = this.fournisseurService.
+     getSearchFournisseurName(keyword).
+      then(response => {
+        this.data = response;   
+        console.log(this.data) 
+});
+ ;}
+ getFournisseurSearchPays(name: any)
+  {
+    const keyword = name.target.value;
+    //console.log(keyword);
+     const search = this.fournisseurService.
+     getSearchFournisseurPays(keyword).
+      then(response => {
+        this.data = response;   
+        console.log(this.data) 
+});
+ ;}
+ getFournisseurSearchRegion(name: any)
+  {
+    const keyword = name.target.value;
+    //console.log(keyword);
+     const search = this.fournisseurService.
+     getSearchFournisseurRegion(keyword).
+      then(response => {
+        this.data = response;   
+        console.log(this.data) 
+});
+ ;}
+ getFournisseurSearchPrestation(name: any)
+  {
+    const keyword = name.target.value;
+    //console.log(keyword);
+     const search = this.fournisseurService.
+     getSearchFournisseurPrestation(keyword).
+      then(response => {
+        this.data = response;   
+        console.log(this.data) 
+});
+}
 }

@@ -163,7 +163,7 @@ public function multipleCandidat(Request $request){
         }
   
         foreach ($files as $key => $file) {
-            File::create
+            Image::create
             ([$file
                 ,
                 'candidat_id' => $candidat->id
@@ -187,7 +187,7 @@ public function multipleCandidat(Request $request){
             $candidat= Candidat::create($request->all());
             foreach ($request->photos as $photo) {
             $filename = $photo->store('photos');
-            File::create([
+            Image::create([
             'candidat_id' => $candidat->id,
             'filename' => $filename
             ]);
@@ -201,20 +201,64 @@ public function multipleCandidat(Request $request){
             }
             }
             }
-            
-    public function chercher(Request $request)
-    {
-        $q = $request->input('name');
-        $experience_cinema = Candidat::where('teint', 'like', '%$name%')->orwhere('ref','like','%$name%')->paginate(5);
-        return $experience_cinema;
-        //return view('posts.index',compact('experience_cinema',$teint));
+        public function searchMany(Request $request)
+        {
+        $age = $request->input('search_age');
+        $teint = $request->input('search_teint');
+        $sexe = $request->input('search_sexe');
+        $experience_cinema = $request->input('search_experience_cinema');
+        $campagne_publicitaire = $request->input('search_campagne_publicitaire');
+        $adresse_candidat = $request->input('search_adresse_candidat');
+
+        $querys = Candidat::with('images')->where('age', 'LIKE', '%'.$age.'%')->
+                            where('teint', 'LIKE', '%'.$teint.'%')->
+                            where('sexe', 'LIKE', '%'.$sexe.'%')->
+                            where('experience_cinema', 'LIKE', '%'.$experience_cinema.'%')->
+                            where('campagne_publicitaire', 'LIKE', '%'.$campagne_publicitaire.'%')->
+                            Where('adresse_candidat', 'LIKE', '%'.$adresse_candidat.'%')->get();
+        return $querys;      
     }
+            
+    public function searchName(Request $request)
+    {
+        $datas = $request->input('search_name');
+        if($datas){
+           $querys = Candidat::with('images')->where('prenom', 'LIKE', '%'.$datas.'%')->
+                             orWhere('nom', 'LIKE', '%'.$datas.'%')->get();
+            return $querys;
+        }   
+    }
+    public function searchAge(Request $request){
+        // $query = Candidat::query();
+         $data = $request->input('search_age');
+         if($data){
+           $query = Candidat::with('images')->where('age', 'LIKE', '%'.$data.'%')->get();
+                 return $query;
+         } 
+     }
+     public function searchTeint(Request $request){
+        // $query = Candidat::query();
+         $data = $request->input('search_teint');
+         if($data){
+           $query = Candidat::with('images')->where('teint', 'LIKE', '%'.$data.'%')->get();
+                 return $query;
+         } 
+     }
+     public function searchSexe(Request $request){
+        // $query = Candidat::query();
+         $data = $request->input('search_sexe');
+         if($data){
+           $query = Candidat::with('images')->where('sexe', 'LIKE', '%'.$data.'%')->get();
+                 return $query;
+         } 
+     }
 
     public function searchCandidat(Request $request){
        // $query = Candidat::query();
         $data = $request->input('search_candidat');
         if($data){
-          $query = Candidat::where('age', 'LIKE', '%'.$data.'%')->
+          $query = Candidat::with('images')->
+                            where('age', 'LIKE', '%'.$data.'%')->
                             orWhere('teint', 'LIKE', '%'.$data.'%')->
                             orWhere('appreciation', 'LIKE', '%'.$data.'%')->
                             orWhere('prenom', 'LIKE', '%'.$data.'%')-> 
@@ -227,14 +271,21 @@ public function multipleCandidat(Request $request){
         
     }
 
-    public function ageCandidat(Request $request){
-        // $query = Candidat::query();
-         $data = $request->input('search_candidat');
-         if($data){
-           $query = Candidat::where('age', 'LIKE', '%'.$data.'%')->get();
-                 return $query;
-         } 
-     }
+  //ajouter a partir d'un candidat selectionné
+  public function alloueParcandidatID(Request $request)
+  {
+      $id =  $request->id;
+      $namecasting =  $request->namecasting;
+
+      $candidat =  Candidat::where('id', $id)->first();
+      $casting = Casting::where('namecasting', $namecasting)->get();
+
+      $candidat->castings()->attach($casting);
+      return response()->json([
+          'message' => "Successfully créé",
+          'success' => true
+      ], 200);
+  }
 
     public function get($id, Request $request){
        // $namecasting =  $request->namecasting;

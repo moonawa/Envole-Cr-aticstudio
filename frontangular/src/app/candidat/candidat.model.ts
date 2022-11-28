@@ -1,3 +1,4 @@
+import { Casting } from "../casting/casting.model";
 import { Image } from "../image/image.model";
 
 export class Candidat {
@@ -68,5 +69,9 @@ export class Candidat {
     appreciation?: string;
 
     created_at?: string;
+    updated_at?: string;
+
     images?: Image[];
+
+    castingss?: Casting[];
 }

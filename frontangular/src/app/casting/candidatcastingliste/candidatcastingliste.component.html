@@ -352,7 +352,7 @@
   <!-- la page -->
 
 
-  <section class="container">
+  <section class="container" id="candidat">
 
     
   <div *ngIf="casting" class="row">
@@ -377,41 +377,51 @@
         <strong>Status du casting:</strong>
         <p>{{ casting.statuscasting }}</p>
     </div>
-    <div>
-        <strong>Nom du Client :</strong>
-        <p>{{ casting.colaborateur.user.name}}</p>
-    </div>
-    <div>
-        <strong>Logo du Client :</strong>
-        <td><img src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}" width="100px"></td>  
+   
+  
+    <h3>Information du Client :</h3>
 
-    </div>
+    <div>
+        <img
+        src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}"
+            alt=""
+            style="width: 100px; height: 100px"
+            class="rounded-circle"
+            />
+        <div class="ms-3">
+          <p class="fw-bold mb-1">{{casting.colaborateur.user.name }}</p>
+          <p class="text-muted mb-0">{{casting.colaborateur.user.telephone }}</p>
+        </div>
+      </div>
     <br>
 </div>
     <div class="col-md-6">
-        <h3>Information sur les Candidats  :</h3>
+        <h3>Candidats Sélectionnés:</h3>
     
-   <table class="table table-bordered border-primary"> 
-    <thead>
+   <table class="table align-middle mb-0 bg-white"> 
+    <thead class="bg-light">
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Action</th>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Note</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let candidat of casting.candidats">
-            <th scope="row">{{ candidat.id }}</th>
+            <th>{{ candidat.id }}</th>
             <td>{{ candidat.nom  }}</td>
             <td>{{ candidat.prenom}}</td>
+            <td>
+                <!-- {{ candidat.pivot.note}}  -->
+            </td>
             <td>
                 
             </td>
         </tr>
     </tbody>
    </table>
-
+<br>
    <h3>Ajouter des candidats au Casting</h3>
 
    <form class="container" [formGroup]="form" (ngSubmit)="saveAlloues()">
@@ -443,7 +453,7 @@
        </div>
        <div class="row">
            <div class="col-md-4">
-               <button  type="submit" class="btn btn-primary">Enregister</button>
+               <button  type="submit" class="btn btn-primary">Ajouter</button>
            </div>
 
        </div>

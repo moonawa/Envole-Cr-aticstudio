@@ -156,15 +156,7 @@
                 <!-- Topbar Search -->
                 <form
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                            aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
+                   
                 </form>
 
                 <!-- Topbar Navbar -->
@@ -352,6 +344,33 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 <section>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="input-group rounded">
+                <input type="search" class="form-control rounded" placeholder="Recherche par nom"
+                    aria-label="Search" aria-describedby="search-addon"
+                    (input)="getPersonelSearch($event)" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group rounded">
+                <input type="search" class="form-control rounded" placeholder="Recherche par metier"
+                    aria-label="Search" aria-describedby="search-addon"
+                    (input)="getMetierSearch($event)" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
     <div class="d-flex justify-content-between">
       <h4>Liste du Personnel</h4>
       <a routerLink="/personel/ajout" class="btn btn-success">Enregistrer un nouveau Personnel</a>
@@ -359,7 +378,7 @@
 
     <br>
     
-    <table class="table table-bordered border-primary">
+    <table class="table align-middle mb-0 bg-white">
       <thead>
       <tr>
         <th scope="col">ID</th>
@@ -372,7 +391,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let personel of personels">
+      <tr *ngFor="let personel of personels; let result of data">
         <th scope="row">{{ personel.id }}</th>
         <td>{{ personel.user.name }}</td>
         <td>{{ personel.user.email }}</td>

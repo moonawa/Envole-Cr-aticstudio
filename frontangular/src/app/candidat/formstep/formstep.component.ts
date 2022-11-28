@@ -220,7 +220,7 @@ export class FormstepComponent implements OnInit {
          this.http.post('http://localhost:8000/api/candidats/', formData)
            .subscribe(res => {
              console.log(res);
-           });;
+           });
            alert('Le candidat est créé avec succès!');
      
            this.router.navigateByUrl('candidat/liste');

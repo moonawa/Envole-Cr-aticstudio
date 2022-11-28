@@ -10,9 +10,10 @@ const baseUrl = 'http://localhost:8000/api/candidats';
   providedIn: 'root'
 })
 export class CandidatService {
+  
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     })
  }
 
@@ -24,7 +25,7 @@ export class CandidatService {
       catchError(this.errorHandler)
     )
   }
-  getSearchCandidatName(name: string){
+  getSearchCandidat(name: string){
     // return this.http.get<Candidat[]>(baseUrl +
     //   `/search_candidat?search_candidat=${name}`);
      const response = new Promise(resolve => {
@@ -38,6 +39,54 @@ export class CandidatService {
     });
     return response;
   }
+  getSearchCandidatName(name: string){
+     const response = new Promise(resolve => {
+      this.http.get(baseUrl +
+        `/search_name?search_name=${name}`)
+        .subscribe(data =>{
+         resolve(data);
+       }, error =>{
+         console.log(error);
+       });
+    });
+    return response;
+  }
+  getSearchCandidatAge(name: string){
+    const response = new Promise(resolve => {
+     this.http.get(baseUrl +
+       `/search_age?search_age=${name}`)
+       .subscribe(data =>{
+        resolve(data);
+      }, error =>{
+        console.log(error);
+      });
+   });
+   return response;
+ }
+ getSearchCandidatTeint(name: string){
+  const response = new Promise(resolve => {
+   this.http.get(baseUrl +
+     `/search_teint?search_teint=${name}`)
+     .subscribe(data =>{
+      resolve(data);
+    }, error =>{
+      console.log(error);
+    });
+ });
+ return response;
+}
+getSearchCandidatSexe(name: string){
+  const response = new Promise(resolve => {
+   this.http.get(baseUrl +
+     `/search_sexe?search_sexe=${name}`)
+     .subscribe(data =>{
+      resolve(data);
+    }, error =>{
+      console.log(error);
+    });
+ });
+ return response;
+}
 
   get(id: any): Observable<Candidat> {
     return this.http.get<Candidat>(`${baseUrl}/${id}`);

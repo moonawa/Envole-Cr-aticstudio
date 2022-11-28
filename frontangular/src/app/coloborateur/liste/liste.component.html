@@ -157,8 +157,9 @@
                 <form
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                            aria-label="Search" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Recherche par nom"
+                            aria-label="Search" aria-describedby="basic-addon2"
+                            (input)="getCandidatSearch($event)">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">
                                 <i class="fas fa-search fa-sm"></i>
@@ -351,39 +352,49 @@
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-<section class="container">
+<section class="container" id="colaborateur">
 
   <div class="d-flex justify-content-between">
     <h4>Liste des Clients</h4>
-    <a routerLink="/colaborateur/ajout" class="btn btn-success">Enregistrer un nouveau Client</a>
-
+     <a routerLink="/colaborateur/ajout" class="btn btn-success">Enregistrer un nouveau Client</a> 
   </div>
 
   <br>
 
        
-        <table class="table table-bordered border-primary">
-          <thead>
+        <table class="table align-middle mb-0 bg-white" >
+          <thead class="bg-light">
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Nom de l' Entreprise</th>
-              <th scope="col">Email</th>
-              <th scope="col">Téléphone</th>
-              <th scope="col">Adresse</th>
-              <th scope="col">Logo</th>
-              <th scope="col">Description</th>
+              <th>ID</th>
+              <th>Nom de l' Entreprise</th>
+              <th>Téléphone</th>
+              <th>Adresse</th>
+              <th>Description</th>
 
               <th width="220px">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let colaborateur of colaborateurs">
-              <th scope="row">{{ colaborateur.id }}</th>
-              <td>{{ colaborateur.user?.name }}</td>
-              <td>{{ colaborateur.user?.email }}</td>
+            <tr *ngFor="let colaborateur of colaborateurs; let result of data">
+              <th>{{ colaborateur.id }}</th>
+              <td>
+                <!-- <img [src]="imageDirectoryPath+''+image[0].filename" width="100px">  -->
+
+                    <div class="d-flex align-items-center">
+                      <img
+                      src="{{imageDirectoryPath}}{{colaborateur.user?.avatar }}"
+                          alt=""
+                          style="width: 60px; height: 60px"
+                          class="rounded-circle"
+                          />
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">{{ colaborateur.user?.name }}</p>
+                        <p class="text-muted mb-0">{{ colaborateur.user?.email }}</p>
+                      </div>
+                    </div>
+                  </td>
               <td>{{ colaborateur.user?.telephone }}</td>
               <td>{{ colaborateur.adresse_colaborateur }}</td>
-              <td><img src="{{imageDirectoryPath}}{{colaborateur.user?.avatar }}" width="100px"></td>
               <td>{{ colaborateur.description_colaborateur }}</td>
               <td>
                 <a href="#" [routerLink]="['/colaborateur/', colaborateur.id  ]" class="btn btn-primary">Modifier</a>
