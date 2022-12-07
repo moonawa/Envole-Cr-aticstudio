@@ -7,7 +7,10 @@ use App\Http\Controllers\ColaborateurController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\SelectionController;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +27,33 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('login', [AuthController::class, 'login']);
+
+
+// Route::post('/login', [AuthController::class, 'login']);
+// Route::get('/user', [AuthController::class, 'getUser']);
+
+// Route::middleware('jwt.verify')->group(function() {
+//     Route::get('/dashboard', function() {
+//         return response()->json(['message' => 'Welcome to dashboard'], 200);
+//     });
+// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return Auth::user();
+});
+Route::get('users', function(){
+    return User::all();
+});
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::get('user-profile', [AuthController::class, 'userProfile']);
+});
+
 
 //route pour personel
 
@@ -44,6 +73,7 @@ Route::prefix('personel')->group(function () {
 Route::prefix('candidats')->group(function () {
     Route::get('/',[ CandidatController::class, 'index']);
     Route::post('/',[ CandidatController::class, 'createCandidat']);
+    Route::get('/indexcount',[ CandidatController::class, 'indexcount']);
     Route::post('/multipleCandidat',[ CandidatController::class, 'multipleCandidat']);
     Route::get('/candidatFemme',[ CandidatController::class, 'candidatFemme']);
     Route::get('/candidatHomme',[ CandidatController::class, 'candidatHomme']);
@@ -57,9 +87,12 @@ Route::prefix('candidats')->group(function () {
     Route::get('/search_sexe',[ CandidatController::class, 'searchSexe']);
     //Route::delete('/{id}',[ CandidatController::class, 'delete']);
     Route::post('/ajoutcancas', [ CandidatController::class, 'alloueParcandidatID']);
+    Route::get('/casting/{id}',[ CandidatController::class, 'getCasting']);
     Route::get('/{id}',[ CandidatController::class, 'get']);
     Route::put('/{id}',[ CandidatController::class, 'update']);
     Route::post('/casting_candidat',[ CandidatController::class, 'casting_candidat']);
+        Route::post('/casting_candidat',[ CandidatController::class, 'casting_candidat']);
+
 });
 //});
 //route pour colaborateur
@@ -98,9 +131,12 @@ Route::prefix('selection')->group(function () {
 Route::prefix('casting')->group(function () {
     Route::get('/',[ CastingController::class, 'index']);
     Route::post('/',[ CastingController::class, 'store']);//store avec colaborateur
+    Route::get('/indexcount',[ CastingController::class, 'indexcount']);
     Route::post('/createcasting',[ CastingController::class, 'createcasting']);
     Route::post('/note/{id}',[ CastingController::class, 'note']);
     //Route::delete('/{id}',[ CastingController::class, 'delete']);
+    Route::get('/castingClientconncete',[ CastingController::class, 'castingClientconncete']);  
+
     Route::get('/search_casting', [ CastingController::class, 'searchCasting']);
     Route::get('/affiche_alloue', [ CastingController::class, 'afficheAlloue']);
     Route::get('/candidats/{id}', [ CastingController::class, 'candidats']);
@@ -110,4 +146,6 @@ Route::prefix('casting')->group(function () {
     Route::get('/{id}',[ CastingController::class, 'get']);
     Route::put('/{id}',[ CastingController::class, 'update']);
     Route::post('/alloue',[ CastingController::class, 'alloue']);  
+
 });
+

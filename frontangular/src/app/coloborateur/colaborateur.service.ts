@@ -3,14 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Coloborateur } from './coloborateur.model'; 
-
+import { Colaborateur } from './colaborateur.model';
 const baseUrl = 'http://localhost:8000/api/colaborateur';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ColoborateurService {
+export class ColaborateurService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -19,12 +18,12 @@ export class ColoborateurService {
 
  constructor(private http: HttpClient) { }
 
- getAll(): Observable<Coloborateur[]> {
-  return this.http.get<Coloborateur[]>(baseUrl);
+ getAll(): Observable<Colaborateur[]> {
+  return this.http.get<Colaborateur[]>(baseUrl);
 }
 
-get(id: any): Observable<Coloborateur> {
-  return this.http.get<Coloborateur>(`${baseUrl}/${id}`);
+get(id: any): Observable<Colaborateur> {
+  return this.http.get<Colaborateur>(`${baseUrl}/${id}`);
 }
 getSearchColaborateur(name: string){
   // return this.http.get<Candidat[]>(baseUrl +
@@ -56,8 +55,8 @@ deleteAll(): Observable<any> {
   return this.http.delete(baseUrl);
 }
 
-findByName(name: any): Observable<Coloborateur[]> {
-  return this.http.get<Coloborateur[]>(`${baseUrl}?name=${name}`);
+findByName(name: any): Observable<Colaborateur[]> {
+  return this.http.get<Colaborateur[]>(`${baseUrl}?name=${name}`);
 }
    }
 

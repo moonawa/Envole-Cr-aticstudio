@@ -19,7 +19,7 @@
     box-sizing: border-box;
     font-family: montserrat;
     color: #2C3E50;
-    font-size: 15px;
+    font-size: 17px;
 }
  h4{
     font-family: montserrat;
@@ -32,7 +32,7 @@ h2{
 
 }
  input {
-    padding: 15px;
+    padding: 13px;
     border: 1px solid #ccc;
     border-radius: 0px;
     margin-bottom: 10px;
@@ -42,8 +42,9 @@ h2{
     color: #2C3E50;
     font-size: 15px;
 }
+
 a{
-    font-size: 15px;
+    font-size: 17px;
 
 }
 .mat-stepper-horizontal {
@@ -53,3 +54,77 @@ a{
   .mat-mdc-form-field {
     margin-top: 16px;
   }
+
+
+
+  /* le truc */
+  /* #myTab .nav-link.active{
+    border-color: transparent;
+    background-color: #fff !important;
+    color: #9a1550 !important;
+    border-bottom: 4px solid #9a1550 !important
+
+  }
+.nav-tabs .nav-link.active {
+    border-color: transparent;
+    background-color: #fff !important;
+    color: #9a1550 !important;
+    border-bottom: 4px solid #9a1550 !important
+}
+.nav-fill .nav-item .nav-link,
+.nav-justified .nav-item .nav-link {
+    width: 100%;
+    color: #000
+}
+.nav-tabs .nav-link {
+    border-top-left-radius: 0rem !important;
+    border-top-right-radius: 0rem !important
+}
+.nav-tabs .nav-link.active {
+    border-color: transparent;
+    background-color: #60D0FF;
+    color: #fff;
+    font-weight: 600
+}
+.nav-link {
+    height: 77px;
+    font-size: 13px;
+    background-color: #fff
+}
+.nav-link:hover {
+    border: none
+}
+.nav-link:focus {
+    outline: none
+}
+.tab-pane {
+    height: 300px
+}
+.form-control {
+    height: 45px;
+    position: relative
+}
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #9a1550
+}
+.flight-where-from:after {
+    position: absolute;
+    content: '23';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%
+}
+.custom-button {
+    height: 45px;
+    background-color: #9a1550;
+    border: none;
+    color: #fff
+}
+.custom-button:hover,
+.custom-button:focus {
+    background-color: #9a1550;
+    box-shadow: none;
+    outline: none
+} */

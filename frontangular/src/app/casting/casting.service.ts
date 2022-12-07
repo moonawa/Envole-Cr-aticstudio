@@ -17,6 +17,7 @@ export class CastingService {
       'Content-Type': 'application/json'
     })
   }
+  
   constructor(private httpClient: HttpClient) { }
 
   getAllb(): Observable<any> {
@@ -25,9 +26,15 @@ export class CastingService {
       catchError(this.errorHandler)
     )
     }
+    getCastings(page: number){
+      return this.httpClient.get(this.apiURL + '?page=' + page);
+    }
     getAll(): Observable<Casting[]> {
-      return this.httpClient.get<Casting[]>(this.apiURL);
+      return this.httpClient.get<Casting[]>(this.apiURL + 'indexcount');
   }
+  castingClientconncete(): Observable<Casting[]> {
+    return this.httpClient.get<Casting[]>(this.apiURL + 'castingClientconncete');
+}
     
   /**
    * Write code on Method

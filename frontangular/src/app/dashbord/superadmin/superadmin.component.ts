@@ -4,10 +4,13 @@ import { Candidat } from 'src/app/candidat/candidat.model';
 import { CandidatService } from 'src/app/candidat/candidat.service';
 import { Casting } from 'src/app/casting/casting.model';
 import { CastingService } from 'src/app/casting/casting.service';
-import {ColoborateurService } from 'src/app/coloborateur/colaborateur.service';
-import { Coloborateur } from 'src/app/coloborateur/coloborateur.model';
+import {ColaborateurService } from 'src/app/coloborateur/colaborateur.service';
+import { Colaborateur } from 'src/app/coloborateur/colaborateur.model';
 import { Fournisseur } from 'src/app/fournisseur/fournisseur';
 import { FournisseurService } from 'src/app/fournisseur/fournisseur.service';
+import { Router } from '@angular/router';
+import { User } from 'src/app/user/user.model';
+import { LoginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-superadmin',
@@ -17,7 +20,7 @@ import { FournisseurService } from 'src/app/fournisseur/fournisseur.service';
 export class SuperadminComponent implements OnInit {
 
  candidats: Candidat[] = [];
- colaborateurs: Coloborateur[] = [];
+ colaborateurs: Colaborateur[] = [];
  femmes : Candidat[] = [];
  hommes : Candidat[] = [];
  mineur : Candidat[] = [];
@@ -25,33 +28,33 @@ export class SuperadminComponent implements OnInit {
  castings: Casting[] = [];
  fournisseurs: Fournisseur[] = [];
 
+ isSignedIn!: boolean;
+user: any;
+checkbox:boolean = false;
 
 
   constructor(private http: HttpClient,
     private candidatService: CandidatService,
-    private colaborateurService: ColoborateurService,
+    private colaborateurService: ColaborateurService,
     private castingService: CastingService,
     private fournisseurService: FournisseurService,
-    ){}
+    public router: Router,
+    public auth: LoginService
+    ){
+      
+    }
 
   ngOnInit(): void {
-    // const user:any = localStorage.getItem('user');
-    // const userObj = JSON.parse(user);
-
-    // const token = userObj.token;
-    // //console.log(userObj.token);
-
-    // const headers = new HttpHeaders({
-    //   'Content-Type': 'application/json',
-    //   Authorization: `Bearer ${token}`,
-    // });
-    // this.http.get('http://localhost:8000/api/candidats', {headers: headers}).
-    // subscribe((res)=>{
-    //   console.log(res)
-    // },
-    // (err)=>{
-    //   console.log(err);
-    // });
+    this.auth.status().subscribe((res)=>{
+      console.log(res);
+    })
+    this.auth.user().subscribe((res)=>{
+      this.user = res;
+      this.isSignedIn = true;
+    }, (err) =>{
+      console.log(err);
+    });
+  
     //tous les candidats
     this.candidatService.getAll().
     subscribe((data: Candidat[])=>{
@@ -84,7 +87,7 @@ export class SuperadminComponent implements OnInit {
     });
 
     this.colaborateurService.getAll().
-    subscribe((data: Coloborateur[])=>{
+    subscribe((data: Colaborateur[])=>{
       this.colaborateurs = data;
       //console.log(this.colaborateurs);
     });
@@ -101,7 +104,20 @@ export class SuperadminComponent implements OnInit {
       //console.log(this.fournisseurs);
     });
   }
+  
+  logout(){
+    // console.log(this.checkbox);
+    this.auth.logout(this.checkbox).subscribe((res)=>{
+      console.log(res);
+      localStorage.removeItem('user');
 
+      this.auth.toggleLogin(false);
+      // Redirect
+      this.router.navigate(['/']);
+    }, (err) =>{
+      console.log(err)
+    })
+  }
   get countAllCandiddat(): number {
     return this.candidats['length'];
   }

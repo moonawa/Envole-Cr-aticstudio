@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,6 +48,9 @@ import { FemmeComponent } from './candidat/femme/femme.component';
 import { HommeComponent } from './candidat/homme/homme.component';
 import { MineurComponent } from './candidat/mineur/mineur.component';
 import { MajeurComponent } from './candidat/majeur/majeur.component';
+import { PivotComponent } from './pivot/pivot/pivot.component';
+import { AdminComponent } from './dashbord/admin/admin.component';
+import { ColaborateurComponent } from './dashbord/colaborateur/colaborateur.component';
 
 
 @NgModule({
@@ -93,6 +97,9 @@ import { MajeurComponent } from './candidat/majeur/majeur.component';
     HommeComponent,
     MineurComponent,
     MajeurComponent,
+    PivotComponent,
+    AdminComponent,
+    ColaborateurComponent,
 
     
   ],
@@ -103,10 +110,12 @@ import { MajeurComponent } from './candidat/majeur/majeur.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    NgxPaginationModule
     
   ],
-  providers: [],
+  providers: [
+   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

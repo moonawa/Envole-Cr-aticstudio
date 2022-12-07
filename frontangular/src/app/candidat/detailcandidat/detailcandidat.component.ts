@@ -16,9 +16,10 @@ export class DetailcandidatComponent implements OnInit {
 
   id!: number;
   candidat!: Candidat;
+  candida!: Candidat;
 
   imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/uploads/';
-  castings: Casting[] = [];
+  castingss: Casting[] = [];
 
   form!: FormGroup;
 //pour le steper
@@ -36,10 +37,14 @@ export class DetailcandidatComponent implements OnInit {
     this.candidatService.get(this.id).subscribe((data: Candidat)=>{
       this.candidat = data;
     });
+    this.candidatService.getCasting(this.id).subscribe((datas: Candidat)=>{
+      this.candida = datas;
+    });
+    
     this.castingService.getAll().subscribe((data: Casting[])=>{
-      this.castings = data;
-      console.log(this.castings);
-    })
+      this.castingss = data;
+      console.log(this.castingss);
+    });
     this.form = new FormGroup({
       id: new FormControl(''),
       namecasting: new FormControl(''),

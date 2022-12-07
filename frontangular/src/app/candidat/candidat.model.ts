@@ -1,5 +1,6 @@
 import { Casting } from "../casting/casting.model";
 import { Image } from "../image/image.model";
+import { Pivot } from "../pivot/pivot.model";
 
 export class Candidat {
     id?: any;
@@ -70,8 +71,11 @@ export class Candidat {
 
     created_at?: string;
     updated_at?: string;
+    pvot?: string;
 
     images?: Image[];
+    pivot?: Pivot;
 
-    castingss?: Casting[];
+    castings?: Casting[];
+
 }

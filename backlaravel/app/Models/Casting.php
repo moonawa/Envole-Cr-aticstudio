@@ -23,8 +23,9 @@ class Casting extends Model
     public function candidats()
     {
         return $this->belongsToMany(Candidat::class,
-         'candidat_casting')->withPivot('note')->withTimestamps();
-
+         'candidat_casting')
+         ->withPivot('note')
+         ->withTimestamps();
     }
 
     /**

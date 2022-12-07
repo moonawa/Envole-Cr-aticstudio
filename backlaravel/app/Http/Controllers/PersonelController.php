@@ -15,14 +15,25 @@ class PersonelController extends Controller
         $personel =  Personel::with('user')->get();
         return response()->json($personel, 200);
     }
-
+    public function motDePasse($longueur=5) { // par défaut, on affiche un mot de passe de 5 caractères
+      // chaine de caractères qui sera mis dans le désordre:
+      $Chaine = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // 62 caractères au total
+      // on mélange la chaine avec la fonction str_shuffle(), propre à PHP
+      $Chaine = str_shuffle($Chaine);
+      // ensuite on coupe à la longueur voulue avec la fonction substr(), propre à PHP aussi
+      $Chaine = substr($Chaine,0,$longueur);
+      // ensuite on retourne notre chaine aléatoire de "longueur" caractères:
+      return $Chaine;
+    }
     //création d'un  Superdmin
     public function createSuperdmin(Request $request){
+      $pass = $this->motDePasse(8);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->telephone = $request->telephone;
-        $user->password = bcrypt("pAEG#HK12RJ");
+        $user->password = bcrypt($pass);
         $user->role = 1;
         $user->status = "Activé";
         $user->avatar = $request->avatar;

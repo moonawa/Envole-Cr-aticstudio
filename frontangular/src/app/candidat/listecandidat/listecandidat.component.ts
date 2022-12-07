@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { LoginService } from 'src/app/login/login.service';
+import { User } from 'src/app/user/user.model';
 import { Candidat } from '../candidat.model';
 import { CandidatService } from '../candidat.service';
 
@@ -9,21 +11,60 @@ import { CandidatService } from '../candidat.service';
   styleUrls: ['./listecandidat.component.css']
 })
 export class ListecandidatComponent implements OnInit {
+  //users:any;
+  p: number = 1;
+  total: number = 0;
 
   candidats: Candidat[] = [];
   first_img?: string;
 imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/uploads/';
 data : any;
-  constructor(private candidatService: CandidatService) { }
+user!: User;
+
+  constructor(public authsercice: LoginService,
+    public candidatService: CandidatService,
+    ) { }
 
   ngOnInit(): void {
-    this.candidatService.getAll().subscribe((data: Candidat[])=>{
-      this.candidats = data;
-      console.log(this.candidats);
+    // this.candidatService.getAll().subscribe((data: Candidat[])=>{
+    //   this.candidats = data;
+    //   console.log(this.candidats);
       
+    // })
+    
+    this.authsercice.status().subscribe((res)=>{
+      console.log(res);
     })
-  }
+    this.authsercice.user().subscribe((res)=>{
+      this.user = res;
+    }, (err) =>{
+      console.log(err);
+    });
 
+  this.getCandidats();
+
+   this.candidatService.getCandidatss(this.p)
+   .subscribe((response: any) => {
+     console.log(response);
+     this.candidats = response.data;
+     this.total = response.total;
+   });
+  }
+  getCandidats(){
+    this.candidatService.getCandidatss(this.p)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.candidats = response.data;
+        this.total = response.total;
+      });
+} 
+pageChangeEvent(event: number){
+  this.p = event;
+  this.getCandidats();
+}
+  get countAllCandiddat(): number {
+    return this.candidats['length'];
+  }
   getCandidatSearch(name: any)
   {
     const keyword = name.target.value;
@@ -84,4 +125,5 @@ data : any;
     //console.log('first image', candidat);
     return this.imageDirectoryPath+''+candidat.images[0].filename;
   }
+ 
 }

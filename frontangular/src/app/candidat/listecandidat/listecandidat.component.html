@@ -59,7 +59,7 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/candidat">Casting- Candidat</a>
+                    <!-- <a class="collapse-item" routerLink="/casting/candidat">Casting- Candidat</a> -->
 
                     <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" >Casting - Client</a> -->
@@ -310,8 +310,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.name}}</span>
+                            <img class="img-profile rounded-circle" src="http://127.0.0.1:8000/storage/{{user.avatar}}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -388,8 +388,8 @@
                     </div>
                     <br><br>
                     <div class="d-flex justify-content-between">
-                        <h4>Liste des Candidats</h4>
-                        <a routerLink="/candidat/formstep" class="btn btn-success">Ajouter un nouveau Candidat</a>
+                        <h4>Liste des Candidats ({{countAllCandiddat}})</h4>
+                        <a routerLink="/candidat/formstep" class="btn btn-success">Ajouter un Candidat</a>
 
                     </div>
 
@@ -410,7 +410,9 @@
                         <tbody>
 
                             <!-- <tr *ngFor="let candidat of candidats | filter:searchText"> -->
-                            <tr *ngFor="let candidat of candidats; let result of data">
+                            <!-- <tr *ngFor="let candidat of candidats; let result of data"> -->
+                                <tr *ngFor="let candidat of candidats| paginate: { itemsPerPage: 10, currentPage: p, totalItems: total } ; let result of data">
+
                                 <th >{{ candidat.id }}</th>
                                 
                                 <td>
@@ -424,7 +426,9 @@
                                           class="rounded-circle"
                                           /></a>
                                       <div class="ms-3">
-                                        <p class="fw-bold mb-1">{{ candidat.prenom }} {{ candidat.nom }}</p>
+                                        <p class="fw-bold mb-1"> 
+                                            
+                                            {{ candidat.prenom }} {{ candidat.nom }}</p>
                                         <p class="text-muted mb-0">
                                              <!-- <i *ngIf="candidat.experience_cinema === 'Npas d\'expérience dans le théatre'; " class="fas fa-circle fa-1x text-red-300" style="color: red"></i>  -->
                                              <!-- <i  #other_content class="fas fa-circle fa-1x text-red-300" style="color: green"></i>  -->
@@ -465,6 +469,8 @@
                             </tr>
                         </tbody>
                     </table>
+                    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+
                 </section>
             </div>
         </div>

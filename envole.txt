@@ -32,10 +32,10 @@ dans le dossier envole:: cd frontangular: npm install ---- puis ----  ng  serve
 git push -u origin main
 
 Client ID: 1
-Client secret: Ns2my7MzRF7pKIOCCj68Opt1b1z2V3lECklBDyfB
+Client secret: pyyYcCU1vLe4zUPdX76mYR5m4sWXZYJBBrr1ee5X
 Password grant client created successfully.
 Client ID: 2
-Client secret: BEd9symWLMG7Kr708K8S4vOO26Osfw9WTfglMoBC
+Client secret: 3ukI9uiNn2yUxeNvSb2qu6CBiQ2PpoTMHztyywqN
 
 
 modif :

@@ -53,6 +53,9 @@ data: any;
         console.log(this.data) 
 });
  ;}
+ get countAllFournisseur(): number {
+  return this.fournisseurs['length'];
+}
  getFournisseurSearchPrestation(name: any)
   {
     const keyword = name.target.value;

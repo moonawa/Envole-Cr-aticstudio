@@ -1,6 +1,5 @@
 import { Candidat } from "../candidat/candidat";
 import { Casting } from "../casting/casting";
-import { Deserializable } from "../deserializable";
 
 export interface Selection {
     id: number;

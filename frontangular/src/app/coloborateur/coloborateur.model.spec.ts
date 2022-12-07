@@ -1,7 +1,7 @@
-import { Coloborateur } from './coloborateur.model';
+import { Colaborateur } from './colaborateur.model';
 
 describe('Coloborateur', () => {
   it('should create an instance', () => {
-    expect(new Coloborateur()).toBeTruthy();
+    expect(new Colaborateur()).toBeTruthy();
   });
 });

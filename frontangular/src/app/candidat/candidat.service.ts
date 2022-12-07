@@ -4,6 +4,7 @@ import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Candidat } from './candidat.model';
+import { User } from '../user/user.model';
 const baseUrl = 'http://localhost:8000/api/candidats';
 
 @Injectable({
@@ -11,20 +12,25 @@ const baseUrl = 'http://localhost:8000/api/candidats';
 })
 export class CandidatService {
   
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
+     // Authorization: `Bearer ${token}`
     })
+    
  }
 
   constructor(private http: HttpClient) { }
-
-  getAll(): Observable<Candidat[]> {
-    return this.http.get<Candidat[]>(baseUrl)
-    .pipe(
-      catchError(this.errorHandler)
-    )
+  getCandidatss(page: number){
+    return this.http.get(baseUrl + '?page=' + page);
   }
+  getAll(): Observable<Candidat[]> {
+    
+    return this.http.get<Candidat[]>(baseUrl+`/indexcount`)
+    
+  }
+
   getSearchCandidat(name: string){
     // return this.http.get<Candidat[]>(baseUrl +
     //   `/search_candidat?search_candidat=${name}`);
@@ -90,6 +96,9 @@ getSearchCandidatSexe(name: string){
 
   get(id: any): Observable<Candidat> {
     return this.http.get<Candidat>(`${baseUrl}/${id}`);
+  }
+  getCasting(id: any): Observable<Candidat> {
+    return this.http.get<Candidat>(`${baseUrl}/casting/${id}`);
   }
   casting(data: any): Observable<any> {
     return this.http.post(baseUrl +`/casting_candidat`, data);

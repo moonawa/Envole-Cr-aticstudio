@@ -13,8 +13,14 @@ use Illuminate\Support\Facades\Storage;
 
 class CandidatController extends Controller
 {
+
+    
     public function index(){
-        $candidat =  Candidat::with('images')->get();
+        $candidat =  Candidat::with('images')->inRandomOrder()->paginate(10);
+        return response()->json($candidat, 200);
+    }
+    public function indexcount(){
+        $candidat =  Candidat::all();
         return response()->json($candidat, 200);
     }
     public function candidatFemme() {
@@ -297,7 +303,10 @@ public function multipleCandidat(Request $request){
 
         return response()->json($data, 200);
       }
-  
+      public function getCasting($id){ 
+         $cas = Candidat::with('castings')->find($id);
+         return response()->json($cas, 200);
+       }
       public function update(Request $request,$id){
         $data['prenom'] = $request['prenom'];
         $data['nom'] = $request['nom'];

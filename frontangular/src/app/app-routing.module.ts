@@ -38,26 +38,44 @@ import { FemmeComponent } from './candidat/femme/femme.component';
 import { HommeComponent } from './candidat/homme/homme.component';
 import { MajeurComponent } from './candidat/majeur/majeur.component';
 import { MineurComponent } from './candidat/mineur/mineur.component';
+import { DetailcoloborateurComponent } from './coloborateur/detailcoloborateur/detailcoloborateur.component';
+import { AdminComponent } from './dashbord/admin/admin.component';
+import { AuthGuard } from './login/auth.guard';
 
 
 
 const routes: Routes = [
   //connexion
-  { path: '', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent },
+  //{ path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', 
+  component: LoginComponent ,
+  },
+
+  { path: 'logout',
+   component: LogoutComponent,
+  canActivate:[AuthGuard]
+  },
 
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
 
   //Dashbord Superadmin
-  { path: 'dashboard/super', component: SuperadminComponent },
+  { path: 'dashboard/super', 
+  component: SuperadminComponent ,
+  canActivate:[AuthGuard]
+  
+
+},
+   //Dashbord Colaborateur
+  { path: 'dashboard/colaborateur', component: AdminComponent },
     
   //Dashbord 
   { path: 'dashboard/template', component: TemplateComponent },
   { path: 'dashboard/navbar', component: NavbarComponent },
 
   //Candidat CRUD et liaison
-  { path: 'candidat/liste', component: ListecandidatComponent },
+  { path: 'candidat/liste', component: ListecandidatComponent ,   
+},
   { path: 'candidat/ajout', component: AjoutcandidatComponent },
   { path: 'candidat/femme', component: FemmeComponent },
   { path: 'candidat/homme', component: HommeComponent },
@@ -93,19 +111,22 @@ const routes: Routes = [
     { path: 'colaborateur/liste', component: ListeComponent },
     { path: 'colaborateur/ajout', component: AjoutComponent },
     { path: 'colaborateur/edit/:idColaborateur', component: ModifcolaborateurComponent } ,
+    { path: 'colaborateur/:idColoborateur', component: DetailcoloborateurComponent },
 
      //Fournisseur CRUD
-     { path: 'fournisseur/liste', component: ListefournisseurComponent },
+     { 
+      path: 'fournisseur/liste',
+      component: ListefournisseurComponent,
+
+     },
      { path: 'fournisseur/ajout', component: AjoutfournisseurComponent },
      { path: 'fournisseur/edit/:idFournisseur', component: ModiffournisseurComponent } ,
- 
-
-
     
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  
 })
 export class AppRoutingModule { }

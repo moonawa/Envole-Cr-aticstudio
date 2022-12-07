@@ -63,7 +63,7 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
+                    <!-- <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a> -->
 
                     <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" >Casting - Client</a> -->
@@ -373,7 +373,7 @@
     <br><br>
     <div class="d-flex justify-content-between">
       <h4>Liste du Personnel</h4>
-      <a routerLink="/personel/ajout" class="btn btn-success">Enregistrer un nouveau Personnel</a>
+      <a routerLink="/personel/ajout" class="btn btn-success">Ajouter un Personnel</a>
     </div>
 
     <br>
@@ -399,7 +399,10 @@
         <td>{{ personel.metier }}</td>
         <td><img src="{{imageDirectoryPath}}{{personel.user.avatar }}" width="100px"></td>
         <td>
-        <a href="#" [routerLink]="['/personel/', 'edit', personel.id  ]" class="btn btn-primary">Modifier</a>
+        <a href="#" [routerLink]="['/personel/', 'edit', personel.id  ]" >
+            <i class="fas fa-pen fa-1x text-red-300"></i>
+
+        </a>
            <!--  <button type="button" (click)="deletePerson(person.id)" class="btn btn-danger">Supprimer</button>-->
         
       </td> 

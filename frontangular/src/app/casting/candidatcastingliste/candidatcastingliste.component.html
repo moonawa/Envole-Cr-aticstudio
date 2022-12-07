@@ -62,7 +62,7 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
+                    <!-- <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a> -->
 
                     <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" >Casting - Client</a> -->
@@ -404,7 +404,7 @@
             <th>ID</th>
             <th>Nom</th>
             <th>Prénom</th>
-            <th>Note</th>
+            <!-- <th>Note</th> -->
         </tr>
     </thead>
     <tbody>
@@ -412,18 +412,12 @@
             <th>{{ candidat.id }}</th>
             <td>{{ candidat.nom  }}</td>
             <td>{{ candidat.prenom}}</td>
-            <td>
-                <!-- {{ candidat.pivot.note}}  -->
-            </td>
-            <td>
-                
-            </td>
+            <!-- <td>{{ candidat}}</td> -->
         </tr>
     </tbody>
    </table>
 <br>
    <h3>Ajouter des candidats au Casting</h3>
-
    <form class="container" [formGroup]="form" (ngSubmit)="saveAlloues()">
        <div class="row">
         <div class="form-group col-md-8">
@@ -433,7 +427,7 @@
              formControlName="telephone_candidat" name="telephone_candidat">
                 <option *ngFor="let candidat of candidatss" 
                  value="{{ candidat.telephone_candidat }}">
-                 {{ candidat.id }}
+                 {{candidat.id}}
                 </option>
               </select>
         </div>
@@ -443,21 +437,14 @@
                hidden
                id="id" class="form-control " 
                            formControlName="id"
-                               name="id" >
-              
+                               name="id" >              
            </div>
-
-          
-
-
        </div>
        <div class="row">
            <div class="col-md-4">
                <button  type="submit" class="btn btn-primary">Ajouter</button>
            </div>
-
-       </div>
-       
+       </div>       
    </form>
 </div>
     

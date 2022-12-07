@@ -62,7 +62,7 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
+                    <!-- <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a> -->
 
                     <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" >Casting - Client</a> -->
@@ -362,43 +362,10 @@
 
 
   <section class="container">
-    <table class="table align-middle mb-0 bg-white" id="msformt">
-        <thead *ngIf=" data">
-          <tr>
-            <th>ID</th>
-            <th>Casting</th>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Status</th>
-  
-            <!-- <th>Nom Client</th>
-            <th>Logo Client</th> -->
-            <th width="220px">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let result of data">
-              <th scope="row">{{ result.id }}</th>
-              <td>{{ result.namecasting  }}</td>
-              <td>{{ result.datecasting}}</td>
-              <td>{{ result.descriptioncasting}}</td>
-              <td>      
-                 <span class="badge badge-success rounded-pill d-inline">{{ result.statuscasting}} </span>
-              </td>
-
-  
-              <td>
-                  <a href="#" [routerLink]="['/casting/', 'edit', result.id  ]" class="btn btn-primary">Modifier</a>
-                  <a href="#" [routerLink]="['/casting/', 'view', result.id  ]" class="btn btn-info">Détail</a>
-  
-                  <!-- <button type="button" (click)="deletecolaborateur(colaborateur.id)" class="btn btn-danger">Supprimer</button> -->
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    
     <div class="d-flex justify-content-between">
-      <h4>Liste des Castings</h4>
-       <a routerLink="/ajout/casting" class="btn btn-success">Enregistrer un nouveau Casting</a> 
+      <h4>Liste des Castings({{countAllCasting}})</h4>
+       <a routerLink="/ajout/casting" class="btn btn-success">Ajouter un Casting</a> 
   
     </div>
   
@@ -410,6 +377,7 @@
           <th>Casting</th>
           <th>Date</th>
           <th>Description</th>
+          <th>Client</th>
           <th>Status</th>
 
        <!--   <th>Nom Client</th>
@@ -418,11 +386,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let casting of castings">
+        <tr *ngFor="let casting of castings | paginate: { itemsPerPage: 10, currentPage: p, totalItems: total } ; let result of data">
+
             <th>{{ casting.id }}</th>
             <td>{{ casting.namecasting  }}</td>
             <td>{{ casting.datecasting}}</td>
             <td>{{ casting.descriptioncasting}}</td>
+            <td>{{ casting.colaborateur?.user?.name}}</td>
             <td>{{ casting.statuscasting}}</td>
 
         
@@ -430,15 +400,22 @@
    <td ><img src="http://127.0.0.1:8000/storage/{{casting.colaborateur.user.avatar }}" width="100px"></td>    -->
 
             <td>
-                <a href="#" [routerLink]="['/casting/', 'edit', casting.id  ]" class="btn btn-primary">Modifier</a>
+                <a href="#" [routerLink]="['/casting/', 'edit', casting.id  ]">
+                    <i  class="fas fa-pen fa-1x text-red-300" ></i>  
+                </a>&nbsp;
                 <!-- <a href="#" [routerLink]="['/casting/', 'view', casting.id  ]" class="btn btn-info">Détail</a> -->
-                <a href="#" [routerLink]="['/casting/', 'candidat', casting.id  ]" class="btn btn-info">Candidats</a>
+                <a href="#" [routerLink]="['/casting/', 'candidat', casting.id  ]" >
+                    <i  class="fas fa-eye fa-1x text-red-300" ></i> 
+
+                </a>
 
                 <!-- <button type="button" (click)="deletecolaborateur(colaborateur.id)" class="btn btn-danger">Supprimer</button> -->
               </td>
             </tr>
           </tbody>
         </table>
+        <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+
       </section>
   
             </div>

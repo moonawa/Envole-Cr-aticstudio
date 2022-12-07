@@ -1,14 +1,11 @@
-
-
-
-   <!-- Page Wrapper -->
-   <div id="wrapper">
+<!-- Page Wrapper -->
+<div id="wrapper">
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center"  routerLink="/dashboard/super">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/dashboard/super">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -20,7 +17,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link"  routerLink="/dashboard/super">
+            <a class="nav-link" routerLink="/dashboard/super">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -43,8 +40,8 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item"  routerLink="/candidat/liste">liste</a>
-                    <a class="collapse-item"  routerLink="/candidat/formstep">Ajout</a>
+                    <a class="collapse-item" routerLink="/candidat/liste">liste</a>
+                    <a class="collapse-item" routerLink="/candidat/formstep">Ajout</a>
                 </div>
             </div>
         </li>
@@ -62,7 +59,7 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
+                    <!-- <a class="collapse-item" routerLink="/casting/candidat">Casting- Candidat</a> -->
 
                     <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" >Casting - Client</a> -->
@@ -80,7 +77,7 @@
                     <h6 class="collapse-header">Client Screens:</h6>
                     <a class="collapse-item" routerLink="/colaborateur/liste">Liste</a>
                     <a class="collapse-item" routerLink="/colaborateur/ajout">Ajout</a>
-                    
+
                 </div>
             </div>
         </li>
@@ -93,7 +90,7 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-       
+
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseperso"
                 aria-expanded="true" aria-controls="collapseperso">
@@ -104,7 +101,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Personnel Screens:</h6>
                     <a class="collapse-item" routerLink="/personel/liste">liste</a>
-                    <a class="collapse-item"  routerLink="/personel/ajout">Ajout</a>
+                    <a class="collapse-item" routerLink="/personel/ajout">Ajout</a>
                 </div>
             </div>
         </li>
@@ -114,16 +111,17 @@
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Fournisseur</span>
             </a>
-            <div id="collapsefournisseur" class="collapse" aria-labelledby="headingfournisseur" data-parent="#accordionSidebar">
+            <div id="collapsefournisseur" class="collapse" aria-labelledby="headingfournisseur"
+                data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Fournisseur Screens:</h6>
-                    <a class="collapse-item"  routerLink="/fournisseur/liste">liste</a>
-                    <a class="collapse-item"  routerLink="/fournisseur/ajout">Ajout</a>
+                    <a class="collapse-item" routerLink="/fournisseur/liste">liste</a>
+                    <a class="collapse-item" routerLink="/fournisseur/ajout">Ajout</a>
                 </div>
             </div>
         </li>
         <!-- Nav Item - Charts -->
-        
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -133,7 +131,7 @@
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
 
-        
+
 
     </ul>
     <!-- End of Sidebar -->
@@ -153,9 +151,8 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form
-                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+
                 </form>
 
                 <!-- Topbar Navbar -->
@@ -173,8 +170,7 @@
                             <form class="form-inline mr-auto w-100 navbar-search">
                                 <div class="input-group">
                                     <input type="text" class="form-control bg-light border-0 small"
-                                        placeholder="Search for..." aria-label="Search"
-                                        aria-describedby="basic-addon2">
+                                        placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
@@ -252,8 +248,7 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                        alt="...">
+                                    <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -264,8 +259,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                        alt="...">
+                                    <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
@@ -276,8 +270,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                        alt="...">
+                                    <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
                                 <div>
@@ -309,8 +302,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle"
-                                src="img/undraw_profile.svg">
+                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -349,249 +341,273 @@
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                 </div> -->
-  <!-- la page -->
+                <!-- la page -->
 
 
-  <section class="container">
-
-    <div class="container"></div>
-    <h2>Détail du Candidat</h2><br>
-
-    <a [href]="firstImage(candidat)"><img
-        [src]="firstImage(candidat)"
-            alt=""
-            style="width: 150px; height: 150px"
-            class="rounded-circle"
-            /></a>
-    <h4> Le Candidat a été ajouté le : {{candidat.created_at}}
-    </h4>
-    
-  
-        
-        <!-- <div ><a  href="http://127.0.0.1:8000/storage/uploads/{{candidat.images?.filename}}"><img src="http://127.0.0.1:8000/storage/uploads/{{candidat.images.filename }}" width="200px"></a></div>   -->
-      <div *ngFor="let image of candidat.images" class="row">
-      <div class="col-md-4"> <a href="http://127.0.0.1:8000/storage/uploads/{{image.filename}}"><img  style="width: 150px; height: 150px"
-        class="rounded-circle" src="http://127.0.0.1:8000/storage/uploads/{{image.filename}}"></a></div> 
-      </div>
-
-  <div class="container" id="detail">
-    <div class="row">
-        <div class="col-md-4">
-   <h4>Informations Personnelles</h4>
-    <div>
-      <strong>Nom :</strong>
-      <p>{{ candidat.prenom }} {{ candidat.nom }}</p>
-  </div>
- 
-  <div>
-      <strong>Email:</strong>
-      <p>{{ candidat.email_candidat }}</p>
-  </div>
-
-  <div>
-      <strong>Téléphone:</strong>
-      <p>{{ candidat.telephone_candidat }}</p>
-  </div>
-  <div>
-    <strong>Adresse :</strong>
-    <p>{{ candidat.adresse_candidat }}</p>
-</div>
-<div>
-    <strong>Sexe :</strong>
-    <p>{{ candidat.sexe }}</p>
-</div>
-  <div>
-      <strong>Age:</strong>
-      <p>{{ candidat.age }} an(s)</p>
-  </div>
-  <div>
-    <strong>Situation Matrimoniale:</strong>
-    <p>{{ candidat.situation_matrimoniale }}</p>
-</div>
-<div>
-    <strong>Nombre d'enfants:</strong>
-    <p>{{ candidat.enfant }}</p>
-</div>
-
-<br><br><br>
-<hr>
-<h3>Ajouter au Casting</h3>
-
-<form  [formGroup]="form" (ngSubmit)="saveAlloues()">
-    <div class="row">
-     <div class="form-group col-md-8">
-         <label for="inputZip">Nom du Casting</label>
-
-         <select id="namecasting"  class="form-control"
-          formControlName="namecasting" name="namecasting">
-             <option *ngFor="let casting of castings" 
-              value="{{ casting.namecasting }}">
-              {{ casting.namecasting }}
-             </option>
-           </select>
-     </div>
-        <div class="form-group col-md-4">
-            <!-- <input type="text" class="form-control" id="id" formControlName="id" name="id"> -->
-            <input type="text"  [(ngModel)]="candidat.id"
-            hidden
-            id="id" class="form-control " 
-                        formControlName="id"
-                            name="id" >
-           
-        </div>
-
-       
+                <section class="container">
 
 
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <button  type="submit" class="btn btn-primary">Ajouter</button>
-        </div>
+                    <div class="row bg-light">
+                        <div class="col-md-3">
+                            <a [href]="firstImage(candidat)"><img [src]="firstImage(candidat)" alt=""
+                                    style="width: 150px; height: 150px"                                                                         class="rounded-circle"
+                                    class="rounded-circle"
+                                    /></a>
+                        </div>
+                        <div class="col-md-3">
+                            <strong>N° : </strong>{{candidat.id}} <br>
+                            <strong>Nom : </strong>{{candidat.prenom}} {{candidat.nom}}<br>
+                            <strong>Téléphone : </strong>{{candidat.telephone_candidat}} <br>
+                            <strong>Email : </strong>{{candidat.email_candidat}} <br>
+                            <strong>Adresse : </strong>{{candidat.adresse_candidat}} <br>
+                            <strong>Sexe : </strong>{{candidat.sexe}} <br>
+                        </div>
+                        <div class="col-md-3">
+                              <strong >Casting(s) Participé(s):</strong>
+                             <div *ngFor="let cas of candida.castings">{{cas.namecasting}}</div> 
+                        </div>
+                        <div class="col-md-3">
+                            <strong>Ajouter au Casting</strong>
+                            <form [formGroup]="form" (ngSubmit)="saveAlloues()">
+                                <div class="row">
+                                    <div class="form-group col-md-8">
+                                        <label for="inputZip">Nom du Casting</label>
+                                        <select id="namecasting" class="form-control" formControlName="namecasting"
+                                            name="namecasting">
+                                            <option *ngFor="let castin of castingss" value="{{ castin.namecasting }}">
+                                                {{ castin.namecasting }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <!-- <input type="text" class="form-control" id="id" formControlName="id" name="id"> -->
+                                        <input type="text" [(ngModel)]="candidat.id" hidden id="id"
+                                            class="form-control " formControlName="id" name="id">
+                                    </div>
 
-    </div>
-    
-</form>
-</div>
-<!-- debut 2eme col -->
-<div class="col-md-4">
-    <h4>Informations liées au Physique</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                                    </div>
 
-    <div>
-      <strong>Taille :</strong>
-      <p>{{ candidat.taille }}</p>
-  </div>
- 
-  <div>
-      <strong>Poids:</strong>
-      <p>{{ candidat.poids }} Kg</p>
-  </div>
+                                </div>
 
-  <div>
-      <strong>Teint:</strong>
-      <p>{{ candidat.teint }}</p>
-  </div>
-  <div>
-    <strong>Barbu? :</strong>
-    <p>{{ candidat.barbu }}</p>
-</div>
-<div>
-    <strong>Profession :</strong>
-    <p>{{ candidat.profession }}</p>
-</div>
-  <div>
-      <strong>Signe Particuliers</strong>
-      <p>{{ candidat.signe_particulier }}</p>
-  </div>
-  <div>
-    <strong>Langues Parlées:</strong>
-    <p>{{ candidat.langues_parlees }}</p>
-</div>
-<div>
-    <strong>Forme de Visage:</strong>
-    <p>{{ candidat.forme_visage }}</p>
-</div>
-<div>
-    <strong>Cicatrices/ Marques:</strong>
-    <p>{{ candidat.cicatrice }}</p>
-</div>
-<div>
-    <strong>Percing ou Tatouages:</strong>
-    <p>{{ candidat.percing }}</p>
-</div>
+                            </form>
 
-</div>
+                        </div>
+                    </div>
+                    <!-- le truc -->
+                    <div class="container mt-5">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-12">
+                                <div class="bg-white">
+                                    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation"> <button class="nav-link active"
+                                                id="faq_tab_1-tab" data-bs-toggle="tab" data-bs-target="#faq_tab_1"
+                                                type="button" role="tab" aria-controls="faq_tab_1" aria-selected="true">
+                                                <div class="d-flex flex-column lh-lg"> <i class='bx bxs-photo-album'></i>
+                                                    <span> Infos Personnelles</span> </div>
+                                            </button> </li>
+                                        <li class="nav-item" role="presentation"> <button class="nav-link"
+                                                id="faq_tab_2-tab" data-bs-toggle="tab" data-bs-target="#faq_tab_2"
+                                                type="button" role="tab" aria-controls="faq_tab_2"
+                                                aria-selected="false">
+                                                <div class="d-flex flex-column lh-lg"> <i
+                                                        class='bx bxs-shopping-bag'></i> <span>Gallerie
+                                                    </span> </div>
+                                            </button> </li>
+                                        <li class="nav-item" role="presentation"> <button class="nav-link"
+                                                id="faq_tab_3-tab" data-bs-toggle="tab" data-bs-target="#faq_tab_3"
+                                                type="button" role="tab" aria-controls="faq_tab_3"
+                                                aria-selected="false">
+                                                <div class="d-flex flex-column lh-lg"> <i
+                                                        class='bx bx-body'></i> <span>Infos liées au Physique
+                                                    </span> </div>
+                                            </button> </li>
+                                        <li class="nav-item" role="presentation"> <button class="nav-link"
+                                                id="faq_tab_4-tab" data-bs-toggle="tab" data-bs-target="#faq_tab_4"
+                                                type="button" role="tab" aria-controls="faq_tab_4"
+                                                aria-selected="false">
+                                                <div class="d-flex flex-column lh-lg"> <i class='bx bxs-camera-movie'></i>
+                                                    <span>Expériences Professionnelles
+                                                    </span> </div>
+                                            </button> </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade active show" id="faq_tab_1" role="tabpanel"
+                                            aria-labelledby="faq_tab_1-tab">
+                                            <div class="container p-3 mt-4">
+                                                <div class="row">
+                                                    <div class="col-md-4"><strong>N°  : </strong>{{
+                                                        candidat.id }}</div>
+                                                    <div class="col-md-4"><strong>Nom : </strong>{{
+                                                        candidat.prenom }} {{
+                                                            candidat.nom }} </div>
+                                                    <div class="col-md-4"><strong>Téléphone : </strong>{{
+                                                        candidat.telephone_candidat }} </div>
+                                                </div><br>
+                                                <div class="row">
+                                                    <div class="col-md-4"><strong>Email  : </strong>{{
+                                                        candidat.email_candidat }}</div>
+                                                    <div class="col-md-4"><strong>Adresse : </strong>{{
+                                                        candidat.adresse_candidat }} </div>
+                                                    <div class="col-md-4"><strong>Sexe : </strong>{{
+                                                        candidat.sexe }} </div>
+                                                </div><br>
+                                                <div class="row">
+                                                    <div class="col-md-4"><strong>Age  : </strong>{{
+                                                        candidat.age }} an(s)</div>
+                                                    <div class="col-md-4"><strong>Situation Matrimoniale : </strong>{{
+                                                        candidat.situation_matrimoniale }}  </div>
+                                                    <div class="col-md-4"><strong>Nombre d'enfant : </strong>{{
+                                                        candidat.enfant }} </div>
+                                                </div><br>
+                                                <a class="btn btn-primary"
+                                                [routerLink]="['/candidat/', 'edit', candidat.id  ]">
+                                               Modifier
+                                            </a>
+                                                </div>
+                                           
+                                            
+                                           
+                                           
+                                        </div>
+                                        <div class="tab-pane fade" id="faq_tab_2" role="tabpanel"
+                                            aria-labelledby="faq_tab_2-tab">
+                                            <div class="container p-3 scroll-y">
+                                                <div class="p-3 d-flex justify-content-between align-items-center">
+                                                    
+                                                    <div class="container p-3">
+                                                        <div  class="row">
+                                                            <div class="col-md-4" *ngFor="let image of candidat.images"> <a
+                                                                    href="http://127.0.0.1:8000/storage/uploads/{{image.filename}}"><img
+                                                                        style="width: 150px; height: 150px"
+                                                                        src="http://127.0.0.1:8000/storage/uploads/{{image.filename}}"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="faq_tab_3" role="tabpanel"
+                                            aria-labelledby="faq_tab_3-tab">
+                                            <div class="container p-3 mt-4">
+                                                <div class="row">
+                                                    <div class="col-md-4"><strong>Profession : </strong>{{
+                                                        candidat.profession }}</div>
+                                                    <div class="col-md-4"><strong>Langues Parlées : </strong>{{
+                                                        candidat.langues_parlees }} </div>
+                                                    <div class="col-md-4"><strong>Signes Particuliers : </strong>{{
+                                                        candidat.signe_particulier }} </div>
+                                                </div><br>
+                                                <div class="row">
+                                                    <div class="col-md-4"><strong>Taille : </strong>{{ candidat.taille
+                                                        }}</div>
+                                                    <div class="col-md-4"><strong>Poids : </strong>{{ candidat.poids }}
+                                                        Kg</div>
+                                                    <div class="col-md-4"><strong>Teint : </strong>{{ candidat.teint }}
+                                                    </div>
+                                                </div><br>
+                                                <div class="row">
+                                                    <div class="col-md-4"><strong>Barbu? : </strong>{{ candidat.barbu }}
+                                                    </div>
+                                                    <div class="col-md-4"><strong>Forme Visage : </strong>{{
+                                                        candidat.forme_visage }} Kg</div>
+                                                    <div class="col-md-4"><strong>Cicatrices/ Marques : </strong>{{
+                                                        candidat.cicatrice }} </div>
+                                                </div>
 
-<!-- debut 3eme col -->
-<div class="col-md-4">
-    <h4>Expériences Professionnelles</h4>
 
-    <div>
-      <strong> Envole? :</strong>
-      <p>{{ candidat.selection_envole }}</p>
-  </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="faq_tab_4" role="tabpanel"
+                                            aria-labelledby="faq_tab_4-tab">
+                                            <div class="container p-3">
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-  <div>
-      <strong>Dans quel spot?</strong>
-      <p>{{ candidat.quel_cinema }}</p>
-  </div>
+                                                        <strong>Travaillé avec Envole? </strong>
+                                                        {{ candidat.selection_envole }}
+                                                    </div>
+                                                    <div class="col-md-6">
 
-  <div>
-      <strong>Déja participé à une  publicité?</strong>
-      <p>{{ candidat.campagne_publicitaire }}</p>
-  </div>
-  <div>
-    <strong>Nom campagne publicitaire :</strong>
-    <p>{{ candidat.nom_campagne_publicitaire }}</p>
-</div>
-<div>
-    <strong>Expérience dans le théatre?</strong>
-    <p>{{ candidat.experience_theatre }}</p>
-</div>
-  
-  <div>
-    <strong>Combien d'année dans le théatre?</strong>
-    <p>{{ candidat.combien_annee_theatre }} an(s)</p>
-</div>
-<div>
-    <strong>Les Théatres:</strong>
-    <p>{{ candidat.les_theatres }}</p>
-</div>
-<div>
-    <strong>Expérience dans le Cinéma?</strong>
-    <p>{{ candidat.experience_cinema }}</p>
-</div>
+                                                        <strong>Dans quel spot?</strong>
+                                                        {{ candidat.quel_cinema }}
 
-<div>
-  <strong>Combien de Cinéma?</strong>
-  <p>{{ candidat.combien_de_film }}</p>
-</div>
-<div>
-    <strong>Les Films?</strong>
-    <p>{{ candidat.les_films }}</p>
-  </div>
-  <div>
-    <strong>Figurant?</strong>
-    <p>{{ candidat.figurant }}</p>
-  </div>
-  <div>
-    <strong>Bisous?</strong>
-    <p>{{ candidat.baiser }}</p>
-  </div>
-  <div>
-    <strong>Nudité?</strong>
-    <p>{{ candidat.nudite }}</p>
-  </div>
-  <div>
-    <strong>Role souhaite?</strong>
-    <p>{{ candidat.role_souhaite }}</p>
-  </div>
-  <div>
-    <strong> Lequel?</strong>
-    <p>{{ candidat.lequel_role_souhaite }}</p>
-  </div>
-  <div>
-    <strong>Role interdit?</strong>
-    <p>{{ candidat.role_interdit }}</p>
-  </div>
-  <div>
-    <strong> Lequel?</strong>
-    <p>{{ candidat.lequel_role_interdit }}</p>
-  </div>
-  <div>
-    <strong> Pourquoi le Cinéma?</strong>
-    <p>{{ candidat.pourquoi_cinema }}</p>
-  </div>
-  <div>
-    <strong> Appreciation?</strong>
-    <p>{{ candidat.appreciation }}</p>
-  </div>
-</div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                               
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
- <!-- fin row -->
-</div>
-</div>
+                                                        <strong>Participé à une pub? :</strong>
+                                                        {{ candidat.campagne_publicitaire }}
+                                                    </div>
+                                                    <div class="col-md-6">
 
-</section>
+                                                        <strong>Nom campagne pub : </strong>
+                                                        {{ candidat.nom_campagne_publicitaire }}
 
-</div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                               
+                                                <div class="row">
+                                                    <div class="col-md-6"><strong>Role Souhaite?
+                                                        </strong>{{ candidat.role_souhaite }}</div>
+                                                    <div class="col-md-6"><strong>Lequel?
+                                                        </strong>{{ candidat.lequel_role_souhaite }} </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-6"><strong>Role Interdit?
+                                                        </strong>{{ candidat.role_interdit }}</div>
+                                                    <div class="col-md-6"><strong>Lequel?
+                                                        </strong>{{ candidat.lequel_role_interdit }} </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-6"><strong>Pourquoi le Cinéma?
+                                                        </strong>{{ candidat.pourquoi_cinema }}</div>
+                                                    <div class="col-md-6"><strong>Appreciation?
+                                                        </strong>{{ candidat.appreciation }} </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-4"><strong>Bisou?
+                                                        </strong>{{ candidat.baiser }}</div>
+                                                    <div class="col-md-4"><strong>Figurant?
+                                                        </strong>{{ candidat.figurant }} </div>
+                                                    <div class="col-md-4"><strong>Nudité? </strong>{{ candidat.nudite }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-4"><strong>Expérience dans le théatre?
+                                                        </strong>{{ candidat.experience_theatre }}</div>
+                                                    <div class="col-md-4"><strong>Combien d'année dans le théatre?
+                                                        </strong>{{ candidat.combien_annee_theatre }} </div>
+                                                    <div class="col-md-4"><strong>Le(s) Théatre(s) : </strong>{{
+                                                        candidat.les_theatres }} </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-4"><strong>Expérience dans le Cinéma?
+                                                        </strong>{{ candidat.experience_cinema }}</div>
+                                                    <div class="col-md-4"><strong>Combien de Cinéma?
+                                                        </strong>{{ candidat.combien_de_film }} </div>
+                                                    <div class="col-md-4"><strong>Le(s) Film(s) : </strong>{{
+                                                        candidat.les_films }} </div>
+                                                </div>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- fin du truc -->

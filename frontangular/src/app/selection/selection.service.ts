@@ -21,8 +21,8 @@ export class SelectionService {
 
   getAllb(): Observable<Selection[]> {
    return this.http.get<Selection[]>(baseUrl);
- }
- getAll(): Observable<any> {
+  }
+  getAll(): Observable<any> {
   return this.http.get(baseUrl)
   .pipe(
     catchError(this.errorHandler)
@@ -52,6 +52,7 @@ export class SelectionService {
  findByName(name: any): Observable<Selection[]> {
    return this.http.get<Selection[]>(`${baseUrl}?name=${name}`);
  }
+
  errorHandler(error:any) {
   let errorMessage = '';
   if(error.error instanceof ErrorEvent) {
@@ -60,8 +61,5 @@ export class SelectionService {
     errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
   }
   return throwError(errorMessage);
+  }
 }
-    }
- 
- 
- 

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Colaborateur } from 'src/app/coloborateur/colaborateur';
-import { ColoborateurService } from 'src/app/coloborateur/colaborateur.service';
+import { ColaborateurService } from 'src/app/coloborateur/colaborateur.service';
 import { CastingService } from '../casting.service';
 
 @Component({

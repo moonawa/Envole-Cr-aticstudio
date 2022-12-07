@@ -1,11 +1,14 @@
 import { Candidat } from "../candidat/candidat.model";
-import { Coloborateur } from "../coloborateur/coloborateur.model";
+import { Colaborateur } from "../coloborateur/colaborateur.model";
+import { Pivot } from "../pivot/pivot.model";
+
 export class Casting {
     id?: any;
     datecasting?: Date;
     namecasting?: string;
     descriptioncasting?: string;
-    colaborateur?: Coloborateur ;
+    colaborateur?: Colaborateur ;
     statuscasting?: string;
     candidats?: Candidat[];
+    pivot?: Pivot[];
 }

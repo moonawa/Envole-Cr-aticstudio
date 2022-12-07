@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 //import { Colaborateur } from 'src/app/coloborateur/colaborateur';
-import { ColoborateurService } from 'src/app/coloborateur/colaborateur.service';
-import { Coloborateur } from 'src/app/coloborateur/coloborateur.model';
+import { ColaborateurService } from 'src/app/coloborateur/colaborateur.service';
+import { Colaborateur } from 'src/app/coloborateur/colaborateur.model';
 import { Casting } from '../casting';
 import { CastingService } from '../casting.service';
 
@@ -17,9 +17,9 @@ export class ModifcastingComponent implements OnInit {
   id!: number;
   casting!: Casting;
   form!: FormGroup;
-  colaborateurs: Coloborateur[] = [];
+  colaborateurs: Colaborateur[] = [];
   
-  colaborateur: Coloborateur ={
+  colaborateur: Colaborateur ={
     id: 1,
     adresse_colaborateur: '',
     description_colaborateur: '',
@@ -33,17 +33,15 @@ export class ModifcastingComponent implements OnInit {
       avatar: '',
 
     }
-
-    
   }
   constructor(private route: ActivatedRoute,
     private router: Router,
     private castingservice: CastingService,
-    private colaborateurService: ColoborateurService) { }
+    private colaborateurService: ColaborateurService) { }
 
     
   ngOnInit(): void {
-    this.colaborateurService.getAll().subscribe((data: Coloborateur[])=>{
+    this.colaborateurService.getAll().subscribe((data: Colaborateur[])=>{
       this.colaborateurs = data;
       console.log(this.colaborateurs);
 

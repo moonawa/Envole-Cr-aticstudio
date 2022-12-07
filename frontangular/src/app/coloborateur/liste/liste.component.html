@@ -63,7 +63,7 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
+                    <!-- <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a> -->
 
                     <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" >Casting - Client</a> -->
@@ -355,8 +355,8 @@
 <section class="container" id="colaborateur">
 
   <div class="d-flex justify-content-between">
-    <h4>Liste des Clients</h4>
-     <a routerLink="/colaborateur/ajout" class="btn btn-success">Enregistrer un nouveau Client</a> 
+    <h4>Liste des Clients ({{countAllColaborateur}})</h4>
+     <a routerLink="/colaborateur/ajout" class="btn btn-success">Ajouter un Client</a> 
   </div>
 
   <br>
@@ -397,7 +397,13 @@
               <td>{{ colaborateur.adresse_colaborateur }}</td>
               <td>{{ colaborateur.description_colaborateur }}</td>
               <td>
-                <a href="#" [routerLink]="['/colaborateur/', colaborateur.id  ]" class="btn btn-primary">Modifier</a>
+                    <i class="fas fa-pen fa-1x text-red-300"></i>
+
+                &nbsp;
+                <a href="#" [routerLink]="['/colaborateur/', colaborateur.id  ]"
+                >
+                <i  class="fas fa-eye fa-1x text-red-300" ></i> 
+                </a>
                 <!-- <button type="button" (click)="deletecolaborateur(colaborateur.id)" class="btn btn-danger">Supprimer</button> -->
               </td>
             </tr>

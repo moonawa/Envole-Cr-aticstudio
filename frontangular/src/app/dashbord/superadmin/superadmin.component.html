@@ -41,7 +41,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Components:</h6>
                     <a class="collapse-item"  routerLink="/candidat/liste">liste</a>
-                    <a class="collapse-item"  routerLink="/candidat/ajout">Ajout</a>
+                    <a class="collapse-item"  routerLink="/candidat/formstep">Ajout</a>
                 </div>
             </div>
         </li>
@@ -59,9 +59,9 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
+                    <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
-                    <a class="collapse-item" >Casting - Client</a>
+                    <a class="collapse-item" >Casting - Client</a> -->
                 </div>
             </div>
         </li>
@@ -98,8 +98,8 @@
             <div id="collapseperso" class="collapse" aria-labelledby="headingperso" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Personnel Screens:</h6>
-                    <a class="collapse-item" routerLink="/personel/liste">liste</a>
-                    <a class="collapse-item"  routerLink="/personel/ajout">Ajout</a>
+                    <a class="collapse-item" routerLink="/personel/liste" *ngIf="isSignedIn">liste</a>
+                    <a class="collapse-item"  routerLink="/personel/ajout" *ngIf="isSignedIn">Ajout</a>
                 </div>
             </div>
         </li>
@@ -305,7 +305,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.name}}</span>
                             <img class="img-profile rounded-circle"
                                 src="img/undraw_profile.svg">
                         </a>
@@ -325,7 +325,7 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" routerLink="/logout" data-toggle="modal" data-target="#logoutModal">
+                            <a  class="dropdown-item"  data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Se déconnecter
                             </a>
@@ -644,15 +644,19 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Prêt à partir?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">
+                Sélectionnez "Déconnexion" ci-dessous si vous êtes 
+                prêt à mettre fin à votre session en cours.
+            </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                <input type="checkbox"  name="allDevices" [(ngModel)]="checkbox"> 
+                <button class="btn btn-primary" (click)="logout()">Déconnexion</button>
             </div>
         </div>
     </div>

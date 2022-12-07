@@ -63,7 +63,7 @@
                     <h6 class="collapse-header">Casting :</h6>
                     <a class="collapse-item" routerLink="/casting/liste">Liste</a>
                     <a class="collapse-item" routerLink="/ajout/casting">Ajout </a>
-                    <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a>
+                    <!-- <a class="collapse-item" routerLink="/casting/candidat" >Casting- Candidat</a> -->
 
                     <!-- <a class="collapse-item" routerLink="/casting/ajout">Ajout - Casting - Client </a>
                     <a class="collapse-item" >Casting - Client</a> -->
@@ -376,8 +376,8 @@
     </div>
     <br><br>
     <div class="d-flex justify-content-between">
-      <h4>Annuaire des Fournisseurs</h4>
-      <a routerLink="/fournisseur/ajout" class="btn btn-success">Enregistrer un nouveau Fournisseur</a>
+      <h4>Annuaire des Fournisseurs({{countAllFournisseur}})</h4>
+      <a routerLink="/fournisseur/ajout" class="btn btn-success">Ajouter un Fournisseur</a>
 
     </div>
 
@@ -409,7 +409,10 @@
       <td>{{ fournisseur.prestation }}</td>
       <td>{{ fournisseur.autre }}</td>
       <td>
-        <a href="#" [routerLink]="['/fournisseur/','edit', fournisseur.id  ]" class="btn btn-primary">Modifier</a>
+        <a href="#" [routerLink]="['/fournisseur/','edit', fournisseur.id  ]" >
+            <i class="fas fa-pen fa-1x text-red-300"></i>
+
+        </a>
         <!-- <button type="button" (click)="deletecandidat(candidat.id)" class="btn btn-danger">Supprimer</button> -->
       </td>
     </tr>

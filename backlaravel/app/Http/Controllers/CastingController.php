@@ -24,10 +24,14 @@ class CastingController extends Controller
             return $querys;
         }        
      }
+     public function indexcount(){
+        $casting =  Casting::all();
+        return response()->json($casting, 200);
+    }
 
     public function index()
     {
-        $casting =  Casting::with('colaborateur')->get();
+        $casting =  Casting::with('colaborateur')->latest()->paginate(10);
         return response()->json($casting, 200);
     }
      
@@ -188,7 +192,6 @@ class CastingController extends Controller
     }
    
     
-
     public function update(Request $request, $id)
     {
         $data['datecasting'] = $request['datecasting'];
@@ -213,14 +216,15 @@ class CastingController extends Controller
     }
     public function get($id){
         $data = Casting::with('colaborateur')->find($id);
-
-      
         return response()->json($data, 200);
       }
 
-     
+      //pour les client qui s'est connecté
 
-      
-
-      
+      public function castingClientconncete(){
+        //$user = Auth::user()->id;
+        $colaborateur = Colaborateur::with('user')->where('user_id', 3); 
+        $castings = $colaborateur->with('castings')->get();
+        return response()->json($castings, 200);
+      }
 }
