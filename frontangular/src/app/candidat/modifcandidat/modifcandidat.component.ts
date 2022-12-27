@@ -10,7 +10,7 @@ import { CandidatService } from '../candidat.service';
   styleUrls: ['./modifcandidat.component.css']
 })
 export class ModifcandidatComponent implements OnInit {
-  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
+  imageDirectoryPath: any = 'https://api.senegopt.com/storage/';
 
    
    id!: number;
@@ -46,23 +46,16 @@ export class ModifcandidatComponent implements OnInit {
       cicatrice: '',
       tatouage: '',
      tache_naissance: '',
-  
-     photo1: '',
-     photo2: '',
-     photo3: '',
-     photo4: '',
-     photo5: '',
-      video1: '',
-     video2: '',
+ 
           
      situation_matrimoniale: '',
      enfant: 0,
   
      selection_envole: '',
      quel_cinema: '',
-     experience_cinema: '',
+     experience_cinema: true,
      combien_de_film: 0,
-     experience_theatre: '',
+     experience_theatre: true,
      combien_annee_theatre: 0,
       
      role_interdit: '',

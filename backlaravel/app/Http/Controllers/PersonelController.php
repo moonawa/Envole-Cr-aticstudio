@@ -66,11 +66,11 @@ class PersonelController extends Controller
         $user->email = $request->email;
         $user->telephone = $request->telephone;
         $user->password = bcrypt($request->password);
-        $user->role = 2;
+        $user->role = "Admin";
         $user->status = "Activé"; 
-        $imageName =  $request->file('avatar')->hashName();
-        Storage::disk('public')->put($imageName, file_get_contents($request->file('avatar')));
-        $user->avatar = $imageName;
+        // $imageName =  $request->file('avatar')->hashName();
+        // Storage::disk('public')->put($imageName, file_get_contents($request->file('avatar')));
+        // $user->avatar = $imageName;
         $user->save();
 
         $personnel = new Personel();

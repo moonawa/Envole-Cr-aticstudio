@@ -40,13 +40,13 @@ export class LoginService {
 
   // Login
   login(email: string, password: string) {
-    return this.http.post('http://localhost:8000/api/auth/login', {
+    return this.http.post('https://api.senegopt.com/api/auth/login', {
       email: email,
       password: password,
     });
   }
   signin(user: User): Observable<any> {
-      return this.http.post<any>('http://127.0.0.1:8000/api/auth/login', user);
+      return this.http.post<any>('https://api.senegopt.com/api/auth/login', user);
     }
   // User Info
   user() {
@@ -57,7 +57,7 @@ export class LoginService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get('http://localhost:8000/api/user', {
+    return this.http.get('https://api.senegopt.com/api/user', {
       headers: headers,
     });
   }
@@ -71,7 +71,7 @@ export class LoginService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.post('http://localhost:8000/api/auth/logout', {allDevice:allDevice}, {headers:headers});
+    return this.http.post('https://api.senegopt.com/api/auth/logout', {allDevice:allDevice}, {headers:headers});
   }
 
   // Register
@@ -82,26 +82,29 @@ export class LoginService {
       password:password,
       password_confirmation:password_confirmation,
     }
-    return this.http.post('http://localhost:8000/api/auth/register', data);
+    return this.http.post('https://api.senegopt.com/api/auth/register', data);
   }
 
   // Forgot Pass
   forgot(email:string){
-    return this.http.post('http://localhost:8000/api/auth/forgot', {email:email});
+    return this.http.post('https://api.senegopt.com/api/auth/forgot', {email:email});
+  }
+  forget(user: User): Observable<any> {
+    return this.http.post<any>('https://api.senegopt.com/api/auth/forgot', user);
   }
 
   // Reset Pass
-  reset(token:string, password:string,password_confirmation:string){
+  reset(token:string, password:string, password_confirmation:string){
 
     const data={
       token:token,
       password:password,
       password_confirmation:password_confirmation
     }
-    return this.http.post('http://localhost:8000/api/auth/reset', data);
+    return this.http.post('https://api.senegopt.com/api/auth/reset', data);
   }
-  // authUrl = 'http://localhost:8000/oauth/token';
-  // apiUrl = 'http://localhost:8000/api';
+  // authUrl = 'https://api.senegopt.com/oauth/token';
+  // apiUrl = 'https://api.senegopt.com/api';
   // options: any;
 
   // constructor(private http: HttpClient
@@ -110,13 +113,13 @@ export class LoginService {
 
   //  // Login
   //  signin(user: User): Observable<any> {
-  //   return this.http.post<any>('http://127.0.0.1:8000/api/auth/login', user);
+  //   return this.http.post<any>('https://api.senegopt.com/api/auth/login', user);
   // }
 
   // // Access user profile
   // profileUser(): Observable<any> {
-  //   return this.http.get('http://127.0.0.1:8000/api/auth/user');
-  //   return this.http.get('http://127.0.0.1:8000/api/auth/user-profile');
+  //   return this.http.get('https://api.senegopt.com/api/auth/user');
+  //   return this.http.get('https://api.senegopt.com/api/auth/user-profile');
 
   // }
 

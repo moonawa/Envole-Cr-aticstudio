@@ -4,7 +4,7 @@ import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Colaborateur } from './colaborateur.model';
-const baseUrl = 'http://localhost:8000/api/colaborateur';
+const baseUrl = 'https://api.senegopt.com/api/colaborateur';
 
 @Injectable({
   providedIn: 'root'

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('telephone')->unique()->nullable();
-            $table->integer('role'); //1=SUPERADMIN, 2=ADMIN, 3=COLABORATEUR
+            $table->string('role'); //1=SUPERADMIN, 2=ADMIN, 3=COLABORATEUR
             $table->string('status')->nullable(); //Activé, désactivé
             $table->string('avatar')->nullable();
             $table->timestamps();

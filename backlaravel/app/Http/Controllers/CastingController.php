@@ -9,11 +9,18 @@ use App\Models\Selection;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class CastingController extends Controller
 {
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->middleware('auth:api', ['except' => ['createcasting', 'indexcount','status', 'searchCasting', 'index', 'show', 'alloueParID', 'updatestatus', 'getCandidat', 'get', 'updatestatus', 'update', 'candidats' ]]);
+    }
     public function searchCasting(Request $request){
               // $querys = Casting::query();
         $datas = $request->input('search_casting');
@@ -34,7 +41,15 @@ class CastingController extends Controller
         $casting =  Casting::with('colaborateur')->latest()->paginate(10);
         return response()->json($casting, 200);
     }
-     
+    public function status($id){
+        $casting = Casting::find($id);
+        $casting->statuscasting = !$casting->statuscasting;
+        $casting->save();
+        // if($user->status) {
+        //     Notification::send($user, new ArtisteActivate(($user)));
+        // }
+        return response()->json(['succes'=>'changement status avec succées'], 200);
+    }
     //création d'un  casting
     public function createcasting(Request $request)
     {
@@ -43,7 +58,7 @@ class CastingController extends Controller
         $casting->colaborateur_id = $request->colaborateur_id;
         $casting->descriptioncasting = $request->descriptioncasting;
         $casting->namecasting = $request->namecasting;
-        $casting->statuscasting = "Encours";
+        $casting->statuscasting = 0;
         $casting->colaborateur_id = 1;
         $casting->save();
         return response()->json([
@@ -190,7 +205,6 @@ class CastingController extends Controller
         return response()->json($candidats, 200);
 
     }
-   
     
     public function update(Request $request, $id)
     {
@@ -219,12 +233,16 @@ class CastingController extends Controller
         return response()->json($data, 200);
       }
 
-      //pour les client qui s'est connecté
+    //pour les client qui s'est connecté
+    
+    public function castingClientconncete(){
+        /**
+         * @var User $user
+         */
+        $user = Auth::user();
+        $colaborateur = Colaborateur::where('user_id', $user->id)->first();
+        $casting = Casting::with('candidats')->where('colaborateur_id', $colaborateur->id)->get();
+        return response()->json($casting, 200);
+    }
 
-      public function castingClientconncete(){
-        //$user = Auth::user()->id;
-        $colaborateur = Colaborateur::with('user')->where('user_id', 3); 
-        $castings = $colaborateur->with('castings')->get();
-        return response()->json($castings, 200);
-      }
 }

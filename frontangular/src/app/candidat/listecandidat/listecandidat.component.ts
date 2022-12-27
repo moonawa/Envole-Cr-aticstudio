@@ -17,7 +17,7 @@ export class ListecandidatComponent implements OnInit {
 
   candidats: Candidat[] = [];
   first_img?: string;
-imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/uploads/';
+imageDirectoryPath: any = 'https://api.senegopt.com/storage/uploads/';
 data : any;
 user!: User;
 
@@ -26,11 +26,13 @@ user!: User;
     ) { }
 
   ngOnInit(): void {
-    // this.candidatService.getAll().subscribe((data: Candidat[])=>{
-    //   this.candidats = data;
-    //   console.log(this.candidats);
+    this.getCandidats();
+
+     this.candidatService.getAll().subscribe((data: Candidat[])=>{
+       this.candidats = data;
+       console.log(this.candidats);
       
-    // })
+     })
     
     this.authsercice.status().subscribe((res)=>{
       console.log(res);
@@ -41,7 +43,6 @@ user!: User;
       console.log(err);
     });
 
-  this.getCandidats();
 
    this.candidatService.getCandidatss(this.p)
    .subscribe((response: any) => {

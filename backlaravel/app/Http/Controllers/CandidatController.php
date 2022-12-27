@@ -103,13 +103,7 @@ class CandidatController extends Controller
 
         $candidat->pourquoi_cinema = $request->pourquoi_cinema;
         $candidat->appreciation = $request->appreciation;
-        $candidat->photo1 = $request->photo1;
-        // $candidat->photo2 = $request->photo2;
-        // $candidat->photo3 = $request->photo3;
-        // $candidat->photo4 = $request->photo4;
-        // $candidat->photo5 = $request->photo5;
-        // $candidat->video1 = $request->video1;
-        // $candidat->video2 = $request->video2;
+
 
         // $imageName = time().'.'.$request->image->getClientOriginalExtension();
         // $request->image->move(public_path('images'), $imageName);

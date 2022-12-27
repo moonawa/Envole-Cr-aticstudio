@@ -10,7 +10,7 @@ import { CandidatService } from '../candidat.service';
 export class HommeComponent implements OnInit {
 
   hommes: Candidat[] = [];
-  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/uploads/';
+  imageDirectoryPath: any = 'https://api.senegopt.com/storage/uploads/';
   data : any;
   constructor(private candidatService: CandidatService) { }
 

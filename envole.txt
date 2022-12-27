@@ -41,3 +41,5 @@ Client secret: 3ukI9uiNn2yUxeNvSb2qu6CBiQ2PpoTMHztyywqN
 modif :
 changer le recherche candidat
 ajouter directement les candidat au niveau du detail du casting
+
+ng g class user/user --type=model

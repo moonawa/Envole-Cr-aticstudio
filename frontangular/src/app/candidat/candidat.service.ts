@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Candidat } from './candidat.model';
 import { User } from '../user/user.model';
-const baseUrl = 'http://localhost:8000/api/candidats';
+const baseUrl = 'https://api.senegopt.com/api/candidats';
 
 @Injectable({
   providedIn: 'root'

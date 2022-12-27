@@ -4,7 +4,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CandidatController;
 use App\Http\Controllers\CastingController;
 use App\Http\Controllers\ColaborateurController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\FournisseurController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\SelectionController;
 use App\Models\User;
@@ -27,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('send', [NotificationController::class, 'sendNotification']);
 
 
 // Route::post('/login', [AuthController::class, 'login']);
@@ -52,8 +55,11 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::get('user-profile', [AuthController::class, 'userProfile']);
+    Route::post('/forgot', [ForgotPasswordController::class, 'forgot']);
+    Route::post('/reset', [ForgotPasswordController::class, 'reset']);
+    Route::get('/castingClientconncete',[ CastingController::class, 'castingClientconncete']);  
+    
 });
-
 
 //route pour personel
 
@@ -69,7 +75,6 @@ Route::prefix('personel')->group(function () {
 });
 
 //route pour candidat casting_candidat
-//Route::middleware('auth:api')->group(function () {
 Route::prefix('candidats')->group(function () {
     Route::get('/',[ CandidatController::class, 'index']);
     Route::post('/',[ CandidatController::class, 'createCandidat']);
@@ -94,7 +99,7 @@ Route::prefix('candidats')->group(function () {
         Route::post('/casting_candidat',[ CandidatController::class, 'casting_candidat']);
 
 });
-//});
+
 //route pour colaborateur
 Route::prefix('colaborateur')->group(function () {
     Route::get('/',[ ColaborateurController::class, 'index']);
@@ -129,14 +134,13 @@ Route::prefix('selection')->group(function () {
 
 //route pour casting
 Route::prefix('casting')->group(function () {
+
     Route::get('/',[ CastingController::class, 'index']);
     Route::post('/',[ CastingController::class, 'store']);//store avec colaborateur
     Route::get('/indexcount',[ CastingController::class, 'indexcount']);
     Route::post('/createcasting',[ CastingController::class, 'createcasting']);
     Route::post('/note/{id}',[ CastingController::class, 'note']);
-    //Route::delete('/{id}',[ CastingController::class, 'delete']);
-    Route::get('/castingClientconncete',[ CastingController::class, 'castingClientconncete']);  
-
+    Route::get('status/{id}',[CastingController::class, 'status']);
     Route::get('/search_casting', [ CastingController::class, 'searchCasting']);
     Route::get('/affiche_alloue', [ CastingController::class, 'afficheAlloue']);
     Route::get('/candidats/{id}', [ CastingController::class, 'candidats']);

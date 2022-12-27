@@ -6,14 +6,14 @@ import { catchError } from 'rxjs/operators';
 import { Personel } from './personel';
 import { User } from '../user/user';
 
-const baseUrl = 'http://localhost:8000/api/personel';
+const baseUrl = 'https://api.senegopt.com/api/personel';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class PersonelService {
-//   private apiURL = "http://localhost:8000/api/personnel/";
+//   private apiURL = "https://api.senegopt.com/api/personnel/";
 
    httpOptions = {
      headers: new HttpHeaders({

@@ -33,12 +33,8 @@ import { AjoutcastingComponent } from './casting/ajoutcasting/ajoutcasting.compo
 import { ModifcastingComponent } from './casting/modifcasting/modifcasting.component';
 import { DetailcastingComponent } from './casting/detailcasting/detailcasting.component';
 import { AjoutcandidatcastingComponent } from './candidat/ajoutcandidatcasting/ajoutcandidatcasting.component';
-import { ListeselectionComponent } from './selection/listeselection/listeselection.component';
-import { AjoutselectionComponent } from './selection/ajoutselection/ajoutselection.component';
-import { ModifselectionComponent } from './selection/modifselection/modifselection.component';
 import { CandidatcastingComponent } from './casting/candidatcasting/candidatcasting.component';
 import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcastingseul.component';
-import { DetailselectionComponent } from './selection/detailselection/detailselection.component';
 import { CandidatcastinglisteComponent } from './casting/candidatcastingliste/candidatcastingliste.component';
 import { FormstepComponent } from './candidat/formstep/formstep.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
@@ -51,6 +47,8 @@ import { MajeurComponent } from './candidat/majeur/majeur.component';
 import { PivotComponent } from './pivot/pivot/pivot.component';
 import { AdminComponent } from './dashbord/admin/admin.component';
 import { ColaborateurComponent } from './dashbord/colaborateur/colaborateur.component';
+import { CandidatComponent } from './coloborateur/candidat/candidat.component';
+import { DashboardComponent } from './coloborateur/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -82,12 +80,8 @@ import { ColaborateurComponent } from './dashbord/colaborateur/colaborateur.comp
     ModifcastingComponent,
     DetailcastingComponent,
     AjoutcandidatcastingComponent,
-    ListeselectionComponent,
-    AjoutselectionComponent,
-    ModifselectionComponent,
     CandidatcastingComponent,
     AjoutcastingseulComponent,
-    DetailselectionComponent,
     CandidatcastinglisteComponent,
     FormstepComponent,
     ForgotPasswordComponent,
@@ -100,6 +94,8 @@ import { ColaborateurComponent } from './dashbord/colaborateur/colaborateur.comp
     PivotComponent,
     AdminComponent,
     ColaborateurComponent,
+    CandidatComponent,
+    DashboardComponent,
 
     
   ],

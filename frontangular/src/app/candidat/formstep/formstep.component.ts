@@ -21,7 +21,7 @@ export class FormstepComponent implements OnInit {
   education_step = false;
   step = 1;
   constructor(private formBuilder: FormBuilder,
-    private http: HttpClient,
+    private httpclient: HttpClient,
     private router: Router) { }
   ngOnInit(): void  {
         this.personalDetails = this.formBuilder.group({
@@ -84,14 +84,6 @@ export class FormstepComponent implements OnInit {
             appreciation:'',
             filename: ['', Validators.required],
 
-            // photo1: ['',Validators.required],
-            // fileSource: ['',Validators.required],
-            // photo2:'',
-            // photo3:'',
-            // photo4:'',
-            // photo5:'',
-            // video1:'',
-            // video2:'',
 
         });
       }
@@ -179,14 +171,6 @@ export class FormstepComponent implements OnInit {
          formData.append("profession", this.addressDetails.controls['profession'].value);
          formData.append("langues_parlees", this.addressDetails.controls['langues_parlees'].value);
          
-         //formData.append("photo1", this.educationalDetails.controls['fileSource'].value);
-        //  formData.append("photo2", this.educationalDetails.controls['photo2'].value);
-        //  formData.append("photo3", this.educationalDetails.controls['photo3'].value);
-        //  formData.append("photo4", this.educationalDetails.controls['photo4'].value);
-        //  formData.append("photo5", this.educationalDetails.controls['photo5'].value);
-        //  formData.append("video1", this.educationalDetails.controls['video1'].value);
-        //  formData.append("video2", this.educationalDetails.controls['video2'].value);
-         
          formData.append("selection_envole", this.educationalDetails.controls['selection_envole'].value);
          formData.append("quel_cinema", this.educationalDetails.controls['quel_cinema'].value);
          formData.append("experience_cinema", this.educationalDetails.controls['experience_cinema'].value);
@@ -217,7 +201,7 @@ export class FormstepComponent implements OnInit {
          };
        
      
-         this.http.post('http://localhost:8000/api/candidats/', formData)
+         this.httpclient.post('https://api.senegopt.com/api/candidats/can', formData)
            .subscribe(res => {
              console.log(res);
            });

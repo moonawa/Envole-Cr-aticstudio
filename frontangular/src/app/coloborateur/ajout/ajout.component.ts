@@ -78,7 +78,7 @@ export class AjoutComponent implements OnInit {
         'Accept': 'application/json'
       })
     };
-    this.http.post('http://localhost:8000/api/colaborateur', formData, httpOptions).
+    this.http.post('https://api.senegopt.com/api/colaborateur', formData, httpOptions).
     subscribe({
       next: (v) => console.log('succes: ', v),
       error: (e) => console.log('error: ', e),
@@ -86,7 +86,7 @@ export class AjoutComponent implements OnInit {
       
     });
     alert('Le Client a été ajouté avec success')
-    this.router.navigateByUrl('coloborateur/liste');
+    this.router.navigateByUrl('colaborateur/liste');
   }
   // saveColaborateur(): void {
   //   const data = {

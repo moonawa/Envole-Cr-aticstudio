@@ -25,9 +25,7 @@ class AuthController extends Controller {
             'email' => 'required|max:255',
             'password' => 'required'
         ]);
-
         $login = $request->only('email', 'password');
-
         if (!Auth::attempt($login)) {
             return response(['message' => 'Invalid login credential!!'], 401);
         }
@@ -36,11 +34,11 @@ class AuthController extends Controller {
          */
         $user = Auth::user();
         $token = $user->createToken($user->name);
-
         return response([
             'id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
+            'role' => $user->role,
             'created_at' => $user->created_at,
             'updated_at' => $user->updated_at,
             'token' => $token->accessToken,

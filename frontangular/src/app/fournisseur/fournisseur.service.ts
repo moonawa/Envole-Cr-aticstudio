@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Fournisseur } from './fournisseur';
 
 
-const baseUrl = 'http://localhost:8000/api/fournisseur';
+const baseUrl = 'https://api.senegopt.com/api/fournisseur';
 
 @Injectable({
   providedIn: 'root'

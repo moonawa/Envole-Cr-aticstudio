@@ -12,7 +12,7 @@ import { CastingService } from '../casting.service';
 })
 export class CandidatcastingComponent implements OnInit {
   @Input() viewMode = false;
-  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
+  imageDirectoryPath: any = 'https://api.senegopt.com/storage/';
 
   @Input() currentCasting: Casting = {
     id:1,
@@ -72,23 +72,15 @@ export class CandidatcastingComponent implements OnInit {
       cicatrice: '',
       tatouage: '',
      tache_naissance: '',
- 
-     photo1: '',
-     photo2: '',
-     photo3: '',
-     photo4: '',
-     photo5: '',
-      video1: '',
-     video2: '',
-         
+   
      situation_matrimoniale: '',
      enfant: 0,
  
      selection_envole: '',
      quel_cinema: '',
-     experience_cinema: '',
+     //experience_cinema: '',
      combien_de_film: 0,
-     experience_theatre: '',
+     //experience_theatre: '',
      combien_annee_theatre: 0,
      
      role_interdit: '',

@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Casting;
 use App\Models\Colaborateur;
 use App\Models\User;
+use App\Notifications\PasswordNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 class ColaborateurController extends Controller
 {
@@ -18,38 +21,49 @@ class ColaborateurController extends Controller
     }
     public function searchColaborateur(Request $request){
       // $querys = Casting::query();
-  $datas = $request->input('search_colaborateur');
-  if($datas){
-    $querys = User::with('colaborateur')->where('name', 'LIKE', '%'.$datas.'%')->
-                      get();
+    $datas = $request->input('search_colaborateur');
+    if($datas){
+      $querys = User::with('colaborateur')->where('name', 'LIKE', '%'.$datas.'%')->
+                        get();
 
-      return $querys;
-  }        
-}
+        return $querys;
+    }        
+  }
 
 
     //création d'un  Colaborateur
     public function createColaborateur(Request $request){
-
       $pass = $this->motDePasse(8);
 
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->telephone = $request->telephone;
-        $user->password = bcrypt($request->password);
-        $user->role = 3;
+        $user->password = bcrypt($pass);
+        $user->role = "Client";
         $user->status = "Activé"; 
-        $imageName =  $request->file('avatar')->hashName();
-        Storage::disk('public')->put($imageName, file_get_contents($request->file('avatar')));
-        $user->avatar = $imageName;
+        
+        // $imageName =  $request->file('avatar')->hashName();
+        // Storage::disk('public')->put($imageName, file_get_contents($request->file('avatar')));
+        // $user->avatar = $imageName;
+
         $user->save();
+        
+       // Notification::send($user, new PasswordNotification($pass));
+      
         $colaborateur = new Colaborateur();
         $colaborateur->adresse_colaborateur = $request->adresse_colaborateur;
         $colaborateur->description_colaborateur = $request->description_colaborateur;
         $colaborateur->user_id = $user->id;
         $colaborateur->save();
-
+        
+        $e=  $user->email;
+        $p = $user->password;
+        Mail::send('mail.password', ['password'=>$p], function ($message) use($e){
+          $message->to($e);
+          $message->subject('Mot de passe');
+      });
+        
         return response()->json([
             'message' => "Successfully created",
             'success' => true

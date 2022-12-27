@@ -25,10 +25,6 @@ import { DetailcastingComponent } from './casting/detailcasting/detailcasting.co
 import { AjoutcandidatcastingComponent } from './candidat/ajoutcandidatcasting/ajoutcandidatcasting.component';
 import { CandidatcastingComponent } from './casting/candidatcasting/candidatcasting.component';
 import { AjoutcastingseulComponent } from './casting/ajoutcastingseul/ajoutcastingseul.component';
-import { ListeselectionComponent } from './selection/listeselection/listeselection.component';
-import { AjoutselectionComponent } from './selection/ajoutselection/ajoutselection.component';
-import { ModifselectionComponent } from './selection/modifselection/modifselection.component';
-import { DetailselectionComponent } from './selection/detailselection/detailselection.component';
 import { CandidatcastinglisteComponent } from './casting/candidatcastingliste/candidatcastingliste.component';
 import { FormstepComponent } from './candidat/formstep/formstep.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
@@ -41,86 +37,72 @@ import { MineurComponent } from './candidat/mineur/mineur.component';
 import { DetailcoloborateurComponent } from './coloborateur/detailcoloborateur/detailcoloborateur.component';
 import { AdminComponent } from './dashbord/admin/admin.component';
 import { AuthGuard } from './login/auth.guard';
+import { CandidatComponent } from './coloborateur/candidat/candidat.component';
+import { ColaborateurComponent } from './dashbord/colaborateur/colaborateur.component';
+import { DashboardComponent } from './coloborateur/dashboard/dashboard.component';
 
 
 
 const routes: Routes = [
   //connexion
   //{ path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '', 
-  component: LoginComponent ,
-  },
-
-  { path: 'logout',
-   component: LogoutComponent,
-  canActivate:[AuthGuard]
-  },
-
+  { path: '', component: LoginComponent ,},
+  { path: 'logout', component: LogoutComponent, canActivate:[AuthGuard]},
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
 
   //Dashbord Superadmin
-  { path: 'dashboard/super', 
-  component: SuperadminComponent ,
-  canActivate:[AuthGuard]
-  
+  { path: 'dashboard/super', component: SuperadminComponent , canActivate:[AuthGuard]},
 
-},
    //Dashbord Colaborateur
-  { path: 'dashboard/colaborateur', component: AdminComponent },
-    
+  { path: 'dashboard/colaborateur', component: ColaborateurComponent , canActivate:[AuthGuard]},
+  { path: 'dash/colaborateur', component: DashboardComponent , canActivate:[AuthGuard]},
+  { path: 'casting/colaborateur', component: CandidatComponent , canActivate:[AuthGuard]},
+
   //Dashbord 
-  { path: 'dashboard/template', component: TemplateComponent },
-  { path: 'dashboard/navbar', component: NavbarComponent },
+  { path: 'dashboard/template', component: TemplateComponent , canActivate:[AuthGuard]},
+  { path: 'dashboard/navbar', component: NavbarComponent , canActivate:[AuthGuard]},
 
   //Candidat CRUD et liaison
-  { path: 'candidat/liste', component: ListecandidatComponent ,   
-},
-  { path: 'candidat/ajout', component: AjoutcandidatComponent },
-  { path: 'candidat/femme', component: FemmeComponent },
-  { path: 'candidat/homme', component: HommeComponent },
-  { path: 'candidat/majeur', component: MajeurComponent },
-  { path: 'candidat/mineur', component: MineurComponent },
-  { path: 'candidat/edit/:id', component: ModifcandidatComponent },
-  { path: 'candidat/formstep', component: FormstepComponent},
-  { path: 'candidat/casting/:id', component: AjoutcandidatcastingComponent },
-  { path: 'candidat/:id', component: DetailcandidatComponent },
+  { path: 'candidat/liste', component: ListecandidatComponent ,    canActivate:[AuthGuard]},
+  { path: 'candidat/ajout', component: AjoutcandidatComponent , canActivate:[AuthGuard]},
+  { path: 'candidat/femme', component: FemmeComponent , canActivate:[AuthGuard]},
+  { path: 'candidat/homme', component: HommeComponent , canActivate:[AuthGuard]},
+  { path: 'candidat/majeur', component: MajeurComponent , canActivate:[AuthGuard]},
+  { path: 'candidat/mineur', component: MineurComponent , canActivate:[AuthGuard]},
+  { path: 'candidat/edit/:id', component: ModifcandidatComponent , canActivate:[AuthGuard]},
+  { path: 'candidat/formstep', component: FormstepComponent, canActivate:[AuthGuard]},
+  { path: 'candidat/casting/:id', component: AjoutcandidatcastingComponent , canActivate:[AuthGuard]},
+  { path: 'candidat/:id', component: DetailcandidatComponent , canActivate:[AuthGuard]},
 
   //Casting CRUD et liaison
-  { path: 'casting/liste', component: ListecastingComponent },
-  { path: 'casting/ajout', component: AjoutcastingComponent },
-  { path: 'casting/view/:idCasting', component: DetailcastingComponent },
-  { path: 'casting/edit/:idCasting', component: ModifcastingComponent }, 
-  { path: 'casting/candidat', component: CandidatcastingComponent }, 
-  { path: 'casting/candidat/:idCasting', component: CandidatcastinglisteComponent }, 
-  { path: 'ajout/casting', component: AjoutcastingseulComponent },
+  { path: 'casting/liste', component: ListecastingComponent , canActivate:[AuthGuard]},
+  { path: 'casting/ajout', component: AjoutcastingComponent , canActivate:[AuthGuard]},
+  { path: 'casting/view/:idCasting', component: DetailcastingComponent , canActivate:[AuthGuard]},
+  { path: 'casting/edit/:idCasting', component: ModifcastingComponent , canActivate:[AuthGuard]}, 
+  { path: 'casting/candidat', component: CandidatcastingComponent , canActivate:[AuthGuard]}, 
+  { path: 'casting/candidat/:idCasting', component: CandidatcastinglisteComponent , canActivate:[AuthGuard]}, 
+  { path: 'ajout/casting', component: AjoutcastingseulComponent , canActivate:[AuthGuard]},
 
-  //Selection CRUD et liaison
-  { path: 'selection/liste', component: ListeselectionComponent },
-  { path: 'selection/ajout', component: AjoutselectionComponent },
-  { path: 'selection/view/:id', component: DetailselectionComponent },
-  { path: 'selection/edit/:id', component: ModifselectionComponent }, 
-  //{ path: 'selection/candidat', component: CandidatcastingComponent }, 
-
+ 
     //Personel CRUD
-    { path: 'personel/liste', component: PersonelComponent },
-    { path: 'personel/ajout', component: AjoutpersonelComponent },
-    { path: 'personel/edit/:idPersonel', component: ModifpersonelComponent }, 
+    { path: 'personel/liste', component: PersonelComponent , canActivate:[AuthGuard]},
+    { path: 'personel/ajout', component: AjoutpersonelComponent , canActivate:[AuthGuard]},
+    { path: 'personel/edit/:idPersonel', component: ModifpersonelComponent , canActivate:[AuthGuard]}, 
   
     //Colaborateur CRUD
-    { path: 'colaborateur/liste', component: ListeComponent },
-    { path: 'colaborateur/ajout', component: AjoutComponent },
+    { path: 'colaborateur/liste', component: ListeComponent , canActivate:[AuthGuard]},
+    { path: 'colaborateur/ajout', component: AjoutComponent , canActivate:[AuthGuard]},
     { path: 'colaborateur/edit/:idColaborateur', component: ModifcolaborateurComponent } ,
-    { path: 'colaborateur/:idColoborateur', component: DetailcoloborateurComponent },
+    { path: 'colaborateur/:idColoborateur', component: DetailcoloborateurComponent , canActivate:[AuthGuard]},
+  //  { path: 'colaborateur/candidat/:idColoborateur', component: CandidatComponent , canActivate:[AuthGuard]},
+    
 
      //Fournisseur CRUD
      { 
-      path: 'fournisseur/liste',
-      component: ListefournisseurComponent,
-
-     },
-     { path: 'fournisseur/ajout', component: AjoutfournisseurComponent },
-     { path: 'fournisseur/edit/:idFournisseur', component: ModiffournisseurComponent } ,
+      path: 'fournisseur/liste', component: ListefournisseurComponent , canActivate:[AuthGuard]},
+     { path: 'fournisseur/ajout', component: AjoutfournisseurComponent , canActivate:[AuthGuard]},
+     { path: 'fournisseur/edit/:idFournisseur', component: ModiffournisseurComponent , canActivate:[AuthGuard]},
     
 ];
 

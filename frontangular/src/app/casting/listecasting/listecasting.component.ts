@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/user/user';
 import { Casting } from '../casting.model';
 import { CastingService } from '../casting.service';
@@ -10,20 +11,47 @@ import { CastingService } from '../casting.service';
 })
 export class ListecastingComponent implements OnInit {
   castings: Casting[] = [];
+
   p: number = 1;
+  id!: number;
   total: number = 0;
-  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
+  imageDirectoryPath: any = 'https://api.senegopt.com/storage/';
   data : any;
 
-  constructor(private castingService: CastingService) { }
+  constructor(private castingService: CastingService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+   // this.id = this.route.snapshot.params['idCasting'];
+
     // this.castingService.getAll().subscribe((data: Casting[])=>{
     //   this.castings = data;
     //   console.log(this.castings);
     // })
     this.getCastingss();
 
+
+  }
+  changeStatus(casting:any){
+    this.castingService.status(casting.id).
+    subscribe({
+      next: (res) => {
+        console.log(res);
+      //  this.router.navigate(['/candidat/liste']);
+      },
+      error: (e) => console.error(e)
+    });
+  }
+  /**
+   * Write code on Method
+   *
+   * @return response()
+   */
+  deletePost(id:number){
+    this.castingService.delete(id).subscribe(res => {
+         this.castings = this.castings?.filter(item => item.id !== id);
+         console.log('casting deleted successfully!');
+    })
   }
   getCastingss(){
     this.castingService.getCastings(this.p)
@@ -39,17 +67,7 @@ pageChangeEvent(event: number){
   get countAllCasting(): number {
     return this.castings['length'];
   }
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  deletePost(id:number){
-    this.castingService.delete(id).subscribe(res => {
-         this.castings = this.castings?.filter(item => item.id !== id);
-         console.log('casting deleted successfully!');
-    })
-  }
+  
 
   getCandidatSearch(name: any)
   {

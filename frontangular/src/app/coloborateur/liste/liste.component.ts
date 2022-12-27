@@ -9,7 +9,7 @@ import { ColaborateurService } from '../colaborateur.service';
 export class ListeComponent  implements OnInit {
 
   colaborateurs: Colaborateur[] = [];
-  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
+  imageDirectoryPath: any = 'https://api.senegopt.com/storage/';
   data : any;
 
   constructor(private ColaborateurService: ColaborateurService) { }

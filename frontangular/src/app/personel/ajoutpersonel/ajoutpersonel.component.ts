@@ -71,7 +71,7 @@ export class AjoutpersonelComponent implements OnInit {
         'Accept': 'application/json'
       })
     };
-    this.http.post('http://localhost:8000/api/personel', formData, httpOptions).
+    this.http.post('https://api.senegopt.com/api/personel', formData, httpOptions).
     subscribe({
       next: (v) => console.log('succes: ', v),
       error: (e) => console.log('error: ', e),

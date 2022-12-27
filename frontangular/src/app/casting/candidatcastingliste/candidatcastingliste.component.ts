@@ -23,7 +23,7 @@ candidatss: Candidat[] = [];
 form!: FormGroup;
 
   
-  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/';
+  imageDirectoryPath: any = 'https://api.senegopt.com/storage/';
   data : any;
   constructor(private castingService: CastingService,
     private route: ActivatedRoute,
@@ -62,7 +62,7 @@ form!: FormGroup;
     };
   
 
-    this.http.post('http://localhost:8000/api/casting/test', formData)
+    this.http.post('https://api.senegopt.com/api/casting/test', formData)
       .subscribe(res => {
         console.log(res);
       });
@@ -80,7 +80,7 @@ form!: FormGroup;
         'Accept': 'application/json'
       })
     };
-    this.http.post('http://localhost:8000/api/casting/detach', formData)
+    this.http.post('https://api.senegopt.com/api/casting/detach', formData)
       .subscribe(res => {
         console.log(res);
       });

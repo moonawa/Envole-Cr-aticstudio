@@ -178,7 +178,7 @@ form!: FormGroup;
     };
   
 
-    this.http.post('http://localhost:8000/api/candidats', formData)
+    this.http.post('https://api.senegopt.com/api/candidats', formData)
       .subscribe(res => {
         console.log(res);
       });;

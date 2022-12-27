@@ -64,7 +64,7 @@ submit(){
     'Accept': 'application/json'
   })
 };
-this.http.post('http://localhost:8000/api/casting', formData, httpOptions).
+this.http.post('https://api.senegopt.com/api/casting', formData, httpOptions).
 subscribe({
   next: (v) => console.log('succes: ', v),
   error: (e) => console.log('error: ', e),

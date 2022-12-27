@@ -36,25 +36,16 @@ export class Candidat {
     cicatrice?: string;
     tatouage?: string;
     tache_naissance?: string;
-
-    photo1?: string;
-    photo2?: string;
-    photo3?: string;
-    photo4?: string;
-    photo5?: string;
-    video1?: string;
-    video2?: string;
-    myFiles?: string;
         
     situation_matrimoniale?: string;
     enfant?: number;
 
     selection_envole?: string;
     quel_cinema?: string;
-    experience_cinema?: string;
+    experience_cinema?: boolean;
     combien_de_film?: number;
     les_films?: string;
-    experience_theatre?: string;
+    experience_theatre?: boolean;
     combien_annee_theatre?: number;
     les_theatres?: string;
     

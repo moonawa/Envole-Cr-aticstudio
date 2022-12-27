@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('descriptioncasting')->nullable();
             $table->integer('colaborateur_id')->unsigned()->nullable();
             $table->foreign('colaborateur_id')->references('id')->on('colaborateurs')->onCascade('delete');
-            $table->string('statuscasting')->nullable(); //encours,  terminé
+            $table->boolean('statuscasting')->default(0); //0 = encours ; 1= terminé
             $table->timestamps();
         });
     }

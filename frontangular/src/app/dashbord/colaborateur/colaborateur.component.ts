@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Casting } from 'src/app/casting/casting.model';
+import { CastingService } from 'src/app/casting/casting.service';
+import { LoginService } from 'src/app/login/login.service';
 
 @Component({
   selector: 'app-colaborateur',
@@ -7,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColaborateurComponent implements OnInit {
 
-  constructor() { }
+  
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
 
+      
+    }
+    
 }

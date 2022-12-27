@@ -18,7 +18,7 @@ export class DetailcandidatComponent implements OnInit {
   candidat!: Candidat;
   candida!: Candidat;
 
-  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/uploads/';
+  imageDirectoryPath: any = 'https://api.senegopt.com/storage/uploads/';
   castingss: Casting[] = [];
 
   form!: FormGroup;
@@ -61,7 +61,7 @@ export class DetailcandidatComponent implements OnInit {
       })
     };
 
-    this.http.post('http://localhost:8000/api/candidats/ajoutcancas', formData)
+    this.http.post('https://api.senegopt.com/api/candidats/ajoutcancas', formData)
       .subscribe(res => {
         console.log(res);
       });

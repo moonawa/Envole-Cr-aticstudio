@@ -73,7 +73,7 @@ export class DetailcastingComponent implements OnInit {
     };
   
 
-    this.http.post('http://localhost:8000/api/casting/test', formData)
+    this.http.post('https://api.senegopt.com/api/casting/test', formData)
       .subscribe(res => {
         console.log(res);
       });
