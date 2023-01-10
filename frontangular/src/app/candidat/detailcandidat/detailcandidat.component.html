@@ -164,7 +164,7 @@
                                                     <div class="container p-3">
                                                         <div  class="row">
                                                             <div class="col-md-4" *ngFor="let image of candidat.images"> <a
-                                                                    href="https://api.senegopt.com/uploads/{{image.filename}}"><img
+                                                                    href="https://api.senegopt.com/storage/uploads/{{image.filename}}"><img
                                                                         style="width: 150px; height: 150px"
                                                                         src="https://api.senegopt.com/storage/uploads/{{image.filename}}"></a>
                                                             </div>
@@ -196,7 +196,7 @@
                                                     <div class="col-md-4"><strong>Barbu? : </strong>{{ candidat.barbu }}
                                                     </div>
                                                     <div class="col-md-4"><strong>Forme Visage : </strong>{{
-                                                        candidat.forme_visage }} Kg</div>
+                                                        candidat.forme_visage }} </div>
                                                     <div class="col-md-4"><strong>Cicatrices/ Marques : </strong>{{
                                                         candidat.cicatrice }} </div>
                                                 </div>
@@ -269,7 +269,9 @@
                                                 <br>
                                                 <div class="row">
                                                     <div class="col-md-4"><strong>Expérience dans le théatre?
-                                                        </strong>{{ candidat.experience_theatre }}</div>
+                                                        </strong>
+                                                        <p *ngIf="!candidat.experience_theatre">Non</p> <p *ngIf="candidat.experience_theatre">Oui</p>  
+                                                    </div>
                                                     <div class="col-md-4"><strong>Combien d'année dans le théatre?
                                                         </strong>{{ candidat.combien_annee_theatre }} </div>
                                                     <div class="col-md-4"><strong>Le(s) Théatre(s) : </strong>{{
@@ -278,7 +280,9 @@
                                                 <br>
                                                 <div class="row">
                                                     <div class="col-md-4"><strong>Expérience dans le Cinéma?
-                                                        </strong>{{ candidat.experience_cinema }}</div>
+                                                        </strong>
+                                                        <p *ngIf="!candidat.experience_cinema">Non</p> <p *ngIf="candidat.experience_cinema">Oui</p>
+                                                        </div>
                                                     <div class="col-md-4"><strong>Combien de Cinéma?
                                                         </strong>{{ candidat.combien_de_film }} </div>
                                                     <div class="col-md-4"><strong>Le(s) Film(s) : </strong>{{

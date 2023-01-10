@@ -44,7 +44,7 @@
                     <div class="form-group col-md-6">
                       <label for="inputPassword4">Nom<span>*</span> </label>
 
-                      <input type="text" class="form-control" placeholder="sene" id="nom" required
+                      <input type="text" class="form-control" placeholder="Doe" id="nom" required
                       formControlName="nom" name="nom"
                       [ngClass]="{ 'is-invalid': personal_step && personal}">
                       <div *ngIf="personal['nom'].touched && personal['nom'].invalid" class="alert alert-danger">
@@ -53,22 +53,27 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputPassword4">Prénom<span>*</span></label>
-                      <input type="text" class="form-control" placeholder="awa ndiaye" id="prenom" required
+                      <input type="text" class="form-control" placeholder="John" id="prenom" required
                         formControlName="prenom" name="prenom"
                         >
-                     
+                        <div *ngIf="personal['prenom'].touched && personal['prenom'].invalid" class="alert alert-danger">
+                          <div *ngIf="personal['prenom'].errors && personal['prenom'].errors['required']" class="alertmoonawa">Le prenom est obligatoire.</div>
+                      </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                       <label for="inputEmail4">Téléphone<span>*</span></label>
-                      <input type="text" class="form-control" placeholder="77111565" id="telephone_candidat"
+                      <input type="text" class="form-control" placeholder="000000000000" id="telephone_candidat"
                         formControlName="telephone_candidat" name="telephone_candidat"
                         required>
+                        <div *ngIf="personal['telephone_candidat'].touched && personal['telephone_candidat'].invalid" class="alert alert-danger">
+                          <div *ngIf="personal['telephone_candidat'].errors && personal['telephone_candidat'].errors['required']" class="alertmoonawa">Le telephone est obligatoire.</div>
+                      </div>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" placeholder="awa@awa.com" id="email_candidat"
+                    <input type="email" class="form-control" placeholder="example@exemple.com" id="email_candidat"
                       formControlName="email_candidat" name="email_candidat"
                       >
                 </div>
@@ -81,18 +86,24 @@
                             <option value="Femme">Femme</option>
                             <option value="Homme">Homme</option>
                           </select>
+                          <div *ngIf="personal['sexe'].touched && personal['sexe'].invalid" class="alert alert-danger">
+                            <div *ngIf="personal['sexe'].errors && personal['sexe'].errors['required']" class="alertmoonawa">Le sexe est obligatoire.</div>
+                        </div>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Date de Naissance<span>*</span></label>
                     <input type="date" class="form-control"  id="birthday"
                       formControlName="birthday" name="birthday"
                       required >
+                      <div *ngIf="personal['birthday'].touched && personal['birthday'].invalid" class="alert alert-danger">
+                        <div *ngIf="personal['birthday'].errors && personal['birthday'].errors['required']" class="alertmoonawa">La date de naissance est obligatoire.</div>
+                    </div>
                 </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
-                      <label for="inputEmail4">Marié(e)<span>*</span></label>
-                      <select id="situation_matrimoniale" required class="form-control" formControlName="situation_matrimoniale"
+                      <label for="inputEmail4">Marié(e)</label>
+                      <select id="situation_matrimoniale"  class="form-control" formControlName="situation_matrimoniale"
             name="situation_matrimoniale">
             <option value="Marié(e)">Marié(e)</option>
             <option value="Célibataire">Célibataire</option>
@@ -108,10 +119,13 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                       <label for="inputEmail4">Adressse<span>*</span></label>
-                      <input type="text" class="form-control" placeholder="Grand Yoff" 
+                      <input type="text" class="form-control" placeholder="Abidian" 
                       id="adresse_candidat" required
                         formControlName="adresse_candidat" name="adresse_candidat"
                         >
+                        <div *ngIf="personal['adresse_candidat'].touched && personal['adresse_candidat'].invalid" class="alert alert-danger">
+                          <div *ngIf="personal['adresse_candidat'].errors && personal['adresse_candidat'].errors['required']" class="alertmoonawa">L' adresse est obligatoire.</div>
+                      </div>
                   </div>
                 
                 </div>
@@ -132,20 +146,20 @@
                     <div class="form-group col-md-3">
                       <label for="inputEmail4">Taille</label>
                       <input type="text" class="form-control" placeholder="1m60" id="taille"
-           formControlName="taille" name="taille" required
+           formControlName="taille" name="taille" 
            >
                     </div>
                     <div class="form-group col-md-3">
                       <label for="inputPassword4">Poids</label>
                       <input type="number" class="form-control" 
                       placeholder="40" id="poids" 
-          formControlName="poids" name="poids" required>
+          formControlName="poids" name="poids" >
                     </div>
                     <div class="form-group col-md-3">
                         <label for="inputEmail4">Teint</label>
                         <input type="text" class="form-control" 
                         placeholder="noir, ou marron ou clair" 
-                        id="teint" required
+                        id="teint" 
             formControlName="teint" name="teint">
                       </div>
                       <div class="form-group col-md-3">
@@ -161,7 +175,11 @@
                       <label for="inputEmail4">Profession</label>
                       <input type="text" class="form-control"
                        id="profession" formControlName="profession" 
-                       name="profession">
+                       name="profession" required
+                       [ngClass]="{ 'is-invalid': address_step && address}">
+                       <div *ngIf="address['profession'].touched && address['profession'].invalid" class="alert alert-danger">
+                        <div *ngIf="address['profession'].errors && address['profession'].errors['required']" class="alertmoonawa">La profession est obligatoire.</div>
+                    </div>
 
                     </div>
                     <div class="form-group col-md-4">
@@ -402,7 +420,13 @@
                           multiple
                           class="form-control"
                           (change)="onFileChange($event)"
-                          required>
+                          required
+                          [ngClass]="{'is-invalid': submitted && education['filename'].errors }" >
+                         
+                        <div *ngIf="submitted && education['filename'].errors" class="alert alert-danger">
+                          <div *ngIf="education['filename'].errors['required']">Le(s) photo(s) est(sont) obligatoire(s).</div>
+                       </div>
+                      
                     </div>
                  
               </div>

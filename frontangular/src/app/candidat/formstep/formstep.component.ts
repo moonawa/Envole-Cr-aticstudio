@@ -20,6 +20,7 @@ export class FormstepComponent implements OnInit {
   address_step = false;
   education_step = false;
   step = 1;
+  submitted = false;
   constructor(private formBuilder: FormBuilder,
     private httpclient: HttpClient,
     private router: Router) { }
@@ -32,15 +33,15 @@ export class FormstepComponent implements OnInit {
             adresse_candidat: ['',Validators.required],
             sexe: ['',Validators.required],
             birthday: ['',Validators.required],
-            situation_matrimoniale: ['',Validators.required],
+            situation_matrimoniale: '',
             enfant: '',
         });
         this.addressDetails = this.formBuilder.group({
-            taille: ['', Validators.required],
+            taille: '',
             poids: '',
-            teint: ['',Validators.required],
+            teint: '',
             barbu: '',
-            profession :'',
+            profession :['',Validators.required],
             langues_parlees:'',
             signe_particulier: '',
             longueur_cheveux: '',
@@ -68,11 +69,11 @@ export class FormstepComponent implements OnInit {
             role_interdit:'',
             lequel_role_interdit:'',
 
-            experience_cinema: '',
+            experience_cinema: 0,
             combien_de_film: '',
             les_films:'',
 
-            experience_theatre:'',
+            experience_theatre: 0,
             combien_annee_theatre:'',
             les_theatres:'',
 
@@ -88,8 +89,8 @@ export class FormstepComponent implements OnInit {
         });
       }
       get personal() { return this.personalDetails.controls; }
-      get education() { return this.educationalDetails.controls; }
       get address() { return this.addressDetails.controls; }
+      get education() { return this.educationalDetails.controls; }
       next(){
         if(this.step==1){
               this.personal_step = true;
@@ -111,6 +112,7 @@ export class FormstepComponent implements OnInit {
           this.education_step = false;
         }
       }
+
       onFileChangeb(event:Event) {
         const file = (event.target as HTMLInputElement)?.files?.[0];
         
