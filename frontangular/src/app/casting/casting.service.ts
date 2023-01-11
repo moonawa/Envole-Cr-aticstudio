@@ -27,11 +27,18 @@ httpOptions = {
     )
     }
     getCastings(page: number){
-      return this.httpClient.get(this.apiURL + '?page=' + page);
+      return this.httpClient.get("https://api.senegopt.com/api/casting" + '?page=' + page);
     }
     getAll(): Observable<Casting[]> {
       return this.httpClient.get<Casting[]>(this.apiURL + 'indexcount');
   }
+  encours(a: number) {
+    return this.httpClient.get("https://api.senegopt.com/api/casting/encours" + '?page=' + a);
+}
+termine(b: number) {
+  return this.httpClient.get("https://api.senegopt.com/api/casting/termine" + '?page=' + b);
+}
+
   castingClientconncete(): Observable<Casting[]> {
     return this.httpClient.get<Casting[]>
     ('https://api.senegopt.com/api/auth/castingClientconncete');
@@ -50,7 +57,7 @@ httpOptions = {
     }  
 
     createcasting(casting:Casting): Observable<any> {
-      return this.httpClient.post(this.apiURL + 'createcasting/',  JSON.stringify(casting), this.httpOptions)
+      return this.httpClient.post(this.apiURL + 'createcasting',  JSON.stringify(casting), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
         )
@@ -75,7 +82,7 @@ httpOptions = {
      * @return response()
      */
     get(id:number): Observable<any> {  
-      return this.httpClient.get(this.apiURL + id)
+      return this.httpClient.get(this.apiURL +id)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -84,7 +91,7 @@ httpOptions = {
       return this.httpClient.get<Casting>(this.apiURL+id);
     }
     status(id: any): Observable<Casting> {
-      return this.httpClient.get<Casting>(this.apiURL+ 'status/' +id);
+      return this.httpClient.get<Casting>(this.apiURL+'status/' +id);
     }
     candidat(id:number): Observable<any> {  
       return this.httpClient.get(this.apiURL + 'candidats/' + id)

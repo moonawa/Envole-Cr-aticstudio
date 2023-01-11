@@ -31,7 +31,7 @@
 
     <div class="d-flex justify-content-between">
       <h4>Liste des Candidats Femmes</h4>
-      <a routerLink="/candidat/formstep" class="btn btn-success">Ajouter un nouveau Candidat</a>
+      <a routerLink="/candidat/formstep" class="btn btn-dark">Ajouter un nouveau Candidat</a>
     </div>
  
     <br>
@@ -66,8 +66,14 @@
     </td>  -->
   
       <td>
-    <a  [routerLink]="['/candidat/', 'edit', candidat.id  ]" class="btn btn-primary">Modifier</a> 
-         <a href="#"  [routerLink]="['/candidat/', candidat.id  ]" class="btn btn-info">Details</a> 
+    <a  [routerLink]="['/candidat/', 'edit', candidat.id  ]" >
+      <i  class="fas fa-pen fa-1x text-red-300" style="color: red;"></i>  
+
+    </a> &nbsp;
+         <a href="#"  [routerLink]="['/candidat/', candidat.id  ]">
+          <i  class="fas fa-eye fa-1x text-red-300 " ></i> 
+
+         </a> 
         <!-- <a href="#"  [routerLink]="['/candidat/','casting', candidat.id  ]" class="btn btn-success">Selectionner</a> -->
 
         <!-- <button type="button" (click)="deletecandidat(candidat.id)" class="btn btn-danger">Supprimer</button> -->

@@ -138,6 +138,8 @@ Route::prefix('casting')->group(function () {
     Route::get('/',[ CastingController::class, 'index']);
     Route::post('/',[ CastingController::class, 'store']);//store avec colaborateur
     Route::get('/indexcount',[ CastingController::class, 'indexcount']);
+    Route::get('/encours',[ CastingController::class, 'castingEncours']);
+    Route::get('/termine',[ CastingController::class, 'castingTermine']);
     Route::post('/createcasting',[ CastingController::class, 'createcasting']);
     Route::post('/note/{id}',[ CastingController::class, 'note']);
     Route::get('status/{id}',[CastingController::class, 'status']);

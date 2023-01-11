@@ -49,6 +49,8 @@ import { AdminComponent } from './dashbord/admin/admin.component';
 import { ColaborateurComponent } from './dashbord/colaborateur/colaborateur.component';
 import { CandidatComponent } from './coloborateur/candidat/candidat.component';
 import { DashboardComponent } from './coloborateur/dashboard/dashboard.component';
+import { EncoursComponent } from './casting/encours/encours.component';
+import { TermineComponent } from './casting/termine/termine.component';
 
 
 @NgModule({
@@ -96,6 +98,8 @@ import { DashboardComponent } from './coloborateur/dashboard/dashboard.component
     ColaborateurComponent,
     CandidatComponent,
     DashboardComponent,
+    EncoursComponent,
+    TermineComponent,
 
     
   ],

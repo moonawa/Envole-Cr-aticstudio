@@ -20,4 +20,9 @@ export class MineurComponent implements OnInit {
       //console.log(this.candidats);
     })
   }
+
+  firstImage(candidat: any) {
+    //console.log('first image', candidat);
+    return this.imageDirectoryPath+''+candidat.images[0].filename;
+  }
 }

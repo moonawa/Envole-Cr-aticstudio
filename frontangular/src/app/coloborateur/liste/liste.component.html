@@ -18,7 +18,7 @@
 
   <div class="d-flex justify-content-between">
     <h4>Liste des Clients ({{countAllColaborateur}})</h4>
-     <a routerLink="/colaborateur/ajout" class="btn btn-success">Ajouter un Client</a> 
+     <a routerLink="/colaborateur/ajout" class="btn btn-dark">Ajouter un Client</a> 
   </div>
 
   <br>
@@ -59,9 +59,9 @@
               <td>{{ colaborateur.adresse_colaborateur }}</td>
               <td>{{ colaborateur.description_colaborateur }}</td>
               <td>
-                    <i class="fas fa-pen fa-1x text-red-300" style="color: red"></i>
+                    <!-- <i class="fas fa-pen fa-1x text-red-300" style="color: red"></i>
 
-                &nbsp;
+                &nbsp; -->
                 <a href="#" [routerLink]="['/colaborateur/', colaborateur.id  ]"
                 >
                 <i  class="fas fa-eye fa-1x text-red-300" ></i> 

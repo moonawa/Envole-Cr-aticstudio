@@ -40,6 +40,8 @@ import { AuthGuard } from './login/auth.guard';
 import { CandidatComponent } from './coloborateur/candidat/candidat.component';
 import { ColaborateurComponent } from './dashbord/colaborateur/colaborateur.component';
 import { DashboardComponent } from './coloborateur/dashboard/dashboard.component';
+import { EncoursComponent } from './casting/encours/encours.component';
+import { TermineComponent } from './casting/termine/termine.component';
 
 
 
@@ -77,6 +79,9 @@ const routes: Routes = [
 
   //Casting CRUD et liaison
   { path: 'casting/liste', component: ListecastingComponent , canActivate:[AuthGuard]},
+  { path: 'casting/encours', component: EncoursComponent , canActivate:[AuthGuard]},
+  { path: 'casting/termine', component: TermineComponent , canActivate:[AuthGuard]},
+
   { path: 'casting/ajout', component: AjoutcastingComponent , canActivate:[AuthGuard]},
   { path: 'casting/view/:idCasting', component: DetailcastingComponent , canActivate:[AuthGuard]},
   { path: 'casting/edit/:idCasting', component: ModifcastingComponent , canActivate:[AuthGuard]}, 

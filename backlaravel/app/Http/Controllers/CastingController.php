@@ -19,7 +19,10 @@ class CastingController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['createcasting', 'indexcount','status', 'searchCasting', 'index', 'show', 'alloueParID', 'updatestatus', 'getCandidat', 'get', 'updatestatus', 'update', 'candidats' ]]);
+        $this->middleware('auth:api', ['except' => ['createcasting', 'indexcount','status', 
+        'searchCasting', 'index', 'show', 'alloueParID', 
+        'updatestatus', 'getCandidat', 'get', 'updatestatus', 'update', 
+        'candidats', 'castingEncours', 'castingTermine' ]]);
     }
     public function searchCasting(Request $request){
               // $querys = Casting::query();
@@ -33,6 +36,14 @@ class CastingController extends Controller
      }
      public function indexcount(){
         $casting =  Casting::all();
+        return response()->json($casting, 200);
+    }
+    public function castingEncours(){
+        $casting =  Casting::with('colaborateur')->where('statuscasting', 0)->latest()->paginate(10);
+        return response()->json($casting, 200);
+    }
+    public function castingTermine(){
+        $casting =  Casting::with('colaborateur')->where('statuscasting', 1)->latest()->paginate(10);
         return response()->json($casting, 200);
     }
 
